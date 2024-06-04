@@ -9,6 +9,8 @@ func _ready():
 
 
 func _process(delta):
+	_animationTree["parameters/Idle/blend_position"] = Vector2(_character.velocity.x,_character.velocity.z);
+	_animationTree["parameters/Move/blend_position"] = Vector2(_character.velocity.x,_character.velocity.z);
 	if(_character.velocity.length()>1):
 		_stateMachine.travel("Move");
 	elif(_character.velocity.length()==0):
