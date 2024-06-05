@@ -2,38 +2,45 @@ extends Node3D
 
 @export var _owner:Character;
 
+var direction;
+var inputVector;
+
+@export var _weaponActualStats:R_Weapon;
+@onready var _sprite = $WeaponSprite; 
+var _dmg:int;
+
 func _ready():
 	hide();
-	pass # Replace with function body.
+	SetWeapon(_weaponActualStats);
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var inputVector = Input.get_vector("ui_left","ui_right","ui_down","ui_up");
-	var direction = Vector3(sign(inputVector.x),0,sign(inputVector.y));
-	print(inputVector);
 	if(_owner._stateMachine.GetState() == "Atk"):
 		show();
 	else:
 		hide();
-	match direction:
+	WeaponOrientation();	
+func WeaponOrientation()->void:
+	match _owner.GetPlayerOrientation():
 		Vector3(1,0,0): #Right
 			rotation_degrees = Vector3(0,0,0);
 		Vector3(-1,0,0): #Left
 			rotation_degrees = Vector3(0,-180,0);
-			print("okjpokokpo");
 		Vector3(0,0,-1): #Down
 			rotation_degrees = Vector3(0,-90,0);
 		Vector3(0,0,1): #Up
 			rotation_degrees = Vector3(0,90,0);
 		#----------------DIAG--------------------------
 		Vector3(1,0,1): #DiagUpRight
-			print("okjpokokpo");
 			rotation_degrees = Vector3(0,90,0);
 		Vector3(-1,0,1): #DiagDownLeft
 			rotation_degrees = Vector3(0,90,0);
 		Vector3(-1,0,-1): #DiagUpLeft
 			rotation_degrees = Vector3(0,-90,0);
 		Vector3(1,0,-1): #DiagDownRight
-			rotation_degrees = Vector3(0,-90,0);
-			
+			rotation_degrees = Vector3(0,-90,0);	
+
+func SetWeapon(newWeapon:R_Weapon):
+	_weaponActualStats = newWeapon;
+	_sprite.texture = _weaponActualStats._img;
+	_dmg = _weaponActualStats._dmg;

@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://oa8fw4qtcfsf"]
+[gd_scene load_steps=5 format=3 uid="uid://oa8fw4qtcfsf"]
 
 [ext_resource type="Script" path="res://Scripts/Weapon/Weapon.gd" id="1_0y3xp"]
 [ext_resource type="Texture2D" uid="uid://dfag2ln48gd7" path="res://Sprites/Branch.png" id="1_xdkey"]
+[ext_resource type="Resource" uid="uid://crwirbvd8pxh5" path="res://Ressources/W_WoodSword.tres" id="2_hni0o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xwsp3"]
 size = Vector3(0.549805, 0.351074, 0.472092)
 
 [node name="Weapon" type="Node3D"]
 script = ExtResource("1_0y3xp")
+_weaponActualStats = ExtResource("2_hni0o")
 
 [node name="WeaponSprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.324847, -0.0322412, 0)

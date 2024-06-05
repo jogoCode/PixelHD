@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://ctoxthrmgum7c"]
+
+[node name="ObjPickup" type="Node3D"]
