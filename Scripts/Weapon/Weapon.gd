@@ -10,8 +10,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var inputVector = Input.get_vector("ui_left","ui_right","ui_down","ui_up");
-	var direction = Vector3(inputVector.x,0,inputVector.y);
-	print(direction);
+	var direction = Vector3(sign(inputVector.x),0,sign(inputVector.y));
+	print(inputVector);
 	if(_owner._stateMachine.GetState() == "Atk"):
 		show();
 	else:
@@ -21,7 +21,19 @@ func _process(delta):
 			rotation_degrees = Vector3(0,0,0);
 		Vector3(-1,0,0): #Left
 			rotation_degrees = Vector3(0,-180,0);
+			print("okjpokokpo");
 		Vector3(0,0,-1): #Down
 			rotation_degrees = Vector3(0,-90,0);
 		Vector3(0,0,1): #Up
-			rotation_degrees = Vector3(0,90,0);		
+			rotation_degrees = Vector3(0,90,0);
+		#----------------DIAG--------------------------
+		Vector3(1,0,1): #DiagUpRight
+			print("okjpokokpo");
+			rotation_degrees = Vector3(0,90,0);
+		Vector3(-1,0,1): #DiagDownLeft
+			rotation_degrees = Vector3(0,90,0);
+		Vector3(-1,0,-1): #DiagUpLeft
+			rotation_degrees = Vector3(0,-90,0);
+		Vector3(1,0,-1): #DiagDownRight
+			rotation_degrees = Vector3(0,-90,0);
+			
