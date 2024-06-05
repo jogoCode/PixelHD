@@ -1,17 +1,26 @@
 extends Node
 
-@export var _character:CharacterBody3D;
+@export var _character:Character;
 @export var _animationTree:AnimationTree;
-@onready var _stateMachine = _animationTree["parameters/playback"];
+@onready var _stateAnimation = _animationTree["parameters/playback"];
 
 func _ready():
 	pass
 
+func _physics_process(delta):
+	var stateAnimation = _stateAnimation;
+	var lastVel = _character.getLastDir();
+	var vel= _character.velocity
+	_animationTree["parameters/Idle/blend_position"] = Vector2(lastVel.x,lastVel.z);
+	_animationTree["parameters/Move/blend_position"] = Vector2(vel.x,vel.z);
+	_animationTree["parameters/Atk/blend_position"] = Vector2(lastVel.x,lastVel.z);		
+func _get_configuration_warnings():
+	var warnings = []
 
-func _process(delta):
-	_animationTree["parameters/Idle/blend_position"] = Vector2(_character.velocity.x,_character.velocity.z);
-	_animationTree["parameters/Move/blend_position"] = Vector2(_character.velocity.x,_character.velocity.z);
-	if(_character.velocity.length()>1):
-		_stateMachine.travel("Move");
-	elif(_character.velocity.length()==0):
-		_stateMachine.travel("Idle");	
+	if _character == null:
+		warnings.append("Please set PlayerCharacter to a non-empty value.")
+	
+	if _animationTree == null:
+		warnings.append("Please set AnimationTree to a non-empty value.")
+	# Returning an empty array means "no warning".
+	return warnings;

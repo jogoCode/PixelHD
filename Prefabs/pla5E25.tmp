@@ -1,11 +1,10 @@
-[gd_scene load_steps=61 format=3 uid="uid://budrbr6y8el7f"]
+[gd_scene load_steps=56 format=3 uid="uid://budrbr6y8el7f"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController/PlayerCharacter.gd" id="1_0ne4q"]
 [ext_resource type="Texture2D" uid="uid://8cu7mmfngp7y" path="res://Sprites/Link (1).png" id="1_dpcuk"]
 [ext_resource type="Script" path="res://Scripts/PlayerController/InputManager.gd" id="3_3c572"]
 [ext_resource type="Script" path="res://Scripts/Tools/AnimationManager.gd" id="4_j28b1"]
 [ext_resource type="Script" path="res://Scripts/Tools/StateMachine.gd" id="4_vliv5"]
-[ext_resource type="PackedScene" uid="uid://oa8fw4qtcfsf" path="res://Prefabs/weapon.tscn" id="6_0kr4w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fksui"]
 atlas = ExtResource("1_dpcuk")
@@ -145,7 +144,7 @@ height = 0.483084
 
 [sub_resource type="Animation" id="Animation_f01k5"]
 resource_name = "AtkDown"
-length = 0.3
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -153,10 +152,10 @@ tracks/0/path = NodePath("AnimatedSprite3D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"AtkDown"]
+"values": [&"WalkDown", &"AtkDown"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -185,7 +184,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_gfc3b"]
 resource_name = "AtkLeft"
-length = 0.3
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -193,10 +192,10 @@ tracks/0/path = NodePath("AnimatedSprite3D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"AtkRight"]
+"values": [&"IdleRight", &"AtkRight"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -225,7 +224,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_wqwkn"]
 resource_name = "AtkRight"
-length = 0.3
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -233,10 +232,10 @@ tracks/0/path = NodePath("AnimatedSprite3D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"AtkRight"]
+"values": [&"IdleRight", &"AtkRight"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -265,7 +264,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_cnj65"]
 resource_name = "AtkUp"
-length = 0.3
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -273,10 +272,10 @@ tracks/0/path = NodePath("AnimatedSprite3D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [&"AtkUp"]
+"values": [&"IdleUp", &"AtkUp"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -621,7 +620,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rndr4"]
@@ -698,18 +697,6 @@ animation = &"RunDown"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6phv3"]
 animation = &"RunUp"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c0v5w"]
-animation = &"RunDown"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oquub"]
-animation = &"RunUp"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_frsj0"]
-animation = &"RunUp"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vbq1d"]
-animation = &"RunDown"
-
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_salox"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_2h873")
 blend_point_0/pos = Vector2(-1, 0)
@@ -719,14 +706,6 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_ivn5i")
 blend_point_2/pos = Vector2(0, 1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_6phv3")
 blend_point_3/pos = Vector2(0, -1)
-blend_point_4/node = SubResource("AnimationNodeAnimation_c0v5w")
-blend_point_4/pos = Vector2(0.4, 0.6)
-blend_point_5/node = SubResource("AnimationNodeAnimation_oquub")
-blend_point_5/pos = Vector2(0.4, -0.6)
-blend_point_6/node = SubResource("AnimationNodeAnimation_frsj0")
-blend_point_6/pos = Vector2(-0.4, -0.6)
-blend_point_7/node = SubResource("AnimationNodeAnimation_vbq1d")
-blend_point_7/pos = Vector2(-0.4, 0.6)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ebmtp"]
@@ -800,7 +779,3 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Atk/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0.00529099)
 parameters/Move/blend_position = Vector2(-0.00129366, 0)
-
-[node name="Weapon" parent="." node_paths=PackedStringArray("_owner") instance=ExtResource("6_0kr4w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-_owner = NodePath("..")

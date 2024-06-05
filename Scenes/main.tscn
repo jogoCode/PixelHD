@@ -1,16 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvqgo0yh4o76"]
+[gd_scene load_steps=5 format=3 uid="uid://dvqgo0yh4o76"]
 
 [ext_resource type="PackedScene" uid="uid://budrbr6y8el7f" path="res://Prefabs/player.tscn" id="1_4mtj6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k8m5f"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdy0e"]
-albedo_color = Color(0.768627, 0.780392, 0.203922, 1)
-
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6ubf8"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [sub_resource type="Environment" id="Environment_ybrlx"]
+sdfgi_enabled = true
 
 [node name="Main" type="Node3D"]
 
@@ -22,10 +20,12 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_k8m5f")
-surface_material_override/0 = SubResource("StandardMaterial3D_sdy0e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6ubf8")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="StaticBody3D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ybrlx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0.707107, -1, 0, -4.37114e-08, 0, 1.55829, 0)
