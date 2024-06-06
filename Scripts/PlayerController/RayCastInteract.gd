@@ -1,30 +1,16 @@
-extends Node3D
+extends RayCast3D
 
-@export var _owner:Character;
-
-var direction;
-var inputVector;
-
-@export var _weaponActualStats:R_Weapon;
-@onready var _sprite = $WeaponSprite; 
-
-# ajouter la création du pickup 
-
-var _dmg:int;
-
-signal ChangeWeapon(newWeapon:R_Weapon);
+@onready var _owner:Character = get_parent();
 
 func _ready():
-	hide();
-	SetWeapon(_weaponActualStats);
-
+	enabled = false;
 
 func _process(delta):
-	if(_owner._stateMachine.GetState() == "Atk"):
-		show();
-	else:
-		hide();
+	if(is_colliding()):
+		for node in get_collider().get_parent().get_children():
+			node.emit_signal("Interact",_owner);
 	WeaponOrientation();
+
 
 func WeaponOrientation()->void:
 	match _owner.GetPlayerOrientation():
@@ -46,12 +32,8 @@ func WeaponOrientation()->void:
 		Vector3(1,0,-1): #DiagDownRight
 			rotation_degrees = Vector3(0,-90,0);	
 
-func SetWeapon(newWeapon:R_Weapon):
-	_weaponActualStats = newWeapon;
-	_sprite.texture =  newWeapon._img;
-	_dmg =  newWeapon._dmg;
 
-
-func _on_change_weapon(newWeapon):
-	SetWeapon(newWeapon);
-	print("uihiu")
+func _on_input_manager_interact():
+	enabled = true;
+	await get_tree().create_timer(0.5).timeout;
+	enabled = false;

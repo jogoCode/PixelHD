@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://budrbr6y8el7f"]
+[gd_scene load_steps=67 format=3 uid="uid://budrbr6y8el7f"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController/PlayerCharacter.gd" id="1_0ne4q"]
 [ext_resource type="Texture2D" uid="uid://8cu7mmfngp7y" path="res://Sprites/Link (1).png" id="1_dpcuk"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/Tools/AnimationManager.gd" id="4_j28b1"]
 [ext_resource type="Script" path="res://Scripts/Tools/StateMachine.gd" id="4_vliv5"]
 [ext_resource type="PackedScene" uid="uid://oa8fw4qtcfsf" path="res://Prefabs/weapon.tscn" id="6_0kr4w"]
+[ext_resource type="Resource" uid="uid://crwirbvd8pxh5" path="res://Ressources/W_WoodSword.tres" id="7_60c37"]
+[ext_resource type="Script" path="res://Scripts/PlayerController/RayCastInteract.gd" id="7_idtos"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fksui"]
 atlas = ExtResource("1_dpcuk")
@@ -781,9 +783,10 @@ SPEED = 1.5
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+flip_h = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_dhqrs")
-animation = &"IdleDown"
+animation = &"IdleRight"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l48ms")
@@ -818,8 +821,16 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_augop")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Atk/blend_position = Vector2(0, 0)
-parameters/Idle/blend_position = Vector2(0, 0.00518131)
+parameters/Idle/blend_position = Vector2(-0.592715, -0.0569948)
 parameters/Move/blend_position = Vector2(-0.00129366, 0)
 
 [node name="Weapon" parent="." node_paths=PackedStringArray("_owner") instance=ExtResource("6_0kr4w")]
 _owner = NodePath("..")
+_weaponActualStats = ExtResource("7_60c37")
+
+[node name="RayCastInteract" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 15, 0, 0, 0, 1, 0, 0, 0)
+target_position = Vector3(0.5, 0, 0)
+script = ExtResource("7_idtos")
+
+[connection signal="Interact" from="InputManager" to="RayCastInteract" method="_on_input_manager_interact"]

@@ -2,6 +2,8 @@ extends Node
 
 @export var _playerCharacter:PlayerCharacter;
 
+signal Interact;
+
 func _ready():
 	pass # Replace with function body.
 
@@ -10,6 +12,8 @@ func _physics_process(delta):
 	_playerCharacter.setDirection(inputDir.normalized());
 	if(Input.is_action_pressed("ui_accept")):
 		_playerCharacter.Atk();
+	if(Input.is_action_just_pressed("Interact")):
+		emit_signal("Interact");
 
 func _input(event):
 	pass;
