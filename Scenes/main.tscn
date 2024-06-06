@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvqgo0yh4o76"]
+[gd_scene load_steps=11 format=3 uid="uid://dvqgo0yh4o76"]
 
 [ext_resource type="PackedScene" uid="uid://budrbr6y8el7f" path="res://Prefabs/player.tscn" id="1_4mtj6"]
 [ext_resource type="PackedScene" uid="uid://ctoxthrmgum7c" path="res://Prefabs/objPickup.tscn" id="2_5px2p"]
 [ext_resource type="Resource" uid="uid://cp3ja8rwcof3e" path="res://Ressources/W_Branch.tres" id="3_oqi7g"]
+[ext_resource type="Resource" uid="uid://ck4t4qepux4ix" path="res://Ressources/W_IronSword.tres" id="4_65pc1"]
+[ext_resource type="Resource" uid="uid://hes7gby3uxcw" path="res://Ressources/W_FireSword.tres" id="5_05lwl"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k8m5f"]
 
@@ -49,3 +51,12 @@ shape = SubResource("ConcavePolygonShape3D_xbheu")
 [node name="ObjPickup" parent="." instance=ExtResource("2_5px2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.432, 0.0711332, 0)
 _weapon = ExtResource("3_oqi7g")
+
+[node name="ObjPickup2" parent="." instance=ExtResource("2_5px2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66276, 0.0576416, 0)
+_weapon = ExtResource("4_65pc1")
+
+[node name="ObjPickup3" parent="." instance=ExtResource("2_5px2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0466983, 2.06034)
+_weapon = ExtResource("5_05lwl")
+metadata/_edit_lock_ = true

@@ -23,10 +23,10 @@ func _ready():
 func _process(delta):
 	if(_owner._stateMachine.GetState() == "Atk"):
 		show();
-		#_hitBox.disabled = false;
+		_hitBox.disabled = false;
 	else:
 		hide();
-		#_hitBox.disabled = true;
+		_hitBox.disabled = true;
 	WeaponOrientation();
 
 func WeaponOrientation()->void:
