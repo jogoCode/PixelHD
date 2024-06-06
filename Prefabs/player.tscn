@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://budrbr6y8el7f"]
+[gd_scene load_steps=68 format=3 uid="uid://budrbr6y8el7f"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController/PlayerCharacter.gd" id="1_0ne4q"]
 [ext_resource type="Texture2D" uid="uid://8cu7mmfngp7y" path="res://Sprites/Link (1).png" id="1_dpcuk"]
@@ -676,14 +676,17 @@ blend_point_2/pos = Vector2(0, 1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_a0opq")
 blend_point_3/pos = Vector2(0, -1)
 blend_point_4/node = SubResource("AnimationNodeAnimation_5y1cu")
-blend_point_4/pos = Vector2(-0.4, -0.6)
+blend_point_4/pos = Vector2(-0.3, -0.7)
 blend_point_5/node = SubResource("AnimationNodeAnimation_npwcu")
-blend_point_5/pos = Vector2(0.4, -0.6)
+blend_point_5/pos = Vector2(0.3, -0.7)
 blend_point_6/node = SubResource("AnimationNodeAnimation_xwnri")
-blend_point_6/pos = Vector2(0.4, 0.6)
+blend_point_6/pos = Vector2(0.3, 0.5)
 blend_point_7/node = SubResource("AnimationNodeAnimation_avhai")
-blend_point_7/pos = Vector2(-0.4, 0.6)
+blend_point_7/pos = Vector2(-0.3, 0.5)
 blend_mode = 1
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7cbxj"]
+graph_offset = Vector2(-480.259, 3.46824)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2lsf1"]
 animation = &"IdleDown"
@@ -771,6 +774,8 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_augop"]
 states/Atk/node = SubResource("AnimationNodeBlendSpace2D_gag7f")
 states/Atk/position = Vector2(382, 206)
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_7cbxj")
+states/BlendTree/position = Vector2(534, 152)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_fr4l2")
 states/Idle/position = Vector2(320, 100.111)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_salox")
@@ -820,8 +825,8 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_augop")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Atk/blend_position = Vector2(0, 0)
-parameters/Idle/blend_position = Vector2(-0.592715, -0.0569948)
+parameters/Atk/blend_position = Vector2(-0.293046, -0.0362694)
+parameters/Idle/blend_position = Vector2(-0.587748, 0.0777202)
 parameters/Move/blend_position = Vector2(-0.00129366, 0)
 
 [node name="Weapon" parent="." node_paths=PackedStringArray("_owner") instance=ExtResource("6_0kr4w")]
@@ -829,8 +834,9 @@ _owner = NodePath("..")
 _weaponActualStats = ExtResource("7_60c37")
 
 [node name="RayCastInteract" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 15, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0.5, 0, 0)
+collision_mask = 3
 script = ExtResource("7_idtos")
 
 [connection signal="Interact" from="InputManager" to="RayCastInteract" method="_on_input_manager_interact"]

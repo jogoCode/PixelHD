@@ -6,7 +6,7 @@ var _playerOrientation:Vector3;
 var _inputVector;
 
 func _physics_process(delta):
-	
+
 	if _stateMachine.GetState() == "Atk":
 		_direction = Vector3.ZERO;
 	else:
@@ -14,7 +14,7 @@ func _physics_process(delta):
 		_inputVector = Input.get_vector("ui_left","ui_right","ui_down","ui_up");
 		_playerOrientation = Vector3(sign(_inputVector.x),0,sign(_inputVector.y));
 		if _direction:
-			_lastDir = velocity;
+			_lastDir = _direction;
 			velocity.x = _direction.x * SPEED
 			velocity.z = _direction.z * SPEED
 		else:

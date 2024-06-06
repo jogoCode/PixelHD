@@ -7,12 +7,13 @@ var inputVector;
 
 @export var _weaponActualStats:R_Weapon;
 @onready var _sprite = $WeaponSprite; 
+@export var _hitBox:CollisionShape3D;
 
 # ajouter la création du pickup 
 
 var _dmg:int;
 
-signal ChangeWeapon(newWeapon:R_Weapon);
+signal ChangeWeapon(newWeapon:R_Weapon,dropPos:Vector3);
 
 func _ready():
 	hide();
@@ -22,8 +23,10 @@ func _ready():
 func _process(delta):
 	if(_owner._stateMachine.GetState() == "Atk"):
 		show();
+		#_hitBox.disabled = false;
 	else:
 		hide();
+		#_hitBox.disabled = true;
 	WeaponOrientation();
 
 func WeaponOrientation()->void:
@@ -52,6 +55,9 @@ func SetWeapon(newWeapon:R_Weapon):
 	_dmg =  newWeapon._dmg;
 
 
-func _on_change_weapon(newWeapon):
+func _on_change_weapon(newWeapon:R_Weapon,dropPos:Vector3):
+	var pickup = preload("res://Prefabs/objPickup.tscn");
+	var pickupInstance:ObjPickup = pickup.instantiate();
+	pickupInstance._weapon = _weaponActualStats;
 	SetWeapon(newWeapon);
-	print("uihiu")
+	Level.CreateObject(pickupInstance,dropPos,Vector3.ZERO);

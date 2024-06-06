@@ -1,14 +1,20 @@
 extends RayCast3D
 
 @onready var _owner:Character = get_parent();
+var _canActive;
 
 func _ready():
-	enabled = false;
+	pass
 
 func _process(delta):
 	if(is_colliding()):
-		for node in get_collider().get_parent().get_children():
-			node.emit_signal("Interact",_owner);
+		if(get_collider() != null):
+			get_collider().get_parent().emit_signal("DisplayStats");
+		if(_canActive):
+			_canActive = false;
+			for node in get_collider().get_parent().get_children():
+				node.emit_signal("Interact",_owner);
+	
 	WeaponOrientation();
 
 
@@ -34,6 +40,6 @@ func WeaponOrientation()->void:
 
 
 func _on_input_manager_interact():
-	enabled = true;
-	await get_tree().create_timer(0.5).timeout;
-	enabled = false;
+	_canActive = true;
+	await get_tree().create_timer(0.1).timeout;
+	_canActive = false;

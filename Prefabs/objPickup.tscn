@@ -1,26 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctoxthrmgum7c"]
+[gd_scene load_steps=7 format=3 uid="uid://ctoxthrmgum7c"]
 
 [ext_resource type="Script" path="res://Scripts/ObjPickup.gd" id="1_f67r5"]
 [ext_resource type="Script" path="res://Scripts/InteractSystem.gd" id="2_cbygq"]
 [ext_resource type="Texture2D" uid="uid://dvtg4056i4tn2" path="res://icon.svg" id="3_25xw1"]
+[ext_resource type="PackedScene" uid="uid://b10x10md87dxx" path="res://Prefabs/StatsDisplay.tscn" id="4_kfytj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6tsfv"]
 radius = 0.26234
 
-[node name="ObjPickup" type="Node3D"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xyeem"]
+viewport_path = NodePath("SubViewport")
+
+[node name="ObjPickup" type="Node3D" node_paths=PackedStringArray("_sprite", "_StatDisplayer")]
 script = ExtResource("1_f67r5")
+_sprite = NodePath("weaponImg")
+_StatDisplayer = NodePath("StatsDisplay")
 
 [node name="InteractSystem" type="Node" parent="."]
 script = ExtResource("2_cbygq")
 
-[node name="Area3D" type="RigidBody3D" parent="."]
+[node name="Area3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_6tsfv")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-billboard = 1
+[node name="weaponImg" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("3_25xw1")
 
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(191, 252)
+
+[node name="StatsDisplay" parent="SubViewport" instance=ExtResource("4_kfytj")]
+
+[node name="StatsDisplay" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.353553, 0.353553, 0, -0.353553, 0.353553, 0, 0.572802, -0.654504)
+transparency = 0.1
+texture = SubResource("ViewportTexture_xyeem")
+
+[connection signal="DisplayStats" from="." to="." method="_on_display_stats"]
 [connection signal="Interact" from="InteractSystem" to="." method="_on_interact_system_interact"]

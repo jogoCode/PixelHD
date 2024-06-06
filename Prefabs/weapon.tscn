@@ -7,9 +7,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_xwsp3"]
 size = Vector3(0.549805, 0.351074, 0.472092)
 
-[node name="Weapon" type="Node3D"]
+[node name="Weapon" type="Node3D" node_paths=PackedStringArray("_hitBox")]
 script = ExtResource("1_0y3xp")
 _weaponActualStats = ExtResource("2_2j760")
+_hitBox = NodePath("Area3D/CollisionShape3D")
 
 [node name="WeaponSprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.324847, -0.0322412, 0)
@@ -21,5 +22,6 @@ texture = ExtResource("1_xdkey")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.374973, 0.0118666, -0.00188446)
 shape = SubResource("BoxShape3D_xwsp3")
+disabled = true
 
 [connection signal="ChangeWeapon" from="." to="." method="_on_change_weapon"]
