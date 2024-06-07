@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b10x10md87dxx"]
 
 [ext_resource type="Script" path="res://Scripts/UI/StatsDisplay.gd" id="1_ico8g"]
-[ext_resource type="Texture2D" uid="uid://dfag2ln48gd7" path="res://Sprites/Branch.png" id="1_m3nmv"]
+[ext_resource type="Texture2D" uid="uid://dfag2ln48gd7" path="res://Sprites/Weapons/Branch.png" id="1_m3nmv"]
 
 [node name="StatsDisplay" type="Control" node_paths=PackedStringArray("_nameTxt", "_img", "_dmgTxt", "_descTxt")]
 layout_mode = 3

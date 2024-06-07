@@ -1,0 +1,58 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://cyssetxe0nxf1"]
+
+[ext_resource type="Texture2D" uid="uid://bwqo0bk0lulnt" path="res://Sprites/Textures/GrassPx.png" id="1_8q3o1"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_s4262"]
+texture = ExtResource("1_8q3o1")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_vjgij"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_hn6l5"]
+function = 1
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_6rr17"]
+constant = 70.0
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// Input:3
+	vec2 n_out3p0 = UV;
+
+
+// FloatConstant:5
+	float n_out5p0 = 70.000000;
+
+
+// UVFunc:4
+	vec2 n_in4p2 = vec2(0.00000, 0.00000);
+	vec2 n_out4p0 = (n_out3p0 - n_in4p2) * vec2(n_out5p0) + n_in4p2;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, n_out4p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-684.649, 44.6963)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_s4262")
+nodes/fragment/2/position = Vector2(-180, 160)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_vjgij")
+nodes/fragment/3/position = Vector2(-900, 240)
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_hn6l5")
+nodes/fragment/4/position = Vector2(-500, 220)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_6rr17")
+nodes/fragment/5/position = Vector2(-840, 340)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 4, 0, 4, 0, 2, 0, 5, 0, 4, 1)

@@ -11,8 +11,8 @@ func _physics_process(delta):
 	var stateAnimation = _stateAnimation;
 	var lastVel = _character.getLastDir();
 	var vel= _character._playerOrientation;
+	
 	_animationTree["parameters/Idle/blend_position"] = Vector2(sign(lastVel.x),sign(lastVel.z));
-	print(sign(lastVel.x)," _ ",sign(lastVel.z))
 	_animationTree["parameters/Move/blend_position"] = Vector2(vel.x,-vel.z);
 	_animationTree["parameters/Atk/blend_position"] = Vector2(sign(lastVel.x),sign(lastVel.z));
 func _get_configuration_warnings():

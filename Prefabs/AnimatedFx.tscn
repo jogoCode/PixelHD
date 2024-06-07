@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctqkj43krvykj"]
+
+[ext_resource type="Script" path="res://Scripts/Visuals/AnimatedFx.gd" id="1_i5fmp"]
+[ext_resource type="Texture2D" uid="uid://6i3upn1oeukm" path="res://Sprites/FX/Blow_FX.png" id="2_7smm5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oriog"]
+atlas = ExtResource("2_7smm5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5cpo"]
+atlas = ExtResource("2_7smm5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqoeu"]
+atlas = ExtResource("2_7smm5")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7vvo"]
+atlas = ExtResource("2_7smm5")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0g2u"]
+atlas = ExtResource("2_7smm5")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upshy"]
+atlas = ExtResource("2_7smm5")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhm5f"]
+atlas = ExtResource("2_7smm5")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crbkl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oriog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5cpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqoeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7vvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0g2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upshy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhm5f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="AnimatedFx" type="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+script = ExtResource("1_i5fmp")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_crbkl")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite3D" to="." method="_on_animated_sprite_3d_animation_finished"]

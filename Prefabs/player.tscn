@@ -1,7 +1,7 @@
 [gd_scene load_steps=68 format=3 uid="uid://budrbr6y8el7f"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController/PlayerCharacter.gd" id="1_0ne4q"]
-[ext_resource type="Texture2D" uid="uid://8cu7mmfngp7y" path="res://Sprites/Link (1).png" id="1_dpcuk"]
+[ext_resource type="Texture2D" uid="uid://8cu7mmfngp7y" path="res://Sprites/Textures/Link (1).png" id="1_dpcuk"]
 [ext_resource type="Script" path="res://Scripts/PlayerController/InputManager.gd" id="3_3c572"]
 [ext_resource type="Script" path="res://Scripts/Tools/AnimationManager.gd" id="4_j28b1"]
 [ext_resource type="Script" path="res://Scripts/Tools/StateMachine.gd" id="4_vliv5"]
@@ -783,6 +783,7 @@ states/Move/position = Vector2(449.333, 98.8889)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ebmtp"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_3wjwg"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_slq1v"), "Idle", "Atk", SubResource("AnimationNodeStateMachineTransition_8w4js"), "Atk", "Idle", SubResource("AnimationNodeStateMachineTransition_4xtc4"), "Atk", "Move", SubResource("AnimationNodeStateMachineTransition_74fsh"), "Move", "Atk", SubResource("AnimationNodeStateMachineTransition_8vb37")]
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 3
 script = ExtResource("1_0ne4q")
 SPEED = 1.5
 

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://hes7gby3uxcw"]
 
 [ext_resource type="Script" path="res://Scripts/Ressources/R_Weapons.gd" id="1_3ymxc"]
-[ext_resource type="Texture2D" uid="uid://cxc0avt1rlii" path="res://Sprites/FireSword.png" id="1_fj52k"]
+[ext_resource type="Texture2D" uid="uid://cxc0avt1rlii" path="res://Sprites/Weapons/FireSword.png" id="1_fj52k"]
 
 [resource]
 script = ExtResource("1_3ymxc")

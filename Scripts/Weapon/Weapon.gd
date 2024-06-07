@@ -51,7 +51,7 @@ func WeaponOrientation()->void:
 
 func SetWeapon(newWeapon:R_Weapon):
 	_weaponActualStats = newWeapon;
-	_sprite.texture =  newWeapon._img;
+	_sprite.texture = newWeapon._img;
 	_dmg =  newWeapon._dmg;
 
 
@@ -61,3 +61,10 @@ func _on_change_weapon(newWeapon:R_Weapon,dropPos:Vector3):
 	pickupInstance._weapon = _weaponActualStats;
 	SetWeapon(newWeapon);
 	Level.CreateObject(pickupInstance,dropPos,Vector3.ZERO);
+
+
+func _on_area_3d_body_entered(body):
+	print(body)
+	for node in body.get_children():
+		if node.has_signal("TakeDamage"):
+			node.emit_signal("TakeDamage",_weaponActualStats._dmg);

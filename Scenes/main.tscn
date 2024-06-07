@@ -1,28 +1,32 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvqgo0yh4o76"]
+[gd_scene load_steps=12 format=3 uid="uid://dvqgo0yh4o76"]
 
 [ext_resource type="PackedScene" uid="uid://budrbr6y8el7f" path="res://Prefabs/player.tscn" id="1_4mtj6"]
 [ext_resource type="PackedScene" uid="uid://ctoxthrmgum7c" path="res://Prefabs/objPickup.tscn" id="2_5px2p"]
 [ext_resource type="Resource" uid="uid://cp3ja8rwcof3e" path="res://Ressources/W_Branch.tres" id="3_oqi7g"]
 [ext_resource type="Resource" uid="uid://ck4t4qepux4ix" path="res://Ressources/W_IronSword.tres" id="4_65pc1"]
 [ext_resource type="Resource" uid="uid://hes7gby3uxcw" path="res://Ressources/W_FireSword.tres" id="5_05lwl"]
+[ext_resource type="PackedScene" uid="uid://cl44ivvhjq1b7" path="res://Prefabs/Decors/Tronc.tscn" id="6_5sap5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k8m5f"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6ubf8"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ipuux"]
+
+[sub_resource type="Sky" id="Sky_ife24"]
+sky_material = SubResource("ProceduralSkyMaterial_ipuux")
+
 [sub_resource type="Environment" id="Environment_ybrlx"]
-sdfgi_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_qebv2"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xbheu"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+background_mode = 2
+sky = SubResource("Sky_ife24")
+ssao_enabled = true
 
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_4mtj6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.366916, 0)
+SPEED = 2.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -38,15 +42,7 @@ environment = SubResource("Environment_ybrlx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0.707107, -1, 0, -4.37114e-08, 0, 1.55829, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.04765, 0, 0)
-mesh = SubResource("BoxMesh_qebv2")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_xbheu")
+sky_mode = 1
 
 [node name="ObjPickup" parent="." instance=ExtResource("2_5px2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.432, 0.0711332, 0)
@@ -60,3 +56,7 @@ _weapon = ExtResource("4_65pc1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0466983, 2.06034)
 _weapon = ExtResource("5_05lwl")
 metadata/_edit_lock_ = true
+
+[node name="Tronc" parent="." instance=ExtResource("6_5sap5")]
+
+[editable path="Tronc"]

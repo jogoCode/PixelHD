@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://oa8fw4qtcfsf"]
 
 [ext_resource type="Script" path="res://Scripts/Weapon/Weapon.gd" id="1_0y3xp"]
-[ext_resource type="Texture2D" uid="uid://dfag2ln48gd7" path="res://Sprites/Branch.png" id="1_xdkey"]
+[ext_resource type="Texture2D" uid="uid://dfag2ln48gd7" path="res://Sprites/Weapons/Branch.png" id="1_xdkey"]
 [ext_resource type="Resource" uid="uid://cp3ja8rwcof3e" path="res://Ressources/W_Branch.tres" id="2_2j760"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xwsp3"]
@@ -25,3 +25,4 @@ shape = SubResource("BoxShape3D_xwsp3")
 disabled = true
 
 [connection signal="ChangeWeapon" from="." to="." method="_on_change_weapon"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

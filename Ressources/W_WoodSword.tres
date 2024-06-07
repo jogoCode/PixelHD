@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://crwirbvd8pxh5"]
 
-[ext_resource type="Texture2D" uid="uid://btolfyl8nwr0c" path="res://Sprites/WoodSword.png" id="1_addtq"]
+[ext_resource type="Texture2D" uid="uid://btolfyl8nwr0c" path="res://Sprites/Weapons/WoodSword.png" id="1_addtq"]
 [ext_resource type="Script" path="res://Scripts/Ressources/R_Weapons.gd" id="2_f87kp"]
 
 [resource]
