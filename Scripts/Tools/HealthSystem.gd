@@ -17,12 +17,6 @@ func _ready():
 	_actualHp = _baseHp;
 	_maxHp = _baseHp;
 
-
-func _process(delta):
-	print(_actualHp);
-	pass
-
-
 func AddActualHp(newHp:int)->void:
 	if(_canTakeDamage):
 		_actualHp += newHp;
@@ -31,7 +25,6 @@ func AddActualHp(newHp:int)->void:
 		_canTakeDamage = false;
 	
 func CanDeath():
-	print(_actualHp)
 	if(_actualHp <= 0):
 		if(_destroyAtDeath):
 			_owner.queue_free();
@@ -39,14 +32,9 @@ func CanDeath():
 		else:
 			emit_signal("isDead");
 
-
-func _on_area_3d_area_entered(area):
-	pass
-
-
-
 func _on_take_damage(damage):
-	AddActualHp(damage);
+	AddActualHp(-damage);
+	print(damage)
 	var fx = preload("res://Prefabs/AnimatedFx.tscn");
 	var FxInstance = fx.instantiate();
 	Level.CreateObject(FxInstance,_owner.global_position,_owner.global_rotation);

@@ -23,6 +23,5 @@ func _get_configuration_warnings():
 
 	if _playerCharacter == null:
 		warnings.append("Please set PlayerCharacter to a non-empty value.")
-	
 	# Returning an empty array means "no warning".
 	return warnings;

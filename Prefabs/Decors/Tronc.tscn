@@ -57,16 +57,16 @@ height = 5.56769
 [node name="Tronc" type="Node3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.29623, 0.0832093, -1.29293)
 
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("2_xdv4q")
+_baseHp = 10
+_destroyAtDeath = true
+
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_aveah")
 mesh = SubResource("ArrayMesh_d6np2")
 skeleton = NodePath("")
-
-[node name="HealthSystem" type="Node" parent="."]
-script = ExtResource("2_xdv4q")
-_baseHp = 10
-_destroyAtDeath = true
 
 [node name="Area3D" type="Area3D" parent="."]
 

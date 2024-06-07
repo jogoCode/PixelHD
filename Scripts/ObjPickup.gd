@@ -18,7 +18,8 @@ func _input(event):
 
 func _on_interact_system_interact(interacter):
 	for node in interacter.get_children():
-		node.emit_signal("ChangeWeapon",_weapon,global_position);
+		if node.has_signal("ChangeWeapon"):
+			node.emit_signal("ChangeWeapon",_weapon,global_position);
 	queue_free();
 
 	
