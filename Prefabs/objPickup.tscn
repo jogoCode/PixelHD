@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctoxthrmgum7c"]
+[gd_scene load_steps=7 format=3 uid="uid://ctoxthrmgum7c"]
 
 [ext_resource type="Script" path="res://Scripts/ObjPickup.gd" id="1_f67r5"]
 [ext_resource type="Script" path="res://Scripts/InteractSystem.gd" id="2_cbygq"]
+[ext_resource type="Texture2D" uid="uid://bdrvvud5cthrk" path="res://Sprites/Weapons/IronSword.png" id="3_b6jsm"]
 [ext_resource type="PackedScene" uid="uid://b10x10md87dxx" path="res://Prefabs/StatsDisplay.tscn" id="4_kfytj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6tsfv"]
@@ -24,8 +25,10 @@ script = ExtResource("2_cbygq")
 shape = SubResource("SphereShape3D_6tsfv")
 
 [node name="weaponImg" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.0689263, 0)
+alpha_cut = 2
 texture_filter = 0
+texture = ExtResource("3_b6jsm")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(191, 252)

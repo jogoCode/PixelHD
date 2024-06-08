@@ -1,7 +1,7 @@
 [gd_scene load_steps=68 format=3 uid="uid://budrbr6y8el7f"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController/PlayerCharacter.gd" id="1_0ne4q"]
-[ext_resource type="Texture2D" uid="uid://8cu7mmfngp7y" path="res://Sprites/Textures/Link (1).png" id="1_dpcuk"]
+[ext_resource type="Texture2D" uid="uid://8cu7mmfngp7y" path="res://Sprites/Characters/Link (1).png" id="2_j6m3w"]
 [ext_resource type="Script" path="res://Scripts/PlayerController/InputManager.gd" id="3_3c572"]
 [ext_resource type="Script" path="res://Scripts/Tools/AnimationManager.gd" id="4_j28b1"]
 [ext_resource type="Script" path="res://Scripts/Tools/StateMachine.gd" id="4_vliv5"]
@@ -10,51 +10,51 @@
 [ext_resource type="Script" path="res://Scripts/PlayerController/RayCastInteract.gd" id="7_idtos"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fksui"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(204, 53, 51, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rteld"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(612, 0, 51, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6s5g"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(255, 53, 51, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_16wi1"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(0, 53, 51, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hh155"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(102, 53, 51, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_438te"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(102, 0, 51, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_87clm"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(0, 53, 51, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gb8mm"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(51, 53, 51, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ijp0"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(153, 53, 51, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pvg5"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(102, 53, 51, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rij1h"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(102, 0, 51, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vjbbd"]
-atlas = ExtResource("1_dpcuk")
+atlas = ExtResource("2_j6m3w")
 region = Rect2(153, 0, 51, 53)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dhqrs"]
@@ -642,115 +642,115 @@ _data = {
 "RunUp": SubResource("Animation_dfomk")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t1tqt"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p34xh"]
 animation = &"AtkLeft"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ciiat"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wgoq1"]
 animation = &"AtkRight"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w2i8v"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yl32k"]
 animation = &"AtkDown"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a0opq"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nqj25"]
 animation = &"AtkUp"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5y1cu"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ajo0r"]
 animation = &"AtkUp"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_npwcu"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0xl8g"]
 animation = &"AtkUp"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xwnri"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e00u1"]
 animation = &"AtkDown"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_avhai"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pcqm8"]
 animation = &"AtkDown"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_gag7f"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_t1tqt")
+blend_point_0/node = SubResource("AnimationNodeAnimation_p34xh")
 blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_ciiat")
+blend_point_1/node = SubResource("AnimationNodeAnimation_wgoq1")
 blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_w2i8v")
+blend_point_2/node = SubResource("AnimationNodeAnimation_yl32k")
 blend_point_2/pos = Vector2(0, 1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_a0opq")
+blend_point_3/node = SubResource("AnimationNodeAnimation_nqj25")
 blend_point_3/pos = Vector2(0, -1)
-blend_point_4/node = SubResource("AnimationNodeAnimation_5y1cu")
+blend_point_4/node = SubResource("AnimationNodeAnimation_ajo0r")
 blend_point_4/pos = Vector2(-0.3, -0.7)
-blend_point_5/node = SubResource("AnimationNodeAnimation_npwcu")
+blend_point_5/node = SubResource("AnimationNodeAnimation_0xl8g")
 blend_point_5/pos = Vector2(0.3, -0.7)
-blend_point_6/node = SubResource("AnimationNodeAnimation_xwnri")
+blend_point_6/node = SubResource("AnimationNodeAnimation_e00u1")
 blend_point_6/pos = Vector2(0.3, 0.5)
-blend_point_7/node = SubResource("AnimationNodeAnimation_avhai")
+blend_point_7/node = SubResource("AnimationNodeAnimation_pcqm8")
 blend_point_7/pos = Vector2(-0.3, 0.5)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7cbxj"]
 graph_offset = Vector2(-480.259, 3.46824)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2lsf1"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0vhk6"]
 animation = &"IdleDown"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4nu5y"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6vbe4"]
 animation = &"IdleUp"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n2psn"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bjcyb"]
 animation = &"IdleLeft"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g5jno"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fwusl"]
 animation = &"IdleRight"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_fr4l2"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_2lsf1")
+blend_point_0/node = SubResource("AnimationNodeAnimation_0vhk6")
 blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_4nu5y")
+blend_point_1/node = SubResource("AnimationNodeAnimation_6vbe4")
 blend_point_1/pos = Vector2(0, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_n2psn")
+blend_point_2/node = SubResource("AnimationNodeAnimation_bjcyb")
 blend_point_2/pos = Vector2(-1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_g5jno")
+blend_point_3/node = SubResource("AnimationNodeAnimation_fwusl")
 blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2h873"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ea7oc"]
 animation = &"RunLeft"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xkt3l"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mjmga"]
 animation = &"RunRight"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ivn5i"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6wpfb"]
 animation = &"RunDown"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6phv3"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yfcge"]
 animation = &"RunUp"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c0v5w"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ya36m"]
 animation = &"RunDown"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oquub"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1nirg"]
 animation = &"RunUp"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_frsj0"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d47dl"]
 animation = &"RunUp"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vbq1d"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ue2lk"]
 animation = &"RunDown"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_salox"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_2h873")
+blend_point_0/node = SubResource("AnimationNodeAnimation_ea7oc")
 blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_xkt3l")
+blend_point_1/node = SubResource("AnimationNodeAnimation_mjmga")
 blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_ivn5i")
+blend_point_2/node = SubResource("AnimationNodeAnimation_6wpfb")
 blend_point_2/pos = Vector2(0, 1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_6phv3")
+blend_point_3/node = SubResource("AnimationNodeAnimation_yfcge")
 blend_point_3/pos = Vector2(0, -1)
-blend_point_4/node = SubResource("AnimationNodeAnimation_c0v5w")
+blend_point_4/node = SubResource("AnimationNodeAnimation_ya36m")
 blend_point_4/pos = Vector2(0.4, 0.6)
-blend_point_5/node = SubResource("AnimationNodeAnimation_oquub")
+blend_point_5/node = SubResource("AnimationNodeAnimation_1nirg")
 blend_point_5/pos = Vector2(0.4, -0.6)
-blend_point_6/node = SubResource("AnimationNodeAnimation_frsj0")
+blend_point_6/node = SubResource("AnimationNodeAnimation_d47dl")
 blend_point_6/pos = Vector2(-0.4, -0.6)
-blend_point_7/node = SubResource("AnimationNodeAnimation_vbq1d")
+blend_point_7/node = SubResource("AnimationNodeAnimation_ue2lk")
 blend_point_7/pos = Vector2(-0.4, 0.6)
 blend_mode = 1
 
@@ -789,16 +789,13 @@ SPEED = 1.5
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
-flip_h = true
+alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_dhqrs")
-animation = &"IdleRight"
+animation = &"AtkDown"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l48ms")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 3, 1.01694)
 
 [node name="InputManager" type="Node" parent="." node_paths=PackedStringArray("_playerCharacter")]
 script = ExtResource("3_3c572")
@@ -836,7 +833,7 @@ _weaponActualStats = ExtResource("7_60c37")
 
 [node name="RayCastInteract" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)
-target_position = Vector3(0.5, 0, 0)
+target_position = Vector3(0.8, 0, 0)
 collision_mask = 3
 script = ExtResource("7_idtos")
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8cu7mmfngp7y"
-path.bptc="res://.godot/imported/Link (1).png-3ef94ab7093854eeec979378a9642bac.bptc.ctex"
+uid="uid://dukmn8dyoc1my"
+path.s3tc="res://.godot/imported/Zombie.png-426a02a52f91e70440dfda6c0c5e9d0d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,13 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/Textures/Link (1).png"
-dest_files=["res://.godot/imported/Link (1).png-3ef94ab7093854eeec979378a9642bac.bptc.ctex"]
+source_file="res://Sprites/Characters/Zombie.png"
+dest_files=["res://.godot/imported/Zombie.png-426a02a52f91e70440dfda6c0c5e9d0d.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

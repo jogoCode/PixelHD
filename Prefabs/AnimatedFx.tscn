@@ -57,11 +57,11 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 20.0
+"speed": 30.0
 }]
 
 [node name="AnimatedFx" type="Node3D"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
 script = ExtResource("1_i5fmp")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]

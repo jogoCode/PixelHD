@@ -1,17 +1,22 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
+var _CAMERA:MainCamera;
+@onready var main = get_node("/root/Main");
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	for node in main.get_children():
+		if(node is MainCamera):
+			_CAMERA = node;
 
 
 func CreateObject(sceneToIntance,pos:Vector3,rot:Vector3):
 	sceneToIntance.global_position = pos;
 	sceneToIntance.rotation_degrees = rot;
 	add_child(sceneToIntance);
+
+func AddCamera():
+	var camPacked = preload("res://Prefabs/Camera.tscn");
+	var camInstance = camPacked.instantiate();
+	main.add_child(camInstance);
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cl44ivvhjq1b7"]
+[gd_scene load_steps=9 format=3 uid="uid://cl44ivvhjq1b7"]
 
 [ext_resource type="Texture2D" uid="uid://cgrnwnqt84son" path="res://Sprites/Weapons/UV.png" id="1_4mqu4"]
 [ext_resource type="Script" path="res://Scripts/Tools/HealthSystem.gd" id="2_xdv4q"]
@@ -54,6 +54,9 @@ shadow_mesh = SubResource("ArrayMesh_el8na")
 radius = 1.25798
 height = 5.56769
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_myv41"]
+radius = 2.0
+
 [node name="Tronc" type="Node3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.29623, 0.0832093, -1.29293)
 
@@ -74,5 +77,10 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35494, 0)
 shape = SubResource("CapsuleShape3D_2u3c2")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("CylinderShape3D_myv41")
+
 [connection signal="TakeDamage" from="HealthSystem" to="HealthSystem" method="_on_take_damage"]
-[connection signal="area_entered" from="Area3D" to="HealthSystem" method="_on_area_3d_area_entered"]
