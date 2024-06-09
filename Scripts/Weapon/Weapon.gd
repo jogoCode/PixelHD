@@ -60,10 +60,10 @@ func _on_change_weapon(newWeapon:R_Weapon,dropPos:Vector3):
 	var pickupInstance:ObjPickup = pickup.instantiate();
 	pickupInstance._weapon = _weaponActualStats;
 	SetWeapon(newWeapon);
-	Level.CreateObject(pickupInstance,dropPos,Vector3.ZERO);
+	Level.CreateObject(pickupInstance,dropPos,Vector3(0,1,0));
 
 
 func _on_area_3d_area_entered(area):
 	for node in area.get_parent().get_children():
 		if node.has_signal("TakeDamage"):
-			node.emit_signal("TakeDamage",_weaponActualStats._dmg);
+			node.emit_signal("TakeDamage",_weaponActualStats._dmg,_owner);

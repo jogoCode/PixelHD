@@ -15,6 +15,7 @@ _hitBox = NodePath("Area3D/CollisionShape3D")
 [node name="WeaponSprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.324847, -0.0322412, 0)
 texture_filter = 0
+render_priority = 2
 texture = ExtResource("1_xdkey")
 
 [node name="Area3D" type="Area3D" parent="."]

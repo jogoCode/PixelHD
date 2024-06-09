@@ -13,7 +13,7 @@ func _ready():
 	SetState("Idle");
 
 func _process(delta):
-	if(_character.velocity.length()>1):
+	if(_character.velocity.length()>0):
 		SetState("Move");
 	elif(_character.velocity.length()==0):
 		SetState("Idle");

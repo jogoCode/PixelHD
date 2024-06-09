@@ -7,6 +7,9 @@ const JUMP_VELOCITY = 4.5
 var _lastDir:Vector3;
 var _direction:Vector3;
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var _impulseVelocity = Vector3.ZERO;
+var _impulseFriction = 15.0;
+
 
 @onready var _stateMachine:StateAnimation = get_node("StateMachine");
 
@@ -14,7 +17,19 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta;
-	move_and_slide()
+	impulse(delta);
+	move_and_slide();
+#---------MY LOGIC--------------------------------------------------------------
+func impulse(delta):
+	if _impulseVelocity.length() > 0:
+		velocity.x = _impulseVelocity.x;
+		velocity.z = _impulseVelocity.z;
+		_impulseVelocity = _impulseVelocity.lerp(Vector3.ZERO, _impulseFriction * delta);
+		await get_tree().create_timer(0.1).timeout;
+		_impulseVelocity = Vector3.ZERO;
+func applyImpulse(force: Vector3):
+	_impulseVelocity += force;
+
 #----------SET GET--------------------------------------------------------------
 
 func getLastDir() -> Vector3:

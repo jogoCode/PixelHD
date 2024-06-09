@@ -1,10 +1,14 @@
-[gd_scene load_steps=41 format=3 uid="uid://b6ncamhwgkyei"]
+[gd_scene load_steps=45 format=3 uid="uid://b6ncamhwgkyei"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/EnemyCharacter.gd" id="1_hdsqd"]
 [ext_resource type="Texture2D" uid="uid://dukmn8dyoc1my" path="res://Sprites/Characters/Zombie.png" id="2_g4sa1"]
 [ext_resource type="Script" path="res://Scripts/Tools/AnimationManager.gd" id="3_7dei2"]
 [ext_resource type="Script" path="res://Scripts/Tools/StateMachine.gd" id="4_rwtvw"]
 [ext_resource type="Script" path="res://Scripts/Tools/HealthSystem.gd" id="5_2y2wt"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="6_e4u6k"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="7_ski2u"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/cooldown.gd" id="8_g0kaq"]
+[ext_resource type="Script" path="res://Scripts/Enemy/BaseEnemie/Patrol.gd" id="8_pbbth"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_83pww"]
 radius = 0.186263
@@ -76,45 +80,6 @@ animations = [{
 "name": &"Run",
 "speed": 5.0
 }]
-
-[sub_resource type="Animation" id="Animation_8fc8e"]
-resource_name = "Idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite3D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite3D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite3D:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
 
 [sub_resource type="Animation" id="Animation_kt4ti"]
 resource_name = "AtkLeft"
@@ -196,6 +161,45 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8fc8e"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_ike4k"]
@@ -363,20 +367,22 @@ states/Move/position = Vector2(455, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_dbbws"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_cp07v"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_7y8ry"), "Idle", "Atk", SubResource("AnimationNodeStateMachineTransition_wa7k0"), "Atk", "Idle", SubResource("AnimationNodeStateMachineTransition_kmntf"), "Atk", "Move", SubResource("AnimationNodeStateMachineTransition_2tlqm"), "Move", "Atk", SubResource("AnimationNodeStateMachineTransition_2hyau")]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m84u2"]
-radius = 1.25798
-height = 5.56769
+radius = 0.344004
+height = 0.688008
 
 [node name="EnemyCharacter" type="CharacterBody3D"]
 script = ExtResource("1_hdsqd")
+SPEED = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_83pww")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+transform = Transform3D(0.7, 0, 0, 0, 0.494975, 0.494975, 0, -0.494975, 0.494975, 0, 0, 0)
 flip_h = true
+alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_jwnjq")
-animation = &"Atk"
+animation = &"Idle"
 
 [node name="AnimationManager" type="Node" parent="." node_paths=PackedStringArray("_character", "_animationTree")]
 script = ExtResource("3_7dei2")
@@ -413,7 +419,25 @@ _destroyAtDeath = true
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35494, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0148965, 0)
 shape = SubResource("CapsuleShape3D_m84u2")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("6_e4u6k")
+actor_node_path = NodePath("..")
+blackboard = NodePath("@Node@123809")
+actor = NodePath("..")
+
+[node name="BaseSequence" type="Node" parent="BeehaveTree"]
+script = ExtResource("7_ski2u")
+
+[node name="CooldownDecorator" type="Node" parent="BeehaveTree/BaseSequence"]
+script = ExtResource("8_g0kaq")
+wait_time = 1.5
+
+[node name="Patrol" type="Node" parent="BeehaveTree/BaseSequence/CooldownDecorator"]
+script = ExtResource("8_pbbth")
 
 [connection signal="TakeDamage" from="HealthSystem" to="HealthSystem" method="_on_take_damage"]

@@ -3,28 +3,27 @@ class_name PlayerCharacter
 
 var _lookDir:Vector3;
 var _playerOrientation:Vector3;
-var _inputVector;
+var _inputVector:Vector2;
 
 func _physics_process(delta):
-
+	super._physics_process(delta);
 	if _stateMachine.GetState() == "Atk":
-		_direction = Vector3.ZERO;
+		velocity = Vector3(0,velocity.y,0)
 	else:
-		super._physics_process(delta);
-		_inputVector = Input.get_vector("ui_left","ui_right","ui_down","ui_up",0);
 		_playerOrientation = Vector3(sign(_inputVector.x),0,sign(_inputVector.y));
 		if _direction:
-			_lastDir = _direction;
+			_lastDir = Vector3(sign(_direction.x),0,sign(_direction.z));
+			if(_direction == Vector3(1,0,0) || _direction == Vector3(-1,0,0) ):
+				_lastDir.z = 0;
+			if(_direction == Vector3(0,0,1) || _direction == Vector3(0,0,-1) ):
+				_lastDir.x = 0;
 			velocity.x = _direction.x * SPEED
 			velocity.z = _direction.z * SPEED
 		else:
 			velocity.x = 0;
 			velocity.z = 0;
-			#velocity.x = move_toward(velocity.x, 0, SPEED*2)
-			#velocity.z = move_toward(velocity.z, 0, SPEED*2)		
 
 #---------MY LOGIC--------------------------------------------------------------
-
 func jump() -> void:
 	if(is_on_floor()):
 		velocity.y = JUMP_VELOCITY;

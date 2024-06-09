@@ -1,7 +1,7 @@
 [gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://cyssetxe0nxf1"]
 
-[ext_resource type="Texture2D" uid="uid://bwqo0bk0lulnt" path="res://Sprites/Textures/GrassPx.png" id="1_8q3o1"]
 [ext_resource type="Texture2D" uid="uid://c4mkdqj4obqu0" path="res://Sprites/Textures/GrassText.png" id="1_g2os7"]
+[ext_resource type="Texture2D" uid="uid://biylb6lppt4ce" path="res://Sprites/Textures/HairyText (1).png" id="2_3wfr6"]
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_4br24"]
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
@@ -31,10 +31,10 @@ input_name = "uv"
 function = 1
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_6rr17"]
-constant = 75.0
+constant = 2.0
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_cg6q4"]
-texture = ExtResource("1_8q3o1")
+texture = ExtResource("2_3wfr6")
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_5rvyt"]
 input_name = "uv"
@@ -43,7 +43,7 @@ input_name = "uv"
 function = 1
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_4vnlb"]
-constant = 75.0
+constant = 45.0
 
 [resource]
 code = "shader_type spatial;
@@ -61,7 +61,7 @@ void fragment() {
 
 
 // FloatConstant:5
-	float n_out5p0 = 75.000000;
+	float n_out5p0 = 2.000000;
 
 
 // UVFunc:4
@@ -78,7 +78,7 @@ void fragment() {
 
 
 // FloatConstant:9
-	float n_out9p0 = 75.000000;
+	float n_out9p0 = 45.000000;
 
 
 // UVFunc:8
@@ -104,7 +104,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-726.872, 175.881)
 nodes/fragment/0/position = Vector2(580, 380)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_s4262")
 nodes/fragment/2/position = Vector2(-240, 120)
