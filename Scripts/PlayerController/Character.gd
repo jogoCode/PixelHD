@@ -25,17 +25,22 @@ func impulse(delta):
 		velocity.x = _impulseVelocity.x;
 		velocity.z = _impulseVelocity.z;
 		_impulseVelocity = _impulseVelocity.lerp(Vector3.ZERO, _impulseFriction * delta);
-		await get_tree().create_timer(0.1).timeout;
+		await get_tree().create_timer(0.2).timeout;
 		_impulseVelocity = Vector3.ZERO;
+
 func applyImpulse(force: Vector3):
 	_impulseVelocity += force;
 
 #----------SET GET--------------------------------------------------------------
-
 func getLastDir() -> Vector3:
 	return _lastDir;
 
 func setDirection(newDir) -> void:
 	_direction = (transform.basis * Vector3(newDir.x, 0, newDir.y)).normalized();
 
+func IsInImpulse()->bool:
+	if(_impulseVelocity.length() > 0):
+		return true;
+	else:
+		return false;
 #---------SIGNAL----------------------------------------------------------------

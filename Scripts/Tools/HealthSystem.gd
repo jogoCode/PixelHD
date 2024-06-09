@@ -39,7 +39,7 @@ func FeedBack(damage,damager): #Feed du loose HP
 	Level.CreateObject(FxInstance,_owner.global_position,_owner.global_rotation);
 	Level._CAMERA.ShakeCamera(0.1*damage/4,0.1*damage/8);
 	if(_owner is Character):
-		_owner.applyImpulse(damage*damager.getLastDir());
+		_owner.applyImpulse(damage*Vector3(damager.getLastDir().x,0,-damager.getLastDir().z));
 
 func _on_take_damage(damage,damager):
 	FeedBack(damage,damager);

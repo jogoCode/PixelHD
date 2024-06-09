@@ -12,11 +12,8 @@ func _physics_process(delta):
 	else:
 		_playerOrientation = Vector3(sign(_inputVector.x),0,sign(_inputVector.y));
 		if _direction:
-			_lastDir = Vector3(sign(_direction.x),0,sign(_direction.z));
-			if(_direction == Vector3(1,0,0) || _direction == Vector3(-1,0,0) ):
-				_lastDir.z = 0;
-			if(_direction == Vector3(0,0,1) || _direction == Vector3(0,0,-1) ):
-				_lastDir.x = 0;
+			_lastDir = _playerOrientation;
+			#_lastDir = Vector3(sign(_direction.x),0,sign(_direction.z));
 			velocity.x = _direction.x * SPEED
 			velocity.z = _direction.z * SPEED
 		else:
@@ -24,6 +21,7 @@ func _physics_process(delta):
 			velocity.z = 0;
 
 #---------MY LOGIC--------------------------------------------------------------
+
 func jump() -> void:
 	if(is_on_floor()):
 		velocity.y = JUMP_VELOCITY;

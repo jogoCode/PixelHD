@@ -649,10 +649,10 @@ animation = &"AtkLeft"
 animation = &"AtkRight"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yl32k"]
-animation = &"AtkDown"
+animation = &"AtkUp"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nqj25"]
-animation = &"AtkUp"
+animation = &"AtkDown"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_gag7f"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_p34xh")
@@ -691,10 +691,9 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_bjcyb")
 blend_point_2/pos = Vector2(-1.2, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_fwusl")
 blend_point_3/pos = Vector2(1.2, 0)
-min_space = Vector2(-1, -1.5)
-max_space = Vector2(1, 1.5)
+min_space = Vector2(-1.5, -1.5)
+max_space = Vector2(1.5, 1.5)
 blend_mode = 1
-sync = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ea7oc"]
 animation = &"RunLeft"
@@ -757,10 +756,11 @@ SPEED = 1.5
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+flip_h = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_dhqrs")
-animation = &"AtkDown"
+animation = &"IdleRight"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l48ms")
@@ -792,7 +792,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_augop")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Atk/blend_position = Vector2(-0.293046, -0.0362694)
-parameters/Idle/blend_position = Vector2(-0.57947, -0.0259067)
+parameters/Idle/blend_position = Vector2(-0.560155, -0.418605)
 parameters/Move/blend_position = Vector2(0.00333607, -0.0569948)
 
 [node name="Weapon" parent="." node_paths=PackedStringArray("_owner") instance=ExtResource("6_0kr4w")]
@@ -801,7 +801,7 @@ _weaponActualStats = ExtResource("7_60c37")
 
 [node name="RayCastInteract" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)
-target_position = Vector3(0.8, 0, 0)
+target_position = Vector3(0.6, 0, 0)
 collision_mask = 3
 script = ExtResource("7_idtos")
 

@@ -20,7 +20,8 @@ func MoveToTarget(delta)->void:
 	velocity = velocity.lerp(_direction*SPEED,5*delta);
 
 func MoveToDirection(dir,delta)->void:
-	velocity = dir*SPEED*delta;
+	if(!IsInImpulse()):
+		velocity = dir*SPEED*delta;
 
 func SetTarget(newTarget)->void:
 	_target = newTarget;

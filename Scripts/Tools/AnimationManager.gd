@@ -15,11 +15,16 @@ func _physics_process(delta):
 
 	if(_character is PlayerCharacter):
 		vel= _character._playerOrientation;
-		_animationTree["parameters/Idle/blend_position"] = Vector2(lastVel.x,lastVel.z);
 		if vel.length() > 0.9:
+			if(lastVel == Vector3(1,0,0) || lastVel == Vector3(-1,0,0) ):
+				lastVel.z = 0;
+			if(lastVel == Vector3(0,0,1) || lastVel == Vector3(0,0,-1)):
+				lastVel.x = 0;
+			print(lastVel);
+			_animationTree["parameters/Idle/blend_position"] = Vector2(lastVel.x,-lastVel.z);
 			_animationTree["parameters/Move/blend_position"] = Vector2(vel.x,-vel.z);
 		if(vel.length()>0):
-			_animationTree["parameters/Atk/blend_position"] = Vector2(vel.x,-vel.z);
+			_animationTree["parameters/Atk/blend_position"] = Vector2(vel.x,vel.z);
 		else:
 			_animationTree["parameters/Atk/blend_position"] = Vector2(sign(lastVel.x),sign(lastVel.z));
 	else:
