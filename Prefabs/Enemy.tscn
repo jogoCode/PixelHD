@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b6ncamhwgkyei"]
+[gd_scene load_steps=46 format=3 uid="uid://b6ncamhwgkyei"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/EnemyCharacter.gd" id="1_hdsqd"]
 [ext_resource type="Texture2D" uid="uid://dukmn8dyoc1my" path="res://Sprites/Characters/Zombie.png" id="2_g4sa1"]
@@ -370,6 +370,9 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 radius = 0.344004
 height = 0.688008
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ad4o2"]
+radius = 3.46309
+
 [node name="EnemyCharacter" type="CharacterBody3D"]
 script = ExtResource("1_hdsqd")
 SPEED = 5.0
@@ -416,9 +419,9 @@ script = ExtResource("5_2y2wt")
 _baseHp = 50
 _destroyAtDeath = true
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="HitBox" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0148965, 0)
 shape = SubResource("CapsuleShape3D_m84u2")
 
@@ -439,5 +442,11 @@ wait_time = 1.5
 
 [node name="Patrol" type="Node" parent="BeehaveTree/BaseSequence/CooldownDecorator"]
 script = ExtResource("8_pbbth")
+
+[node name="DetectionZone" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone"]
+shape = SubResource("SphereShape3D_ad4o2")
 
 [connection signal="TakeDamage" from="HealthSystem" to="HealthSystem" method="_on_take_damage"]
