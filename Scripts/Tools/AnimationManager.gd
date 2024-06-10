@@ -20,7 +20,6 @@ func _physics_process(delta):
 				lastVel.z = 0;
 			if(lastVel == Vector3(0,0,1) || lastVel == Vector3(0,0,-1)):
 				lastVel.x = 0;
-			print(lastVel);
 			_animationTree["parameters/Idle/blend_position"] = Vector2(lastVel.x,-lastVel.z);
 			_animationTree["parameters/Move/blend_position"] = Vector2(vel.x,-vel.z);
 		if(vel.length()>0):

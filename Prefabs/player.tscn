@@ -806,3 +806,4 @@ collision_mask = 3
 script = ExtResource("7_idtos")
 
 [connection signal="Interact" from="InputManager" to="RayCastInteract" method="_on_input_manager_interact"]
+[connection signal="AtkFinished" from="Weapon" to="StateMachine" method="_on_weapon_atk_finished"]

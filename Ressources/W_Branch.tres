@@ -8,4 +8,5 @@ script = ExtResource("1_ep1pu")
 _name = "Branch"
 _img = ExtResource("1_c1qw1")
 _dmg = 1
+_atkSpeed = 0.06
 _desc = "Ti branche"

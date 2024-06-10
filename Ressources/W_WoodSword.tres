@@ -8,4 +8,5 @@ script = ExtResource("2_f87kp")
 _name = "Wooden Sword"
 _img = ExtResource("1_addtq")
 _dmg = 3
+_atkSpeed = 0.08
 _desc = "Sa coupe pas un merde"

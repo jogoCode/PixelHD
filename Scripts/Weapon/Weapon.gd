@@ -6,14 +6,16 @@ var direction;
 var inputVector;
 
 @export var _weaponActualStats:R_Weapon;
-@onready var _sprite = $WeaponSprite; 
+@export var _sprite:Sprite3D; 
 @export var _hitBox:CollisionShape3D;
 
 # ajouter la création du pickup 
 
 var _dmg:int;
+var _cooldown:float;
 
 signal ChangeWeapon(newWeapon:R_Weapon,dropPos:Vector3);
+signal AtkFinished();
 
 func _ready():
 	hide();
@@ -22,11 +24,16 @@ func _ready():
 
 func _process(delta):
 	if(_owner._stateMachine.GetState() == "Atk"):
-		show();
-		_hitBox.disabled = false;
+			show();
+			$AnimationPlayer.play("Atk");
+			_hitBox.disabled = false;
 	else:
 		hide();
-		_hitBox.disabled = true;
+		if(_hitBox.disabled == false):
+			_hitBox.disabled = true;
+			await  get_tree().create_timer(_cooldown).timeout;
+			emit_signal("AtkFinished");
+			
 	WeaponOrientation();
 
 func WeaponOrientation()->void:
@@ -53,6 +60,7 @@ func SetWeapon(newWeapon:R_Weapon):
 	_weaponActualStats = newWeapon;
 	_sprite.texture = newWeapon._img;
 	_dmg =  newWeapon._dmg;
+	_cooldown = newWeapon._atkSpeed;
 
 
 func _on_change_weapon(newWeapon:R_Weapon,dropPos:Vector3):

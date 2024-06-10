@@ -8,4 +8,5 @@ script = ExtResource("1_3ymxc")
 _name = "Fire sword"
 _img = ExtResource("1_fj52k")
 _dmg = 10
+_atkSpeed = 0.2
 _desc = "Fort fort"

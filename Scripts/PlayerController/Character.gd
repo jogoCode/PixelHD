@@ -30,6 +30,7 @@ func impulse(delta):
 
 func applyImpulse(force: Vector3):
 	_impulseVelocity += force;
+	velocity = Vector3(0,velocity.y,0);
 
 #----------SET GET--------------------------------------------------------------
 func getLastDir() -> Vector3:
