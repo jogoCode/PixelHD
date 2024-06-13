@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bqf1ndsmpr7ns"]
+[gd_scene load_steps=62 format=3 uid="uid://bqf1ndsmpr7ns"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/EnemyCharacterV2.gd" id="1_wktkr"]
 [ext_resource type="Texture2D" uid="uid://dukmn8dyoc1my" path="res://Sprites/Characters/Zombie.png" id="2_2rnn3"]
@@ -110,10 +110,10 @@ tracks/1/path = NodePath("AnimatedSprite3D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [0, 1, 2, 0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -126,6 +126,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitBox/CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_g38gt"]
@@ -167,6 +179,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitBox/CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_ml38o"]
@@ -394,6 +418,21 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_wccb5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qkwb1"]
 _data = {
 "AtkLeft": SubResource("Animation_kt4ti"),
@@ -401,6 +440,7 @@ _data = {
 "HitLeft": SubResource("Animation_ml38o"),
 "HitRight": SubResource("Animation_dfte5"),
 "Idle": SubResource("Animation_8fc8e"),
+"RESET": SubResource("Animation_wccb5"),
 "RunLeft": SubResource("Animation_ike4k"),
 "RunRight": SubResource("Animation_cjbe8")
 }
@@ -541,9 +581,11 @@ shape = SubResource("CapsuleShape3D_83pww")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.494975, 0.494975, 0, -0.494975, 0.494975, 0, 0, 0)
+flip_h = true
 alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_jwnjq")
-animation = &"Idle"
+animation = &"Atk"
+frame = 1
 
 [node name="AnimationManager" type="Node" parent="." node_paths=PackedStringArray("_character", "_animationTree")]
 script = ExtResource("3_3f7dv")
@@ -593,7 +635,7 @@ debug_enabled = true
 [node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("6_72jau")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@20718")
+blackboard = NodePath("@Node@111244")
 actor = NodePath("..")
 
 [node name="BaseSequence" type="Node" parent="BeehaveTree"]
@@ -636,7 +678,6 @@ shape = SubResource("SphereShape3D_ad4o2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00837708, -0.00622559, 0)
 shape = SubResource("SphereShape3D_mcbo1")
-disabled = true
 
 [connection signal="ChangeState" from="StateMachine" to="StateMachine" method="_on_change_state"]
 [connection signal="TakeDamage" from="HealthSystem" to="." method="_on_health_system_take_damage"]

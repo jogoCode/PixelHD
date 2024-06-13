@@ -29,7 +29,7 @@ func impulse(delta):
 		velocity.x = _impulseVelocity.x;
 		velocity.z = _impulseVelocity.z;
 		_impulseVelocity = _impulseVelocity.lerp(Vector3.ZERO, _impulseFriction*delta);
-		if(_impulseVelocity.length() <= 0.001):
+		if(_impulseVelocity.length() <= 0.01):
 			_impulseVelocity = Vector3.ZERO
 
 	if(self is PlayerCharacter):

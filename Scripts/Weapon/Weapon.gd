@@ -25,7 +25,6 @@ func _ready():
 func _process(delta):
 	if(_owner._stateMachine.GetState() == "Atk"):
 			show();
-			#await  get_tree().create_timer(_cooldown).timeout
 			_owner._stateMachine._animationTree["parameters/conditions/Atk"] = false; 
 			$AnimationPlayer.play("Atk");
 			_hitBox.disabled = false;

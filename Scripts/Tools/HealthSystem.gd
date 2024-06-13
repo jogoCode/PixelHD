@@ -41,7 +41,7 @@ func FeedBack(damage,damager): #Feedback du loose HP
 	if(_owner is Character):
 		if(_owner.IsInImpulse() != true):
 			print("aie !")
-			_owner.applyImpulse(damage*Vector3(damager.getLastDir().x,0,-damager.getLastDir().z));
+			_owner.applyImpulse(damage*1.5*Vector3(damager.getLastDir().x,0,-damager.getLastDir().z));
 
 func _on_take_damage(damage,damager):
 	if(_owner is Character): #Chnage l'état du Character

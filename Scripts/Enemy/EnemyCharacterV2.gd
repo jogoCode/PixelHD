@@ -11,7 +11,8 @@ var _atkRange:float = 2;
 
 func _physics_process(delta):
 	super._physics_process(delta);
-	_lastDir = velocity.normalized();
+	if(velocity.length()!=0):
+		_lastDir = velocity.normalized();
 	#MoveToTarget(delta);
 
 
@@ -44,10 +45,9 @@ func _on_state_machine_change_state(newState):
 
 
 func _on_hit_box_area_entered(area): 
-	if area.get_parent() != self:
+	if !(area.get_parent() is EnemyCharacter) and area.get_parent() is Character:
 		if area.get_parent() != self.get_parent():
 			for node in area.get_parent().get_children():
 				if node.has_signal("TakeDamage"):
-					node.emit_signal("TakeDamage",15,self);
+					node.emit_signal("TakeDamage",5,self);
 		await get_tree().create_timer(0.1).timeout;
-		_HitBox.disabled = true; #ACTIVE LA HITBOX ICI AUSSI

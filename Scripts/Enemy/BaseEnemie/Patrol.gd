@@ -6,7 +6,6 @@ func _physics_process(delta):
 	_delta = delta;
 
 func tick(actor, blackboard: Blackboard):
-	actor._HitBox.disabled = true;
 	if(_delta != null):
 		actor.MoveToDirection(RandDir(),_delta);
 	return SUCCESS

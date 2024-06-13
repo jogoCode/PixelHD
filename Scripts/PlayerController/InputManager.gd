@@ -21,6 +21,9 @@ func _physics_process(delta):
 		_playerCharacter.applyImpulse(impulseDir*50*delta);
 	if(Input.is_action_just_pressed("Interact")):
 		emit_signal("Interact");
+	if(Input.is_action_just_pressed("Dodge")):
+		var impulseDir = Vector3(_playerCharacter._direction.x,0,_playerCharacter._direction.z);
+		_playerCharacter.applyImpulse(impulseDir*550*delta);
 
 
 func _input(event):

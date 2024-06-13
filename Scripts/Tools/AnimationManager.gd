@@ -30,6 +30,7 @@ func _physics_process(delta):
 		vel = _character.velocity;
 		_animationTree["parameters/Move/Move/blend_position"] = Vector2(vel.x,-vel.z);
 		_animationTree["parameters/Atk/blend_position"] = Vector2(vel.x,vel.z);
+	_animationTree["parameters/Hit/blend_position"] = Vector2(sign(lastVel.x),sign(lastVel.z));
 
 func _get_configuration_warnings():
 	var warnings = []
