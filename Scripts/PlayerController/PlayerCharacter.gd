@@ -9,7 +9,7 @@ func _physics_process(delta):
 	super._physics_process(delta);
 	if _stateMachine.GetState() == "Atk":
 		velocity = Vector3(0,velocity.y,0)
-	else:
+	elif(_stateMachine.GetState() != "Hit"):
 		_playerOrientation = Vector3(sign(_inputVector.x),0,sign(_inputVector.y));
 		if _direction:
 			_lastDir = _playerOrientation;
@@ -22,12 +22,12 @@ func _physics_process(delta):
 
 #---------MY LOGIC--------------------------------------------------------------
 
-func jump() -> void:
+func jump()->void:
 	if(is_on_floor()):
 		velocity.y = JUMP_VELOCITY;
 
-func Atk() -> void:
-	_stateMachine.SetState("Atk");
+func Atk()->void:
+	_stateMachine.IsAtk();
 
 func GetPlayerOrientation()->Vector3:
 	return _playerOrientation;

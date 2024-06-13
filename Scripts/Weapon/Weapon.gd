@@ -25,6 +25,8 @@ func _ready():
 func _process(delta):
 	if(_owner._stateMachine.GetState() == "Atk"):
 			show();
+			#await  get_tree().create_timer(_cooldown).timeout
+			_owner._stateMachine._animationTree["parameters/conditions/Atk"] = false; 
 			$AnimationPlayer.play("Atk");
 			_hitBox.disabled = false;
 	else:
@@ -32,8 +34,7 @@ func _process(delta):
 		if(_hitBox.disabled == false):
 			_hitBox.disabled = true;
 			await  get_tree().create_timer(_cooldown).timeout;
-			emit_signal("AtkFinished");
-			
+		emit_signal("AtkFinished");
 	WeaponOrientation();
 
 func WeaponOrientation()->void:
@@ -72,6 +73,7 @@ func _on_change_weapon(newWeapon:R_Weapon,dropPos:Vector3):
 
 
 func _on_area_3d_area_entered(area):
-	for node in area.get_parent().get_children():
-		if node.has_signal("TakeDamage"):
-			node.emit_signal("TakeDamage",_weaponActualStats._dmg,_owner);
+	if area.get_parent() != self.get_parent():
+		for node in area.get_parent().get_children():
+			if node.has_signal("TakeDamage"):
+				node.emit_signal("TakeDamage",_weaponActualStats._dmg,_owner);

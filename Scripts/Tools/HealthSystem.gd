@@ -33,16 +33,24 @@ func CanDeath():
 		else:
 			emit_signal("isDead");
 
-func FeedBack(damage,damager): #Feed du loose HP
+func FeedBack(damage,damager): #Feedback du loose HP
 	var fx = preload("res://Prefabs/AnimatedFx.tscn");
 	var FxInstance = fx.instantiate();
 	Level.CreateObject(FxInstance,_owner.global_position,_owner.global_rotation);
 	Level._CAMERA.ShakeCamera(0.1*damage/4,0.1*damage/8);
 	if(_owner is Character):
-		_owner.applyImpulse(damage*Vector3(damager.getLastDir().x,0,-damager.getLastDir().z));
+		if(_owner.IsInImpulse() != true):
+			print("aie !")
+			_owner.applyImpulse(damage*Vector3(damager.getLastDir().x,0,-damager.getLastDir().z));
 
 func _on_take_damage(damage,damager):
-	FeedBack(damage,damager);
-	AddActualHp(-damage);
-	await get_tree().create_timer(1).timeout;
-	_canTakeDamage = true;
+	if(_owner is Character): #Chnage l'état du Character
+		if(_owner._stateMachine._actualState != "Hit"):
+			FeedBack(damage,damager);
+			AddActualHp(-damage);
+			_owner._stateMachine.IsHit();
+			await get_tree().create_timer(1).timeout;
+			_canTakeDamage = true;
+	else:
+		FeedBack(damage,damager);
+		AddActualHp(-damage);

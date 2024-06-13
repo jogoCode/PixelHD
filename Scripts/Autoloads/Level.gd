@@ -2,6 +2,7 @@ extends Node
 
 
 var _CAMERA:MainCamera;
+var DELTA:float;
 @onready var main = get_node("/root/Main");
 
 func _ready():
@@ -9,6 +10,8 @@ func _ready():
 		if(node is MainCamera):
 			_CAMERA = node;
 
+func _process(delta):
+	DELTA = delta;
 
 func CreateObject(sceneToIntance,pos:Vector3,rot:Vector3):
 	sceneToIntance.global_position = pos;

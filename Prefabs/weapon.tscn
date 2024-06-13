@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://oa8fw4qtcfsf"]
+[gd_scene load_steps=8 format=3 uid="uid://oa8fw4qtcfsf"]
 
 [ext_resource type="Script" path="res://Scripts/Weapon/Weapon.gd" id="1_0y3xp"]
 [ext_resource type="Texture2D" uid="uid://dfag2ln48gd7" path="res://Sprites/Weapons/Branch.png" id="1_xdkey"]
@@ -9,6 +9,7 @@ size = Vector3(0.421387, 0.351074, 0.472092)
 
 [sub_resource type="Animation" id="Animation_v3css"]
 resource_name = "Atk"
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -45,10 +46,38 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1), Vector3(0.822081, 1, 0.647562), Vector3(1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area3D/CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_vsldl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kepvm"]
 _data = {
-"Atk": SubResource("Animation_v3css")
+"Atk": SubResource("Animation_v3css"),
+"RESET": SubResource("Animation_vsldl")
 }
 
 [node name="Weapon" type="Node3D" node_paths=PackedStringArray("_sprite", "_hitBox")]
@@ -71,7 +100,6 @@ libraries = {
 speed_scale = 2.0
 
 [node name="origin" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0525517, 0, 0)
 
 [node name="WeaponSprite" type="Sprite3D" parent="origin"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.324847, -0.0322412, -1.49012e-08)

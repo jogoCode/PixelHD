@@ -15,10 +15,10 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_down"):
 		inputDir.x = 0
 	_playerCharacter._inputVector = Vector2(sign(inputDir.x),sign(-inputDir.y));
-	if(Input.is_action_pressed("ui_accept")):
+	if(Input.is_action_just_pressed("ui_accept")):
 		_playerCharacter.Atk();
 		var impulseDir = Vector3(_playerCharacter.getLastDir().x,0,-_playerCharacter.getLastDir().z);
-		_playerCharacter.applyImpulse(impulseDir*15*delta);
+		_playerCharacter.applyImpulse(impulseDir*50*delta);
 	if(Input.is_action_just_pressed("Interact")):
 		emit_signal("Interact");
 
