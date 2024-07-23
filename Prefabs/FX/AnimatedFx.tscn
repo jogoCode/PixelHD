@@ -1,34 +1,34 @@
 [gd_scene load_steps=11 format=3 uid="uid://ctqkj43krvykj"]
 
-[ext_resource type="Script" path="res://Scripts/Visuals/AnimatedFx.gd" id="1_i5fmp"]
-[ext_resource type="Texture2D" uid="uid://6i3upn1oeukm" path="res://Sprites/FX/Blow_FX.png" id="2_7smm5"]
+[ext_resource type="Script" path="res://Scripts/Visuals/AnimatedFx.gd" id="1_28eyg"]
+[ext_resource type="Texture2D" uid="uid://6i3upn1oeukm" path="res://Sprites/FX/Blow_FX.png" id="2_bhbwy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oriog"]
-atlas = ExtResource("2_7smm5")
+atlas = ExtResource("2_bhbwy")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5cpo"]
-atlas = ExtResource("2_7smm5")
+atlas = ExtResource("2_bhbwy")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqoeu"]
-atlas = ExtResource("2_7smm5")
+atlas = ExtResource("2_bhbwy")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7vvo"]
-atlas = ExtResource("2_7smm5")
+atlas = ExtResource("2_bhbwy")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c0g2u"]
-atlas = ExtResource("2_7smm5")
+atlas = ExtResource("2_bhbwy")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_upshy"]
-atlas = ExtResource("2_7smm5")
+atlas = ExtResource("2_bhbwy")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vhm5f"]
-atlas = ExtResource("2_7smm5")
+atlas = ExtResource("2_bhbwy")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_crbkl"]
@@ -65,10 +65,10 @@ animations = [{
 
 [node name="AnimatedFx" type="Node3D"]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
-script = ExtResource("1_i5fmp")
+script = ExtResource("1_28eyg")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.06066, 1.06066, 0, -1.06066, 1.06066, 0, 0, 0)
 billboard = 1
 no_depth_test = true
 texture_filter = 0

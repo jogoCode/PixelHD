@@ -12,7 +12,6 @@ func _physics_process(delta):
 	var lastVel = _character.getLastDir();
 	var vel:Vector3;
 
-
 	if(_character is PlayerCharacter):
 		vel= _character._playerOrientation;
 		if vel.length() > 0.9:
@@ -26,10 +25,12 @@ func _physics_process(delta):
 			_animationTree["parameters/Atk/blend_position"] = Vector2(vel.x,vel.z);
 		else:
 			_animationTree["parameters/Atk/blend_position"] = Vector2(sign(lastVel.x),sign(lastVel.z));
-	else:
+	else: #EnemyCharacter
 		vel = _character.velocity;
 		_animationTree["parameters/Move/Move/blend_position"] = Vector2(vel.x,-vel.z);
-		_animationTree["parameters/Atk/blend_position"] = Vector2(vel.x,vel.z);
+		if(_character._stateMachine.GetState()!= "Atk"):
+			_animationTree["parameters/Atk/blend_position"] = Vector2(vel.x,vel.z);
+
 	_animationTree["parameters/Hit/blend_position"] = Vector2(sign(lastVel.x),sign(lastVel.z));
 
 func _get_configuration_warnings():

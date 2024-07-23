@@ -8,25 +8,30 @@ var inputVector;
 @export var _weaponActualStats:R_Weapon;
 @export var _sprite:Sprite3D; 
 @export var _hitBox:CollisionShape3D;
+@export var _slashSfx:AnimatedSprite3D;
 
 # ajouter la création du pickup 
 
 var _dmg:int;
 var _cooldown:float;
 
+
+
 signal ChangeWeapon(newWeapon:R_Weapon,dropPos:Vector3);
 signal AtkFinished();
 
 func _ready():
-	hide();
+	#hide();
 	SetWeapon(_weaponActualStats);
 
 
 func _process(delta):
-	if(_owner._stateMachine.GetState() == "Atk"):
+	if(_owner._stateMachine.GetState() == "Atk01" or 
+	   _owner._stateMachine.GetState() == "Atk02"):
+			await  get_tree().create_timer(_cooldown).timeout;
 			show();
-			_owner._stateMachine._animationTree["parameters/conditions/Atk"] = false; 
-			$AnimationPlayer.play("Atk");
+			_slashSfx.modulate = _weaponActualStats._fxColor;
+			_owner._stateMachine._animationTree["parameters/conditions/isAtk"] = false; 
 			_hitBox.disabled = false;
 	else:
 		hide();
@@ -34,27 +39,36 @@ func _process(delta):
 			_hitBox.disabled = true;
 			await  get_tree().create_timer(_cooldown).timeout;
 		emit_signal("AtkFinished");
-	WeaponOrientation();
+	HitBoxOrientation();
 
-func WeaponOrientation()->void:
+func  HitBoxOrientation():
+	var area3d = _hitBox.get_parent();
 	match _owner.GetPlayerOrientation():
 		Vector3(1,0,0): #Right
-			rotation_degrees = Vector3(0,0,0);
+			area3d.rotation_degrees = Vector3(0,0,0);
 		Vector3(-1,0,0): #Left
-			rotation_degrees = Vector3(0,-180,0);
-		Vector3(0,0,-1): #Down
-			rotation_degrees = Vector3(0,-90,0);
-		Vector3(0,0,1): #Up
-			rotation_degrees = Vector3(0,90,0);
-		#----------------DIAG--------------------------
-		Vector3(1,0,1): #DiagUpRight
-			rotation_degrees = Vector3(0,90,0);
-		Vector3(-1,0,1): #DiagDownLeft
-			rotation_degrees = Vector3(0,90,0);
-		Vector3(-1,0,-1): #DiagUpLeft
-			rotation_degrees = Vector3(0,-90,0);
-		Vector3(1,0,-1): #DiagDownRight
-			rotation_degrees = Vector3(0,-90,0);	
+			area3d.rotation_degrees = Vector3(0,-180,0);
+
+func WeaponOrientation()->void: #OBSOLETE
+	pass
+	#match _owner.GetPlayerOrientation():
+		#Vector3(1,0,0): #Right
+			#rotation_degrees = Vector3(0,0,0);
+		#Vector3(-1,0,0): #Left
+			#rotation_degrees = Vector3(0,-180,0);
+		#Vector3(0,0,-1): #Down
+			#rotation_degrees = Vector3(0,-90,0);
+		#Vector3(0,0,1): #Up
+			#rotation_degrees = Vector3(0,90,0);
+		##----------------DIAG--------------------------
+		#Vector3(1,0,1): #DiagUpRight
+			#rotation_degrees = Vector3(0,90,0);
+		#Vector3(-1,0,1): #DiagDownLeft
+			#rotation_degrees = Vector3(0,90,0);
+		#Vector3(-1,0,-1): #DiagUpLeft
+			#rotation_degrees = Vector3(0,-90,0);
+		#Vector3(1,0,-1): #DiagDownRight
+			#rotation_degrees = Vector3(0,-90,0);	
 
 func SetWeapon(newWeapon:R_Weapon):
 	_weaponActualStats = newWeapon;

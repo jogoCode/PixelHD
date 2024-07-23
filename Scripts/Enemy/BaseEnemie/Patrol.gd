@@ -7,6 +7,7 @@ func _physics_process(delta):
 
 func tick(actor, blackboard: Blackboard):
 	if(_delta != null):
+		actor._stateMachine._canAtk = true;	
 		actor.MoveToDirection(RandDir(),_delta);
 	return SUCCESS
 

@@ -1,5 +1,5 @@
 extends Node
-class_name  StateAnimation
+#class_name StateAnimation
 
 @onready var _character:Character = get_parent();
 @export var _animationTree:AnimationTree;
@@ -44,7 +44,7 @@ func _on_weapon_atk_finished():
 
 func IsAtk() -> void:
 	if(_canAtk):
-		#_canAtk = false;
+		_canAtk = false;
 		_animationTree["parameters/conditions/Atk"] = true; 
 		await get_tree().create_timer(0.1).timeout;
 		_animationTree["parameters/conditions/Atk"] = false; 

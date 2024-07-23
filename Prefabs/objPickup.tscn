@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctoxthrmgum7c"]
+[gd_scene load_steps=8 format=3 uid="uid://ctoxthrmgum7c"]
 
 [ext_resource type="Script" path="res://Scripts/ObjPickup.gd" id="1_f67r5"]
+[ext_resource type="Resource" uid="uid://crwirbvd8pxh5" path="res://Ressources/Weapons/W_WoodSword.tres" id="2_acquh"]
 [ext_resource type="Script" path="res://Scripts/InteractSystem.gd" id="2_cbygq"]
 [ext_resource type="Texture2D" uid="uid://bdrvvud5cthrk" path="res://Sprites/Weapons/IronSword.png" id="3_b6jsm"]
 [ext_resource type="PackedScene" uid="uid://b10x10md87dxx" path="res://Prefabs/StatsDisplay.tscn" id="4_kfytj"]
@@ -13,6 +14,7 @@ viewport_path = NodePath("SubViewport")
 
 [node name="ObjPickup" type="Node3D" node_paths=PackedStringArray("_sprite", "_StatDisplayer")]
 script = ExtResource("1_f67r5")
+_weapon = ExtResource("2_acquh")
 _sprite = NodePath("weaponImg")
 _StatDisplayer = NodePath("StatsDisplay")
 

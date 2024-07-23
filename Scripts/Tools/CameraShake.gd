@@ -3,8 +3,8 @@ class_name CameraShaker;
 
 @export var _camera:MainCamera;
 
-var _shakeIntensity = 0.0;
-var _shakeDuration = 0.0;
+var _shakeIntensity:float = 0.0;
+var _shakeDuration:float = 0.0;
 var originalTransform:Transform3D;
 
 signal Shake(intensity,duration);

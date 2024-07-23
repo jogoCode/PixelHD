@@ -4,11 +4,13 @@ extends Node
 var _CAMERA:MainCamera;
 var DELTA:float;
 @onready var main = get_node("/root/Main");
+var _dungeonSize:int = 11;
 
 func _ready():
-	for node in main.get_children():
-		if(node is MainCamera):
-			_CAMERA = node;
+	if main!= null:
+		for node in main.get_children():
+			if(node is MainCamera):
+				_CAMERA = node;
 
 func _process(delta):
 	DELTA = delta;

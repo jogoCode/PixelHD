@@ -10,3 +10,4 @@ _img = ExtResource("1_c1qw1")
 _dmg = 1
 _atkSpeed = 0.06
 _desc = "Ti branche"
+_fxColor = Color(0.905882, 0.380392, 0.0941176, 1)

@@ -2,9 +2,9 @@ extends ActionLeaf
 
 
 func tick(actor, blackboard: Blackboard):
+	actor.velocity = Vector3.ZERO;
 	if(actor != null):
-		actor.applyImpulse(actor.velocity.normalized()*10);
+		actor.applyImpulse(actor.velocity.normalized()*15,5);
 		actor._stateMachine.IsAtk();
-		actor._stateMachine._canAtk = true;	
 	return SUCCESS
 
