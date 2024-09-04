@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://ehsif27px68g"]
+
+[ext_resource type="Texture2D" uid="uid://q07mg38k7eep" path="res://Assets/Sprites/Weapons/FireKatana.png" id="1_3sbdb"]
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Weapons.gd" id="2_skgrl"]
+
+[resource]
+script = ExtResource("2_skgrl")
+_name = "Fire katana"
+_type = 1
+_img = ExtResource("1_3sbdb")
+_dmg = 15
+_atkSpeed = 0.95
+_desc = "Arme sublime"
+_hitboxSize = 1.19
+_fxColor = Color(1, 0.835294, 0.254902, 1)
+_audio = "G_Slash"

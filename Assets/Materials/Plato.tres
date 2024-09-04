@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bdwcscge0mn23"]
+
+[ext_resource type="Texture2D" uid="uid://chpok0wgvsf7d" path="res://Assets/Sprites/Textures/FullText.png" id="1_ds4vw"]
+[ext_resource type="Shader" path="res://Assets/Shaders/outline.gdshader" id="2_0dco3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tg5p"]
+render_priority = 100
+shader = ExtResource("2_0dco3")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 4.0
+
+[resource]
+next_pass = SubResource("ShaderMaterial_5tg5p")
+specular_mode = 1
+albedo_texture = ExtResource("1_ds4vw")
+roughness = 0.77
+texture_filter = 0

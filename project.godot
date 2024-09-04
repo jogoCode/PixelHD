@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="PixelHD"
-run/main_scene="res://Scenes/room.tscn"
+run/main_scene="res://Assets/Scenes/room.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Level="*res://Scripts/Autoloads/Level.gd"
+Level="*res://Assets/Scripts/Autoloads/Level.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
-SoundFx="*res://Prefabs/sound_fx.tscn"
+SoundFx="*res://Assets/Prefabs/sound_fx.tscn"
 
 [display]
 
@@ -94,3 +94,8 @@ Dodge={
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Weapon"
+3d_physics/layer_4="SoftCollision"
+
+[rendering]
+
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4

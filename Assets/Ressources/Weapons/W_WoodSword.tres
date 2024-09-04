@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://crwirbvd8pxh5"]
+
+[ext_resource type="Texture2D" uid="uid://jcsjub82gmk8" path="res://Assets/Sprites/Weapons/NewWoodenSword.png" id="1_emkle"]
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Weapons.gd" id="2_f87kp"]
+
+[resource]
+script = ExtResource("2_f87kp")
+_name = "Wooden Sword"
+_type = 0
+_img = ExtResource("1_emkle")
+_dmg = 3
+_atkSpeed = 1.0
+_desc = "Sa coupe pas un merde"
+_hitboxSize = 0.8
+_fxColor = Color(0.733333, 0.458824, 0.278431, 1)
+_audio = "Slash"

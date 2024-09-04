@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://m7ql53lbl5o5"]
+
+[ext_resource type="Texture2D" uid="uid://gupjkbc1ewpu" path="res://Assets/Sprites/Weapons/GoldDagger.png" id="1_5bgd7"]
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Weapons.gd" id="2_kvjuh"]
+
+[resource]
+script = ExtResource("2_kvjuh")
+_name = "Gold dagger"
+_type = 0
+_img = ExtResource("1_5bgd7")
+_dmg = 6
+_atkSpeed = 1.7
+_desc = "Aie sa coupe !!"
+_hitboxSize = 0.5
+_fxColor = Color(1, 0.835294, 0.254902, 1)
+_audio = "Slash"

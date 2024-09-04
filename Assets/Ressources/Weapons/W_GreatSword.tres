@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://cp2mbed06s118"]
+
+[ext_resource type="Texture2D" uid="uid://ct11yc8fm8w6p" path="res://Assets/Sprites/Weapons/GreatSword.png" id="1_gep5y"]
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Weapons.gd" id="1_vvwle"]
+
+[resource]
+script = ExtResource("1_vvwle")
+_name = "Great sword"
+_type = 1
+_img = ExtResource("1_gep5y")
+_dmg = 15
+_atkSpeed = 0.75
+_desc = "C'est fat"
+_hitboxSize = 1.19
+_fxColor = Color(0.427451, 0.458824, 0.552941, 1)
+_audio = "G_Slash"

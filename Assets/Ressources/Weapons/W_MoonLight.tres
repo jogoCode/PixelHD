@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://tpdt0wkjtcqj"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Weapons.gd" id="1_n6clq"]
+[ext_resource type="Texture2D" uid="uid://o7l86ri6mgoi" path="res://Assets/Sprites/Weapons/MoonLight.png" id="1_xspfw"]
+
+[resource]
+script = ExtResource("1_n6clq")
+_name = "Moon light great sword"
+_type = 1
+_img = ExtResource("1_xspfw")
+_dmg = 5
+_atkSpeed = 1.9
+_desc = "C'est froit"
+_hitboxSize = 1.19
+_fxColor = Color(0.639216, 0.866667, 1, 1)
+_audio = "G_Slash"

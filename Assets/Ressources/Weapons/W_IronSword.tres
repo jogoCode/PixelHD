@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://ck4t4qepux4ix"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Weapons.gd" id="1_0hoo3"]
+[ext_resource type="Texture2D" uid="uid://djp2ckky1i3uc" path="res://Assets/Sprites/Weapons/NewIronSword.png" id="1_ymw6r"]
+
+[resource]
+script = ExtResource("1_0hoo3")
+_name = "Iron sword"
+_type = 0
+_img = ExtResource("1_ymw6r")
+_dmg = 6
+_atkSpeed = 1.0
+_desc = "Aie sa coupe !!"
+_hitboxSize = 0.8
+_fxColor = Color(0.156863, 0.360784, 0.768627, 1)
+_audio = "Slash"

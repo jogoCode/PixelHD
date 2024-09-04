@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://hes7gby3uxcw"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Weapons.gd" id="1_3ymxc"]
+[ext_resource type="Texture2D" uid="uid://c332epw5mqn2q" path="res://Assets/Sprites/Weapons/NewFireSword.png" id="1_y21s6"]
+
+[resource]
+script = ExtResource("1_3ymxc")
+_name = "Fire sword"
+_type = 0
+_img = ExtResource("1_y21s6")
+_dmg = 10
+_atkSpeed = 1.2
+_desc = "Fort fort"
+_hitboxSize = 0.8
+_fxColor = Color(1, 0.411765, 0.0313726, 1)
+_audio = "Slash"
