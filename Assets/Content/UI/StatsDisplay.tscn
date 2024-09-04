@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://b10x10md87dxx"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/UI/StatsDisplay.gd" id="1_52in5"]
+[ext_resource type="Texture2D" uid="uid://ct11yc8fm8w6p" path="res://Assets/Sprites/Weapons/GreatSword.png" id="2_cq52r"]
+
+[node name="StatsDisplay" type="Control" node_paths=PackedStringArray("_nameTxt", "_img", "_dmgTxt", "_descTxt")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_52in5")
+_nameTxt = NodePath("NameTxt")
+_img = NodePath("ImgWeapon")
+_dmgTxt = NodePath("DmgTxt")
+_descTxt = NodePath("DescTxt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 272.0
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="NameTxt" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 176.0
+offset_bottom = 39.0
+text = "Name "
+autowrap_mode = 3
+justification_flags = 171
+
+[node name="Deco" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 44.0
+offset_right = 179.0
+offset_bottom = 127.0
+rotation = 0.785398
+color = Color(0.545098, 0.545098, 0.545098, 0.905882)
+
+[node name="ImgWeapon" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 136.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_cq52r")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="DescTxt" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 200.0
+offset_right = 176.0
+offset_bottom = 240.0
+text = "Description du objet "
+autowrap_mode = 2
+justification_flags = 171
+
+[node name="DmgTxt" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 144.0
+offset_right = 112.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 31
+text = "1
+"
+horizontal_alignment = 1

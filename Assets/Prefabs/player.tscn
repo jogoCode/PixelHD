@@ -1,14 +1,14 @@
 [gd_scene load_steps=90 format=3 uid="uid://budrbr6y8el7f"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/PlayerController/PlayerCharacter.gd" id="1_0ne4q"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/PlayerCharacter.gd" id="1_0ne4q"]
 [ext_resource type="Texture2D" uid="uid://8cu7mmfngp7y" path="res://Assets/Sprites/Characters/Link (1).png" id="2_j6m3w"]
 [ext_resource type="Texture2D" uid="uid://kpja6bed0h3d" path="res://Assets/Sprites/Characters/Boy.png" id="2_n8xjw"]
-[ext_resource type="Script" path="res://Assets/Scripts/PlayerController/InputManager.gd" id="3_3c572"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/InputManager.gd" id="3_3c572"]
 [ext_resource type="Script" path="res://Assets/Scripts/Tools/AnimationManager.gd" id="4_j28b1"]
-[ext_resource type="Script" path="res://Assets/Scripts/Tools/StateMachine.gd" id="4_vliv5"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/StateMachine.gd" id="4_vliv5"]
 [ext_resource type="PackedScene" uid="uid://oa8fw4qtcfsf" path="res://Assets/Prefabs/weapon.tscn" id="6_0kr4w"]
 [ext_resource type="Resource" uid="uid://crwirbvd8pxh5" path="res://Assets/Ressources/Weapons/W_WoodSword.tres" id="7_60c37"]
-[ext_resource type="Script" path="res://Assets/Scripts/PlayerController/RayCastInteract.gd" id="7_idtos"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/RayCastInteract.gd" id="7_idtos"]
 [ext_resource type="Script" path="res://Assets/Scripts/Tools/HealthSystem.gd" id="9_141d8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f46is"]

@@ -13,8 +13,8 @@ var _canTakeDamage:bool = true;
 
 @onready var _owner = get_parent();
 
-var fx = preload("res://Assets/Prefabs/FX/AnimatedFx.tscn");
-var bloodDrop = preload("res://Assets/Prefabs/FX/Blood_drop.tscn");
+var fx = preload("res://Assets/Content/FX/AnimatedFx.tscn");
+var bloodDrop = preload("res://Assets/Content/FX/Blood_drop.tscn");
 
 signal isDead();
 signal TakeDamage(damage,damager);
@@ -45,7 +45,7 @@ func CanDeath():
 	if(_actualHp <= 0):
 		_owner._stateMachine.IsDie();
 		if _owner is PlayerCharacter:
-			Level.FreezeFrame(0.1,1.5);
+			Level.FreezeFrame(0.1,1);
 		if(_destroyAtDeath):
 			#_owner.queue_free();
 			emit_signal("isDead");	

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://oa8fw4qtcfsf"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/Weapon/Weapon.gd" id="1_jxqvk"]
+[ext_resource type="Script" path="res://Assets/Content/Weapon/Weapon.gd" id="1_jxqvk"]
 [ext_resource type="Resource" uid="uid://cp3ja8rwcof3e" path="res://Assets/Ressources/Weapons/W_Branch.tres" id="2_jghgv"]
 [ext_resource type="Texture2D" uid="uid://o7l86ri6mgoi" path="res://Assets/Sprites/Weapons/MoonLight.png" id="3_hpmsy"]
 

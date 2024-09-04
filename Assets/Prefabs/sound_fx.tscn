@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwm8lig7ga021"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/Tools/SoundFx.gd" id="1_2bwvp"]
+[ext_resource type="Script" path="res://Assets/Scripts/Autoloads/SoundFx.gd" id="1_2bwvp"]
 [ext_resource type="AudioStream" uid="uid://dcysy216kkmpj" path="res://Assets/Sounds/audio_impact.wav" id="2_wrfi1"]
 
 [node name="SoundFx" type="Node"]

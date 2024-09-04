@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ceuncfasenarg"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/PlayerController/CameraManager.gd" id="1_41l83"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/CameraManager.gd" id="1_41l83"]
 [ext_resource type="Script" path="res://Assets/Scripts/Tools/CameraShake.gd" id="2_ylij4"]
 [ext_resource type="Script" path="res://Assets/Scripts/Tools/oscillator.gd" id="3_twyi1"]
 
