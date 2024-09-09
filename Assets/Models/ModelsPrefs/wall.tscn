@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cydxbf4kd30w5"]
+
+[ext_resource type="PackedScene" uid="uid://2n80cir2p52d" path="res://Assets/Models/Raw/wall.fbx" id="1_jugqc"]
+[ext_resource type="Texture2D" uid="uid://dgulpwkdayg1l" path="res://Assets/Sprites/Textures/wall.png" id="2_yd8sp"]
+[ext_resource type="Texture2D" uid="uid://4hrg4y5wtvf6" path="res://Assets/Sprites/Textures/NormalMap/wall/wall_n.png" id="3_onfcx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thhpv"]
+albedo_color = Color(0.333333, 0.345098, 0.388235, 1)
+albedo_texture = ExtResource("2_yd8sp")
+normal_enabled = true
+normal_texture = ExtResource("3_onfcx")
+texture_filter = 0
+
+[node name="wall" instance=ExtResource("1_jugqc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Cube" parent="RootNode" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_thhpv")

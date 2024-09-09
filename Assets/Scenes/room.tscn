@@ -1,8 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://bpexrtip7js83"]
+[gd_scene load_steps=40 format=3 uid="uid://bpexrtip7js83"]
 
+[ext_resource type="Script" path="res://Assets/Scripts/Tools/Room.gd" id="1_k5rye"]
 [ext_resource type="PackedScene" uid="uid://ceuncfasenarg" path="res://Assets/Prefabs/Camera.tscn" id="2_jf2kv"]
 [ext_resource type="Environment" uid="uid://x0yr6wcec1xp" path="res://Assets/Ressources/Environment.tres" id="3_r7lp7"]
 [ext_resource type="PackedScene" uid="uid://d0u2g2ybwrr02" path="res://Assets/Content/Actors/PlayerController/playerV2.tscn" id="3_uou0g"]
+[ext_resource type="FontFile" uid="uid://c3rjhfocf1qp6" path="res://Assets/Fonts/PeaberryBase.ttf" id="4_1len6"]
 [ext_resource type="Texture2D" uid="uid://dr377r4jo52s8" path="res://Assets/Sprites/Textures/platform_text.png" id="4_4fu6w"]
 [ext_resource type="Texture2D" uid="uid://3rjr00wn07pv" path="res://Assets/Sprites/Textures/NormalMap/platform_text_n.png" id="5_368bu"]
 [ext_resource type="PackedScene" uid="uid://ctoxthrmgum7c" path="res://Assets/Prefabs/objPickup.tscn" id="6_u7so4"]
@@ -11,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://hes7gby3uxcw" path="res://Assets/Ressources/Weapons/W_FireSword.tres" id="8_jifkx"]
 [ext_resource type="PackedScene" uid="uid://1ywnj0vhkp5v" path="res://Assets/Content/FX/Particle.tscn" id="10_1vtmx"]
 [ext_resource type="Shader" path="res://Assets/Shaders/outline.gdshader" id="10_awpbt"]
+[ext_resource type="PackedScene" uid="uid://4jf2ookbpt8v" path="res://Assets/Content/Actors/Enemy/EnemyDistance.tscn" id="10_m8r7a"]
 [ext_resource type="Resource" uid="uid://ehsif27px68g" path="res://Assets/Ressources/Weapons/W_FireGreatSword.tres" id="13_0lb07"]
 [ext_resource type="PackedScene" uid="uid://bl6v78264v3ys" path="res://Assets/Content/FX/Blood_drop.tscn" id="13_oas7p"]
 [ext_resource type="PackedScene" uid="uid://bqf1ndsmpr7ns" path="res://Assets/Content/Actors/Enemy/Enemy.tscn" id="14_augn6"]
@@ -19,16 +22,59 @@
 [ext_resource type="PackedScene" uid="uid://1vcimga8qlvw" path="res://Assets/Models/ModelsPrefs/pillar.tscn" id="16_xnse1"]
 [ext_resource type="PackedScene" uid="uid://cvtofc5wybet1" path="res://Assets/Models/ModelsPrefs/veg01.tscn" id="17_4hhe1"]
 
+[sub_resource type="Animation" id="Animation_p3kwh"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_efmug"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mk46f"]
+_data = {
+"fade_in": SubResource("Animation_p3kwh"),
+"fade_out": SubResource("Animation_efmug")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_j48so"]
 font_size = 11
 outline_size = 11
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_qb1bo"]
+font = ExtResource("4_1len6")
+font_size = 26
+outline_size = 25
+outline_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_w2gje"]
-vertices = PackedVector3Array(-5.0133, 1.39861, -4.43815, -5.0133, 1.39861, 3.56185, -4.5133, 1.39861, -4.18815, -4.5133, 1.39861, -4.18815, 4.9867, 1.39861, -3.93815, 4.9867, 1.39861, -4.43815, -5.0133, 1.39861, -4.43815, -3.7633, 0.398608, -3.18815, -3.7633, 0.398608, 4.06185, 3.9867, 0.398608, 4.06185, 3.9867, 0.398608, -3.18815)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(10, 9, 7), PackedInt32Array(7, 9, 8)]
+vertices = PackedVector3Array(-34.5, -8.26472, -34.5, -34.5, -8.26472, 34.5, 34.5, -8.26472, 34.5, 34.5, -8.26472, -34.5, -5.25, 1.48528, -4.5, -5.25, 1.48528, -4, -4.25, 1.48528, -4.25, 4.25, 1.48528, -4.5, 5.25, 1.48528, -4, 5.25, 1.48528, -4.5, -3.25, 0.48528, -2.25, -3.75, 0.48528, -2.25, -3.75, 0.48528, 2.75, -2.75, 0.73528, 3, 4, 0.73528, 2.75, 4, 0.48528, -2.75, 3, 0.48528, -2.75, 2.75, 0.48528, 3, -2.75, 0.73528, 3, -2.75, 0.48528, 4, 2.75, 0.73528, 4, 2.75, 0.48528, 3, 3, 0.48528, -2.75, 2.75, 0.48528, -3.25, -2.75, 0.48528, -3.25, -3.25, 0.48528, -2.25, -2.75, 0.73528, 3, 2.75, 0.48528, 3)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(6, 5, 4), PackedInt32Array(9, 8, 7), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(25, 22, 26), PackedInt32Array(26, 22, 27)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onou4"]
+albedo_color = Color(0.623529, 0.705882, 0.784314, 1)
 albedo_texture = ExtResource("4_4fu6w")
 normal_enabled = true
 normal_scale = 0.36
@@ -71,10 +117,27 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_i0ws8"]
 material = SubResource("StandardMaterial3D_lgrrl")
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("_blackScreenAnimPlayer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.138414)
+script = ExtResource("1_k5rye")
+_blackScreenAnimPlayer = NodePath("CanvasLayer/ColorRect/AnimationPlayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_mk46f")
+}
+autoplay = "fade_out"
 
 [node name="HealthBar" parent="CanvasLayer" node_paths=PackedStringArray("_owner") instance=ExtResource("15_hj54y")]
 offset_left = 12.0
@@ -83,11 +146,22 @@ offset_right = -1140.0
 scale = Vector2(4, 4)
 _owner = NodePath("../../Player")
 
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -192.0
+offset_right = 144.0
+offset_bottom = -32.0
+grow_vertical = 0
+color = Color(0.101961, 0.101961, 0.101961, 0.521569)
+
 [node name="StatsDisplay" parent="CanvasLayer" instance=ExtResource("16_3xat5")]
-offset_left = 1.0
-offset_top = -17.0
-offset_right = 1.0
-offset_bottom = -17.0
+offset_left = 40.0
+offset_top = 456.0
+offset_right = 40.0
+offset_bottom = 456.0
 
 [node name="ColorRect" parent="CanvasLayer/StatsDisplay" index="0"]
 visible = false
@@ -106,17 +180,30 @@ label_settings = SubResource("LabelSettings_j48so")
 visible = false
 
 [node name="ImgWeapon" parent="CanvasLayer/StatsDisplay" index="3"]
-offset_left = 7.0
-offset_top = 33.0
-offset_right = 135.0
-offset_bottom = 161.0
-scale = Vector2(0.735, 0.735)
+offset_left = -8.0
+offset_top = 144.0
+offset_right = 120.0
+offset_bottom = 272.0
+rotation = -1.57079
+scale = Vector2(0.945, 0.945)
 
 [node name="DescTxt" parent="CanvasLayer/StatsDisplay" index="4"]
 visible = false
 
 [node name="DmgTxt" parent="CanvasLayer/StatsDisplay" index="5"]
 visible = false
+
+[node name="Kill" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 16.0
+offset_right = 20.0
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "KILL  0"
+label_settings = SubResource("LabelSettings_qb1bo")
 
 [node name="Camera" parent="." node_paths=PackedStringArray("_target") instance=ExtResource("2_jf2kv")]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -0.00259662, 3.21244, 0.99517)
@@ -128,7 +215,7 @@ _offset = Vector3(0, 0, 1.5)
 environment = ExtResource("3_r7lp7")
 
 [node name="Player" parent="." instance=ExtResource("3_uou0g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(0.999986, 0.00392483, -0.00370001, -0.00395438, 0.99996, -0.00801741, 0.00366841, 0.00803192, 0.999961, 0, 1, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_w2gje")
@@ -145,7 +232,8 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_ct0g3")
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, 0, -0.451284, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, 0.00741577, -0.451284, -0.0105896)
+size = Vector3(0.975647, 2, 0.991638)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 2.2, 0, 0, 0, 7.92, -5, 0, 0)
@@ -181,45 +269,66 @@ transform = Transform3D(1, 0, -1.13687e-13, 0, 1, 0, 0, 0, 1, 0, -0.454545, 0)
 shape = SubResource("ConcavePolygonShape3D_bay41")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(-4.37114e-08, 0, 11.0266, 0, 2.2, 0, -1, 0, -4.81986e-07, 0, 1.19687, 4.40186)
+transform = Transform3D(-4.37114e-08, 0, 11.0266, 0, 2.2, 0, -1, 0, -4.81986e-07, 0, 1.19687, 4.95984)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pbr7i")
 
-[node name="EnemyCharacter" parent="NavigationRegion3D" node_paths=PackedStringArray("_target") instance=ExtResource("14_augn6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49507, 0.376914, 0.565246)
-_target = NodePath("../../Player")
+[node name="Decors" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="EnemyCharacter2" parent="NavigationRegion3D" node_paths=PackedStringArray("_target", "_HitBox") instance=ExtResource("14_augn6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0951421, 0.376914, 0.565246)
-_target = NodePath("../../Player")
-_HitBox = NodePath("../EnemyCharacter/HitBox/CollisionShape3D")
+[node name="Pillar" parent="NavigationRegion3D/Decors" instance=ExtResource("16_xnse1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.161811, -3.13841)
 
-[node name="EnemyCharacter3" parent="NavigationRegion3D" node_paths=PackedStringArray("_target", "_HitBox") instance=ExtResource("14_augn6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0951421, 0.376914, -2.39647)
-_target = NodePath("../../Player")
-_HitBox = NodePath("../EnemyCharacter/HitBox/CollisionShape3D")
+[node name="Cylindre_001" parent="NavigationRegion3D/Decors/Pillar/RootNode" index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 1.18734, -0.294036, -1.53237)
 
-[node name="EnemyCharacter4" parent="NavigationRegion3D" node_paths=PackedStringArray("_target", "_HitBox") instance=ExtResource("14_augn6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3178, 0.376914, -2.39647)
-_target = NodePath("../../Player")
-_HitBox = NodePath("../EnemyCharacter/HitBox/CollisionShape3D")
+[node name="Plan" parent="NavigationRegion3D/Decors/Pillar/RootNode" index="1"]
+visible = false
 
-[node name="EnemyCharacter5" parent="NavigationRegion3D" node_paths=PackedStringArray("_target", "_HitBox") instance=ExtResource("14_augn6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0566, 0.376914, -2.39647)
-_target = NodePath("../../Player")
-_HitBox = NodePath("../EnemyCharacter/HitBox/CollisionShape3D")
+[node name="Plan_001" parent="NavigationRegion3D/Decors/Pillar/RootNode" index="2"]
+visible = false
+
+[node name="Plan_002" parent="NavigationRegion3D/Decors/Pillar/RootNode" index="3"]
+transform = Transform3D(82.3167, 0, 0, 0, -9.81292e-06, 82.3167, 0, -82.3167, -9.81292e-06, 1.14234, 4.1806, -0.857488)
+
+[node name="Pillar2" parent="NavigationRegion3D/Decors" instance=ExtResource("16_xnse1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0.161811, -3.59812)
+
+[node name="Pillar3" parent="NavigationRegion3D/Decors" instance=ExtResource("16_xnse1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0.161811, 3.69367)
+
+[node name="Pillar4" parent="NavigationRegion3D/Decors" instance=ExtResource("16_xnse1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6438, 0.161811, 3.69367)
+
+[node name="Veg" parent="NavigationRegion3D/Decors" instance=ExtResource("17_4hhe1")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 4, 0.0691742, 2.86159)
+
+[node name="Veg2" parent="NavigationRegion3D/Decors" instance=ExtResource("17_4hhe1")]
+transform = Transform3D(0.664896, 0, 0.21889, 0, 0.7, 0, -0.21889, 0, 0.664896, 3.16544, 0.0691742, 3.84245)
+
+[node name="Veg3" parent="NavigationRegion3D/Decors" instance=ExtResource("17_4hhe1")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 3.65329, 0.0691742, 3.49079)
+
+[node name="Veg4" parent="NavigationRegion3D/Decors" instance=ExtResource("17_4hhe1")]
+transform = Transform3D(0.606218, 0, 0.35, 0, 0.7, 0, -0.35, 0, 0.606218, -2.73279, 0.0691742, 2.86905)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Decors"]
+transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, -8.76472, 0)
+visible = false
+mesh = SubResource("PlaneMesh_i0ws8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.687415, 0.539197, -0.486546, 0.0625, 0.711363, 0.70004, 0.723571, 0.450809, -0.522701, 0, 2.2756, 0)
-light_color = Color(0.988235, 0.956863, 0.752941, 1)
-light_energy = 2.292
+light_color = Color(0.996078, 0.988235, 0.898039, 1)
+light_energy = 3.829
 shadow_enabled = true
+shadow_opacity = 0.54
 shadow_blur = 0.0
 sky_mode = 1
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866026, -0.25, 0.433012, -2.18557e-08, 0.866025, 0.5, -0.5, 0.433013, -0.75, 4, 0, 0)
+light_energy = 8.652
 shadow_enabled = true
 sky_mode = 2
 
@@ -244,44 +353,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62442, 0.0853715, 1.68026)
 _weapon = ExtResource("13_0lb07")
 
 [node name="Dust_force" parent="." instance=ExtResource("13_oas7p")]
-transform = Transform3D(0.452435, -0.100954, 0.886065, 0, 0.993572, 0.113203, -0.891798, -0.0512171, 0.449526, 1.23879, 1.18566, -0.542929)
+transform = Transform3D(0.452435, -0.100954, 0.886065, 0, 0.993572, 0.113203, -0.891798, -0.0512171, 0.449526, 1.23879, 1.18566, -1.02908)
 
-[node name="Decors" type="Node3D" parent="."]
+[node name="EnemyCharacter" parent="." instance=ExtResource("14_augn6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535824, 0.579099, 0.695908)
 
-[node name="Pillar" parent="Decors" instance=ExtResource("16_xnse1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.161811, -3.13841)
-
-[node name="Plan" parent="Decors/Pillar/RootNode" index="1"]
-visible = false
-
-[node name="Plan_001" parent="Decors/Pillar/RootNode" index="2"]
-visible = false
-
-[node name="Pillar2" parent="Decors" instance=ExtResource("16_xnse1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.161811, -3.13841)
-
-[node name="Pillar3" parent="Decors" instance=ExtResource("16_xnse1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.161811, 3.86159)
-
-[node name="Pillar4" parent="Decors" instance=ExtResource("16_xnse1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.161811, 3.86159)
-
-[node name="Veg" parent="Decors" instance=ExtResource("17_4hhe1")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 4, 0.0691742, 2.86159)
-
-[node name="Veg2" parent="Decors" instance=ExtResource("17_4hhe1")]
-transform = Transform3D(0.664896, 0, 0.21889, 0, 0.7, 0, -0.21889, 0, 0.664896, 3.16544, 0.0691742, 3.84245)
-
-[node name="Veg3" parent="Decors" instance=ExtResource("17_4hhe1")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 3.65329, 0.0691742, 3.49079)
-
-[node name="Veg4" parent="Decors" instance=ExtResource("17_4hhe1")]
-transform = Transform3D(0.606218, 0, 0.35, 0, 0.7, 0, -0.35, 0, 0.606218, -2.73279, 0.0691742, 2.86905)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Decors"]
-transform = Transform3D(35, 0, 0, 0, 35, 0, 0, 0, 35, 0, 0, 0)
-visible = false
-mesh = SubResource("PlaneMesh_i0ws8")
+[node name="EnemyCharacterDist" parent="." instance=ExtResource("10_m8r7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8539, 0.469963, 0.811221)
 
 [editable path="CanvasLayer/StatsDisplay"]
-[editable path="Decors/Pillar"]
+[editable path="Camera"]
+[editable path="NavigationRegion3D/Decors/Pillar"]

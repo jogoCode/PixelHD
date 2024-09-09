@@ -25,22 +25,17 @@ func play(sound_name:String,delay:float):
 			num+=1;
 		var sound_to_play = sounds[sound_name];
 		if(sounds[sound_name] is Array):
-			print(sounds[sound_name][0]);
 			var rand = randf_range(0,sounds[sound_name].size());
 			sound_to_play = sounds[sound_name][int(rand)];
-		
-		print(num);
-		
 		for sound_player in sound_players:
 			if(sound_player.playing and sound_player.stream == sound_to_play):
-				sound_player.volume_db -=4;
-				await  get_tree().create_timer(0.04).timeout;
+				sound_player.volume_db -=10;
+
 			if(!sound_player.playing):
 				sound_player.volume_db =0;
 				sound_player.stream = sound_to_play;
 				sound_player.pitch_scale = randf_range(0.98,1.05);
 				sound_player.play();
 				return;
+
 		printerr("To many sound play at the same time, not enought sound player");
-
-

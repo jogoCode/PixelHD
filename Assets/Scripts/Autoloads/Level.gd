@@ -7,16 +7,16 @@ var DELTA:float;
 @onready var main = get_node("/root/Main");
 var _dungeonSize:int = 11;
 
+var _score:int;
+var _hightScore:int;
+
+
 var _inFreeze:bool = false;
+signal GameFinished;
+signal MonsterKill;
 
 func _ready():
-	if main!= null:
-		for node in main.get_children():
-			if(node is MainCamera):
-				_CAMERA = node;
-		for node in main.get_children():
-			if(node is PlayerCharacter):
-				_PLAYER = node;
+	MonsterKill.connect(_add_score);
 
 func _process(delta):
 	DELTA = delta;
@@ -24,7 +24,10 @@ func _process(delta):
 func CreateObject(sceneToIntance:Node3D,pos:Vector3,rot:Vector3 = Vector3(0,0,1)):
 	sceneToIntance.global_position = pos;
 	main.add_child(sceneToIntance);
-	sceneToIntance.rotation_degrees = rot;
+	if rot == Vector3(0,0,1):
+		sceneToIntance.rotation_degrees = rot;
+	else:
+		sceneToIntance.look_at(sceneToIntance.position,Vector3.UP, true);
 
 func CreateFx(fxToInstance:Node3D,pos:Vector3,rot:Vector3,amount:int = 1,scale:Vector3 = Vector3(1,1,1)):
 	
@@ -46,3 +49,17 @@ func FreezeFrame(timescale,duration):
 		await get_tree().create_timer(duration*timescale).timeout;
 		Engine.time_scale = 1;
 		_inFreeze = false;
+
+func Init():
+	main = get_node("/root/Main");
+	if main!= null:
+		for node in main.get_children():
+			if(node is MainCamera):
+				_CAMERA = node;
+		for node in main.get_children():
+			if(node is PlayerCharacter):
+				_PLAYER = node;
+
+
+func _add_score():
+	_score+=1;

@@ -62,8 +62,9 @@ func SetValues(velocity,spring,displacement,damp):
 
 func ScaleMode():
 	if(_target.scale >Vector3(0.25,0.25,0.25)):
-		_target.scale =  _baseScale+ Vector3(_displacement,-_displacement,-_displacement)*_scaleFactor;
-		_target.scale = clamp(_target.scale, Vector3.ZERO,Vector3(100,100,100));
+		if _displacement !=0:
+			_target.scale =  _baseScale+ Vector3(_displacement,-_displacement,-_displacement)*_scaleFactor;
+			_target.scale = clamp(_target.scale, Vector3.ZERO,Vector3(100,100,100));
 
 func PosMode():
 	_target.position.x = _displacement *25;

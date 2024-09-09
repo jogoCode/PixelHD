@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://bqf1ndsmpr7ns"]
+[gd_scene load_steps=107 format=3 uid="uid://bqf1ndsmpr7ns"]
 
 [ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/EnemyCharacter.gd" id="1_e0ixj"]
 [ext_resource type="Texture2D" uid="uid://cfqnmsx1fvf0x" path="res://Assets/Sprites/Characters/n_sprite_zombie_2.png" id="2_0g7vl"]
@@ -18,9 +18,11 @@
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="15_mkvd8"]
 [ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/BaseEnemie/MoveAway.gd" id="16_hyu4w"]
 [ext_resource type="Script" path="res://Assets/Scripts/Tools/oscillator.gd" id="17_dpcnc"]
+[ext_resource type="Texture2D" uid="uid://cdgwslyh7yoqb" path="res://Assets/Sprites/UI/UI_Exclamation.png" id="19_e6710"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/Attack/MeleeAtk.gd" id="19_n2y33"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_83pww"]
-radius = 0.125729
+radius = 0.13356
 height = 0.550118
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1826"]
@@ -224,8 +226,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_mcbo1"]
-radius = 0.301339
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ejngb"]
+radius = 0.27663
+height = 0.611648
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m84u2"]
 radius = 0.344004
@@ -300,6 +303,18 @@ tracks/4/keys = {
 "method": &"Atk"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("exclamation:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_g38gt"]
 resource_name = "AtkRight"
@@ -366,6 +381,18 @@ tracks/4/keys = {
 "args": [],
 "method": &"Atk"
 }]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("exclamation:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_iw8s7"]
@@ -759,6 +786,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [Color(1, 1, 1, 1), Color(0.576471, 0.458824, 1, 1), Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("exclamation:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_wyl2n"]
 resource_name = "Pre_AtkRight"
@@ -801,7 +840,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("Visual/AnimatedSprite3D:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -810,6 +849,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 1), Color(0.576471, 0.458824, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("exclamation:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(-0.05, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_1wsj4"]
@@ -1192,30 +1243,37 @@ states/Start/position = Vector2(195, 100)
 transitions = ["Hit", "Move", SubResource("AnimationNodeStateMachineTransition_771j0"), "Move", "Hit", SubResource("AnimationNodeStateMachineTransition_0337h"), "Atk", "Move", SubResource("AnimationNodeStateMachineTransition_6uplr"), "Atk", "Hit", SubResource("AnimationNodeStateMachineTransition_lef67"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_vpm6i"), "Atk", "Idle", SubResource("AnimationNodeStateMachineTransition_i16q5"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_ngigp"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_skj8v"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_twy5l"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_5omv0"), "Idle", "Pre_Atk", SubResource("AnimationNodeStateMachineTransition_5qsnn"), "Pre_Atk", "Atk", SubResource("AnimationNodeStateMachineTransition_u0fmv"), "Move", "Pre_Atk", SubResource("AnimationNodeStateMachineTransition_tesw4"), "Pre_Atk", "Hit", SubResource("AnimationNodeStateMachineTransition_mr52b"), "Pre_Atk", "Idle", SubResource("AnimationNodeStateMachineTransition_qlqph"), "Move", "Die", SubResource("AnimationNodeStateMachineTransition_3r7oh"), "Hit", "Die", SubResource("AnimationNodeStateMachineTransition_ukhdb"), "Atk", "Die", SubResource("AnimationNodeStateMachineTransition_slpd3")]
 graph_offset = Vector2(-53, 99)
 
-[node name="EnemyCharacter" type="CharacterBody3D" node_paths=PackedStringArray("_HitBox", "_visionRay")]
-collision_layer = 3
+[node name="EnemyCharacter" type="CharacterBody3D" node_paths=PackedStringArray("_HitBox", "_HurtBox", "_visionRay", "_atk")]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_e0ixj")
 _HitBox = NodePath("HitBox/CollisionShape3D")
+_HurtBox = NodePath("HurtBox/CollisionShape3D")
 _atkRange = 1.5
-_radiusToTarget = 0.9
+_radiusToTarget = 0.8
 _visionRay = NodePath("RayCast3D")
+_atk = NodePath("AtkMelee")
 SPEED = 4.0
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.804255, 0)
-visible = false
 text = "koko"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.104526, 0)
 shape = SubResource("CapsuleShape3D_83pww")
 
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(-1, 0, 0)
+collide_with_areas = true
+debug_shape_custom_color = Color(0.8, 0, 0, 1)
+debug_shape_thickness = 1
+
 [node name="Visual" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.135648, 0)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visual"]
 transform = Transform3D(2.5, 0, 0, 0, 1.76777, 1.76777, 0, -1.76777, 1.76777, 0, 0.135648, 0)
-flip_h = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_jwnjq")
@@ -1224,8 +1282,8 @@ animation = &"Die"
 [node name="HitBox" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00837708, -0.00622559, 0)
-shape = SubResource("SphereShape3D_mcbo1")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00837708, -0.00622559, 0)
+shape = SubResource("CapsuleShape3D_ejngb")
 disabled = true
 
 [node name="HurtBox" type="Area3D" parent="."]
@@ -1234,20 +1292,27 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0148965, 0)
 shape = SubResource("CapsuleShape3D_m84u2")
 
+[node name="DetectionZone" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone"]
+shape = SubResource("SphereShape3D_ad4o2")
+
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_height_offset = 0.1
 avoidance_enabled = true
 height = 0.5
 radius = 0.1
-neighbor_distance = 0.1
-time_horizon_agents = 0.61
+neighbor_distance = 0.5
+max_neighbors = 30
 use_3d_avoidance = true
 avoidance_layers = 3
+avoidance_mask = 3
+debug_enabled = true
 
 [node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("6_72jau")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@188798")
+blackboard = NodePath("@Node@17622")
 actor = NodePath("..")
 
 [node name="BaseSequence" type="Node" parent="BeehaveTree"]
@@ -1275,12 +1340,6 @@ wait_time = 2.0
 
 [node name="MoveAway" type="Node" parent="BeehaveTree/BaseSequence/TimeLimiterDecorator"]
 script = ExtResource("16_hyu4w")
-
-[node name="DetectionZone" type="Area3D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone"]
-shape = SubResource("SphereShape3D_ad4o2")
 
 [node name="AnimationManager" type="Node" parent="." node_paths=PackedStringArray("_character", "_animationTree")]
 script = ExtResource("4_o4uso")
@@ -1326,16 +1385,21 @@ _animationTree = NodePath("../AnimationManager/AnimationTree")
 [node name="HealthSystem" type="Node" parent="."]
 script = ExtResource("6_2i8kn")
 _baseHp = 100.0
-_armor = 50.0
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(-1, 0, 0)
-collide_with_areas = true
-debug_shape_custom_color = Color(0.8, 0, 0, 1)
-debug_shape_thickness = 1
+[node name="AtkMelee" type="Node" parent="."]
+script = ExtResource("19_n2y33")
+_dashDist = 500.0
+
+[node name="exclamation" type="Sprite3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.0112939, 0.298366, -0.254338)
+visible = false
+billboard = 1
+texture_filter = 0
+texture = ExtResource("19_e6710")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="DetectionZone" to="." method="_on_detection_zone_area_entered"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="ChangeState" from="StateMachine" to="StateMachine" method="_on_change_state"]
 [connection signal="TakeDamage" from="HealthSystem" to="." method="_on_health_system_take_damage"]
 [connection signal="TakeDamage" from="HealthSystem" to="HealthSystem" method="_on_take_damage"]

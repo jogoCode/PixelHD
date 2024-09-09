@@ -4,12 +4,16 @@ class_name  EnemyCharacter
 @onready var _navAgent:NavigationAgent3D = $NavigationAgent3D;
 
 @export var _target:Character;
+var _safeVel:Vector3;
 
 var _ally:Array;
 @export var _HitBox:CollisionShape3D;
+@export var _HurtBox:CollisionShape3D;
 @export var _atkRange:float = 2;
 @export var _radiusToTarget:float = 0.5;
 @export var _visionRay:RayCast3D;
+
+@export var _atk:Attack;
 
 var randnum:float;
 var _canAtk:bool;
@@ -32,15 +36,12 @@ func _physics_process(delta):
 		velocity.x = 0;
 		velocity.z = 0;
 	$Label3D.text = _stateMachine.GetState();
-	_visionRay.target_position = global_position.direction_to(_target.global_position).normalized();
+	if _target:
+		_visionRay.target_position = global_position.direction_to(_target.global_position).normalized();
 
 func Atk():
-	_impulseVelocity = Vector3.ZERO
-	if _impulseVelocity == Vector3.ZERO:
-		var dir = (_target.position - global_position).normalized();
-		applyImpulse(dir*700*Level.DELTA,5);
-		change_randnum();
-		return;
+	if _atk !=null:
+		_atk.doAttack.emit();
 
 func change_randnum():
 	var rng = RandomNumberGenerator.new();
@@ -65,6 +66,7 @@ func MoveToTarget(delta)->void:
 	_navAgent.target_position = Vector3(get_circle_position(randnum).x,_target.global_position.y,get_circle_position(randnum).y);
 	_direction = _navAgent.get_next_path_position() - global_position;
 	_direction = _direction.normalized();
+	
 	if _navAgent.target_position.distance_to(global_position) < _atkRange/2:
 		_canAtk = true;
 	else:
@@ -77,8 +79,8 @@ func MoveToDirection(dir,delta)->void:
 func SetTarget(newTarget)->void:
 	_target = newTarget;
 
-func RayToTarget():
-	if _visionRay.is_colliding() and _visionRay.get_collider().get_parent() is EnemyCharacter:
+func RayTouchTarget()->bool:
+	if _visionRay.is_colliding() and _visionRay.get_collider().get_parent() == _target:
 		return true;
 	else:
 		return false;
@@ -92,6 +94,9 @@ func CheckAlly():
 				return;
 			allyIsAtk = false;
 	return allyIsAtk;
+
+func GetTargetDirection()->Vector3:
+	return _visionRay.target_position;
 
 func _on_detection_zone_area_entered(area):
 	if(area.get_parent() is PlayerCharacter):
@@ -111,3 +116,7 @@ func _on_hit_box_area_entered(area):
 				if node.has_signal("TakeDamage"):
 					node.emit_signal("TakeDamage",15,self);
 					return;
+
+
+func _on_navigation_agent_3d_velocity_computed(safe_velocity):
+	_safeVel = safe_velocity;

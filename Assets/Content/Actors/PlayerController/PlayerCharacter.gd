@@ -39,19 +39,21 @@ func Roll()->void:
 	if(_stateMachine.stateCheck()):
 		return;
 	_stateMachine.IsAction("Roll",0.5);
+	Level._CAMERA.ZoomCamera(-1,0.1)
 	var impulseDir;
-	jump();
+	#jump();
 	SoundFx.play("Roll",0.2);
 	if(_inputVector.length() == 0):
 		impulseDir = Vector3(_lastDir.x,0,-_lastDir.z);
 	if(_inputVector.length() > 0):
 		impulseDir = Vector3(_direction.x,0,_direction.z);
-	applyImpulse(impulseDir*350*Level.DELTA,2);
+	applyImpulse(impulseDir*450*Level.DELTA,2);
 
 func Atk()->void:
 	#_stateMachine.IsAction("Atk",0.1);
 	if(_stateMachine.stateCheck()):
 		return;
+	Level._CAMERA.ZoomCamera(-1,0.1)
 	SoundFx.play(_weapon.GetWeaponData()._audio,_weapon.GetWeaponData()._atkSpeed*0.1);
 	var impulseDir = Vector3(getLastDir().x,0,-getLastDir().z);
 	if(_inputVector.length() == 0): 
@@ -60,6 +62,7 @@ func Atk()->void:
 		impulseDir = Vector3(_direction.x,0,_direction.z);
 	applyImpulse(impulseDir*350*Level.DELTA,3.5);
 	_stateMachine.IsAtk();
+	return;
 	for child in get_children():
 		if child is Oscillator:
 			child.add_velocity.emit(Oscillator.Modes.SCALE,35);
@@ -67,3 +70,5 @@ func Atk()->void:
 
 func GetPlayerOrientation()->Vector3:
 	return _playerOrientation;
+
+

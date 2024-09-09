@@ -8,10 +8,10 @@ sky_material = ExtResource("1_bjct2")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_ife24")
-ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 3
-tonemap_exposure = 0.51
 fog_light_color = Color(0.211765, 0.607843, 0.690196, 1)
 fog_light_energy = 3.12
 fog_density = 0.0304
 volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.529412, 0.890196, 1, 1)

@@ -10,12 +10,12 @@ var _amount:int;
 func _ready():
 	_mainParticle.finished.connect(_destroy_at_end);
 	for particle in _particles:
-		particle.amount = _amount;
+		particle.amount = _amount+1;
 		particle.emitting = true;
 	
-	if _amount < 5:
-		$ImpactBlood.hide();
-		return
+	#if _amount < 5:
+		#$ImpactBlood.hide();
+		#return
 	var rand = randi_range(0,1);
 	if rand == 0:
 		SoundFx.play("BloodDrop",0.05)	

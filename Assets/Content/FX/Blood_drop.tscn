@@ -31,12 +31,12 @@ sub_emitter_frequency = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odk7f"]
 transparency = 1
+shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.486275, 0.0862745, 0.176471, 1)
+albedo_color = Color(0.843137, 0.156863, 0.282353, 1)
 albedo_texture = ExtResource("2_tq157")
-roughness = 0.0
 texture_filter = 0
 billboard_keep_scale = true
 
@@ -111,6 +111,7 @@ collision_bounce = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xk65t"]
 transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.721569, 0.109804, 0.247059, 1)
 albedo_texture = ExtResource("3_bc33w")

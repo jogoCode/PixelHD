@@ -19,3 +19,4 @@ func _physics_process(delta):
 	if _owner._stateMachine.GetState() == "Atk":
 		_animationTree["parameters/Pre_Atk/blend_position"] = Vector2(_owner.global_position.direction_to(_owner._target.global_position).x,vel.z);
 	_animationTree["parameters/Atk/blend_position"] = Vector2(lastVel.x,vel.z);
+	_animationTree["parameters/Hit/blend_position"] = Vector2(-vel.x,lastVel.z);

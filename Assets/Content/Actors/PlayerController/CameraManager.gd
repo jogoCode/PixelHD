@@ -14,9 +14,30 @@ func _ready():
 
 func _physics_process(delta):
 	if(_target!=null):
+		#var tween = get_tree().create_tween();
+		#tween.set_trans(6);
+		#tween.tween_property(self,"position",Vector3(_target.position.x+_offset.x,position.y+_offset.y,_target.position.z+_offset.z),0.1);
+		if(_target._stateMachine.GetState() == "Roll" or 
+			_target._stateMachine.GetState() == "Hit" or 
+			_target._stateMachine.GetState() == "Atk01" or
+			_target._stateMachine.GetState() == "Atk02" or
+			_target._stateMachine.GetState() == "Atk03"):
+				position = lerp(position,Vector3(_target.position.x+_offset.x,position.y+_offset.y,_target.position.z+_offset.z),_moveSpeed*10*delta);
 		position = lerp(position,Vector3(_target.position.x+_offset.x,position.y+_offset.y,_target.position.z+_offset.z),_moveSpeed*delta);
 
 func ShakeCamera(intensity,duration):
 	for node in get_children():
 		if(node.has_signal("Shake")):
 			node.emit_signal("Shake",intensity,duration);
+
+
+func ZoomCamera(intensity,duration):
+	var tween:Tween = get_tree().create_tween();
+	var lastFov:float = $Camera3D.fov;
+	tween.set_trans(6);
+	tween.tween_property($Camera3D,"fov",$Camera3D.fov+intensity,duration);
+	await get_tree().create_timer(duration*2).timeout;
+	tween = get_tree().create_tween();
+	tween.set_trans(6);
+	tween.tween_property($Camera3D,"fov",75,duration);
+	

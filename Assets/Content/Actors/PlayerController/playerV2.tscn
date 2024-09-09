@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bxebnimufc1" path="res://Assets/Sprites/Characters/n_sprite_character_roll.png" id="3_gaxww"]
 [ext_resource type="Texture2D" uid="uid://cb3fsi6b83dq5" path="res://Assets/Sprites/Characters/n_sprite_character_die.png" id="4_qlg7m"]
 [ext_resource type="Texture2D" uid="uid://d3m0eyl4el81m" path="res://Assets/Sprites/Characters/n_sprite_character_hit.png" id="4_v3yq3"]
-[ext_resource type="PackedScene" uid="uid://oa8fw4qtcfsf" path="res://Assets/Prefabs/weapon.tscn" id="7_avkv0"]
+[ext_resource type="PackedScene" uid="uid://oa8fw4qtcfsf" path="res://Assets/Content/Actors/PlayerController/Weapon/weapon.tscn" id="7_avkv0"]
 [ext_resource type="Texture2D" uid="uid://b1lpsga1grqdk" path="res://Assets/Sprites/Characters/fx_slash.png" id="10_3ypa0"]
 [ext_resource type="Texture2D" uid="uid://q07mg38k7eep" path="res://Assets/Sprites/Weapons/FireKatana.png" id="10_mwrdp"]
 [ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/RayCastInteract.gd" id="11_tfww6"]
@@ -24,7 +24,7 @@
 radius = 0.236637
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l48ms"]
-radius = 0.157194
+radius = 0.107801
 height = 0.483084
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwo35"]
@@ -777,6 +777,20 @@ tracks/9/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Oscillator")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_4lvm0"]
 resource_name = "AtkL_02"
@@ -878,6 +892,20 @@ tracks/7/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Oscillator")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_fhnk0"]
 resource_name = "AtkL_03"
@@ -978,6 +1006,20 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Oscillator")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.31),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_xr2un"]
@@ -1116,6 +1158,20 @@ tracks/10/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Oscillator")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_w0a3g"]
 resource_name = "AtkL_Heavy_02"
@@ -1240,6 +1296,20 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Oscillator")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_qqnyc"]
@@ -1378,6 +1448,20 @@ tracks/10/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Oscillator")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_a81ut"]
 resource_name = "AtkR_01"
@@ -1503,6 +1587,20 @@ tracks/9/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Oscillator")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_102yr"]
 resource_name = "AtkR_02"
@@ -1604,6 +1702,20 @@ tracks/7/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Oscillator")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ub7u1"]
 resource_name = "AtkR_03"
@@ -1704,6 +1816,20 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Oscillator")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.32),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_coxfr"]
@@ -1842,6 +1968,20 @@ tracks/10/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Oscillator")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ylfi8"]
 resource_name = "AtkR_Heavy_02"
@@ -1966,6 +2106,20 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Oscillator")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_vxrl1"]
@@ -2104,6 +2258,20 @@ tracks/10/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Oscillator")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 35.0],
+"method": &"_add_velocity"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_1f7qo"]
 resource_name = "DieL"
@@ -2236,7 +2404,6 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_io755"]
 resource_name = "EndRollL"
 length = 0.1
-step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2273,11 +2440,24 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Oscillator")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 55.0],
+"method": &"_add_velocity"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_6lyup"]
 resource_name = "EndRollR"
 length = 0.1
-step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2313,6 +2493,20 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Oscillator")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 55.0],
+"method": &"_add_velocity"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_spb6n"]
@@ -2581,7 +2775,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_ss0lh"]
 resource_name = "RollR"
 length = 0.5
-step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2617,6 +2810,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Particle/GPUParticles3D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_kabxc"]
@@ -3226,10 +3431,10 @@ states/Roll/position = Vector2(334, 413)
 states/Walk/node = SubResource("AnimationNodeBlendSpace1D_w7v1d")
 states/Walk/position = Vector2(697, 99)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_0be1o"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_wfij8"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_26dd6"), "Roll", "Walk", SubResource("AnimationNodeStateMachineTransition_nho6y"), "Walk", "Roll", SubResource("AnimationNodeStateMachineTransition_b6i26"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_53v26"), "Idle", "Atk01", SubResource("AnimationNodeStateMachineTransition_656wl"), "EndRoll", "Roll", SubResource("AnimationNodeStateMachineTransition_nj8n6"), "Roll", "EndRoll", SubResource("AnimationNodeStateMachineTransition_o3rsf"), "EndRoll", "Idle", SubResource("AnimationNodeStateMachineTransition_211tq"), "EndRoll", "Walk", SubResource("AnimationNodeStateMachineTransition_h2xua"), "Atk01", "Walk", SubResource("AnimationNodeStateMachineTransition_8aojh"), "Walk", "Atk01", SubResource("AnimationNodeStateMachineTransition_jwalv"), "EndRoll", "Atk01", SubResource("AnimationNodeStateMachineTransition_a3xaw"), "Atk02", "Idle", SubResource("AnimationNodeStateMachineTransition_6eibe"), "Atk01", "Roll", SubResource("AnimationNodeStateMachineTransition_1mhus"), "Roll", "Atk01", SubResource("AnimationNodeStateMachineTransition_756nl"), "Atk01", "Idle", SubResource("AnimationNodeStateMachineTransition_3jpxq"), "Idle", "Atk02", SubResource("AnimationNodeStateMachineTransition_mcdds"), "Walk", "Atk02", SubResource("AnimationNodeStateMachineTransition_ukacj"), "Atk02", "Walk", SubResource("AnimationNodeStateMachineTransition_j4k06"), "Atk01", "Atk02", SubResource("AnimationNodeStateMachineTransition_5k0ml"), "Atk02", "Atk03", SubResource("AnimationNodeStateMachineTransition_6ur8p"), "Atk03", "Atk01", SubResource("AnimationNodeStateMachineTransition_hhbj6"), "Atk03", "Idle", SubResource("AnimationNodeStateMachineTransition_w7lc1"), "Atk03", "Walk", SubResource("AnimationNodeStateMachineTransition_dy3ia"), "Idle", "Atk03", SubResource("AnimationNodeStateMachineTransition_8p7y0"), "Walk", "Atk03", SubResource("AnimationNodeStateMachineTransition_vjegg"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_ede1f"), "Walk", "Hit", SubResource("AnimationNodeStateMachineTransition_fof8r"), "Atk01", "Hit", SubResource("AnimationNodeStateMachineTransition_tu8oe"), "Atk02", "Hit", SubResource("AnimationNodeStateMachineTransition_ykbbf"), "Atk03", "Hit", SubResource("AnimationNodeStateMachineTransition_r8gin"), "EndRoll", "Hit", SubResource("AnimationNodeStateMachineTransition_gqb4e"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_kr8vb"), "Hit", "Walk", SubResource("AnimationNodeStateMachineTransition_yr46b"), "Walk", "Die", SubResource("AnimationNodeStateMachineTransition_ci8og"), "Atk03", "Die", SubResource("AnimationNodeStateMachineTransition_034vb"), "Atk02", "Die", SubResource("AnimationNodeStateMachineTransition_jm72u"), "Atk01", "Die", SubResource("AnimationNodeStateMachineTransition_hyi47"), "Hit", "Die", SubResource("AnimationNodeStateMachineTransition_2wv77"), "EndRoll", "Die", SubResource("AnimationNodeStateMachineTransition_288s5")]
-graph_offset = Vector2(47, -1.3985)
+graph_offset = Vector2(17, 157.602)
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_weapon")]
-collision_layer = 4
+collision_layer = 0
 script = ExtResource("1_8n4f4")
 _weapon = NodePath("Weapon")
 SPEED = 1.5
@@ -3251,8 +3456,8 @@ transform = Transform3D(2.5, 0, 0, 0, 1.76777, 1.76777, 0, -1.76777, 1.76777, 0,
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_g7ngw")
-animation = &"Idle"
-frame = 2
+animation = &"Hit"
+frame = 1
 
 [node name="Weapon" parent="." node_paths=PackedStringArray("_owner", "_slashSfx") instance=ExtResource("7_avkv0")]
 transform = Transform3D(0.78366, 0.160862, 0, -0.160862, 0.78366, 0, 0, 0, 0.799999, 0, 0.091204, 0)
@@ -3260,10 +3465,11 @@ _owner = NodePath("..")
 _slashSfx = NodePath("SlashFx")
 
 [node name="origin" parent="Weapon" index="2"]
-transform = Transform3D(0.989292, -0.015083, 0.145191, 0.14508, -0.00817135, -0.989389, 0.0161094, 0.99985, -0.00589561, 0.128325, 0.0277499, 0)
+transform = Transform3D(-0.878773, -0.0768834, -0.471012, -0.46922, -0.0410498, 0.882129, -0.0871564, 0.996192, -1.70506e-06, 0.073582, 0.0746714, 0.123268)
 
 [node name="WeaponSprite" parent="Weapon/origin" index="0"]
 transform = Transform3D(1, -2.28209e-08, -7.45058e-09, 7.45058e-09, -4.40371e-08, 1, -3.60819e-09, -1, -4.10851e-08, 0.355, -0.032, 1.49012e-08)
+flip_v = true
 texture = ExtResource("10_mwrdp")
 
 [node name="SlashFx" type="AnimatedSprite3D" parent="Weapon"]
@@ -3272,7 +3478,7 @@ modulate = Color(0.956863, 0.486275, 0.109804, 1)
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_fpc0d")
-frame = 16
+frame = 5
 
 [node name="RayCastInteract" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)
@@ -3282,9 +3488,6 @@ script = ExtResource("11_tfww6")
 
 [node name="Particle" parent="." instance=ExtResource("13_pr6my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.09)
-
-[node name="GPUParticles3D" parent="Particle" index="0"]
-emitting = false
 
 [node name="AnimationManager" type="Node" parent="." node_paths=PackedStringArray("_character", "_animationTree")]
 script = ExtResource("13_g0vxr")

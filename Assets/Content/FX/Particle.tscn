@@ -12,8 +12,10 @@ script = ExtResource("1_ox581")
 _particle = NodePath("GPUParticles3D")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
 amount = 5
-lifetime = 0.5
+lifetime = 0.8
+one_shot = true
 explosiveness = 0.96
 process_material = ExtResource("2_3treh")
 draw_pass_1 = SubResource("QuadMesh_0cq11")

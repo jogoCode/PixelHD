@@ -14,6 +14,7 @@ var _canTakeDamage:bool = true;
 @onready var _owner = get_parent();
 
 var fx = preload("res://Assets/Content/FX/AnimatedFx.tscn");
+var slashFx = preload("res://Assets/Content/FX/Slash_Fx.tscn")
 var bloodDrop = preload("res://Assets/Content/FX/Blood_drop.tscn");
 
 signal isDead();
@@ -46,30 +47,34 @@ func CanDeath():
 		_owner._stateMachine.IsDie();
 		if _owner is PlayerCharacter:
 			Level.FreezeFrame(0.1,1);
-		if(_destroyAtDeath):
-			#_owner.queue_free();
-			emit_signal("isDead");	
-		else:
-			emit_signal("isDead");
+			await get_tree().create_timer(1).timeout;
+			Level.GameFinished.emit();
+		elif _owner is EnemyCharacter:
+			Level.MonsterKill.emit();
+		emit_signal("isDead");
 
 func FeedBack(damage,damager): #Feedback du loose HP
 	var FxInstance = fx.instantiate();
 	var BloodInstance = bloodDrop.instantiate();
+	var SlashInstance = slashFx.instantiate();
 	# sound fx
 	SoundFx.play("Impact",0.1);
 	# impact fx
-	Level.CreateObject(FxInstance,_owner.global_position);
+	#Level.CreateObject(FxInstance,_owner.global_position);
+	Level.CreateFx(SlashInstance,Vector3(_owner.global_position.x,0.5,_owner.global_position.z),Vector3.ZERO);
 	await get_tree().create_timer(0.1).timeout;
 	Level._CAMERA.ShakeCamera(0.05*damage/3,0.15);
+	
 	if(_owner is Character):
 		if( damager !=null):
 			# create blood fx
-			Level.CreateFx(BloodInstance,_owner.global_position,damager.global_position,int(pow(damage,0.001)*pow(damage,0.8)));
+			print(damager.name)
+			Level.CreateFx(BloodInstance,Vector3(_owner.global_position.x,0.5,_owner.global_position.z),damager.global_position,int(pow(damage,0.001)*pow(damage,0.8)));
 			# apply damage impulse
 			var impulseDir = Vector3(damager.getLastDir().x,0,damager.getLastDir().z);
 			if _owner is PlayerCharacter:
 				#for player character
-				Level.FreezeFrame(0.2,0.2);
+				Level.FreezeFrame(0.2,0.2*damage/50);
 				_owner.applyImpulse(impulseDir*damager.getLastDir().length()*(550)*Level.DELTA,4.5);
 				for child in _owner.get_children():
 					if child is Oscillator:
@@ -78,12 +83,14 @@ func FeedBack(damage,damager): #Feedback du loose HP
 				#for enemy character
 				_owner.change_randnum()
 				_owner.applyImpulse(impulseDir*damager.getLastDir().length()*(450)*Level.DELTA,4.5);
-				Level.FreezeFrame(0.01,0.07);
+				Level.FreezeFrame(0.001,0.07);
 				for child in _owner.get_children():
 					if child is Oscillator:
 						child.add_velocity.emit(Oscillator.Modes.ROTATION,2*damage);
+			_owner.get_node("Visual/AnimatedSprite3D").modulate =Color(1,1,1,0.5);
+			await get_tree().create_timer(0.1).timeout;
+			_owner.get_node("Visual/AnimatedSprite3D").modulate =Color(1,1,1,1);
 			# apply juice
-			
 
 func _on_take_damage(damage,damager):
 	if(_owner is Character): #Chnage l'état du Character

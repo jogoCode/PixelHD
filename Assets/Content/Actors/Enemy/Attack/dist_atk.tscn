@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jeb8pnexwnyq"]
+
+[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/Attack/dist_atk.gd" id="1_a6m05"]
+
+[node name="dist_atk" type="Node"]
+script = ExtResource("1_a6m05")

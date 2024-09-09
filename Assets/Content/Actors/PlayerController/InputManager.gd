@@ -27,8 +27,8 @@ func _physics_process(delta):
 		inputDir.x = 0
 	_playerCharacter._inputVector = Vector2(sign(inputDir.x),sign(-inputDir.y));
 		# ATK
-	if(Input.is_action_just_pressed("ui_accept")):
-		add_to_inputs_lib("ui_accept");
+	if(Input.is_action_just_pressed("ui_attack")):
+		add_to_inputs_lib("ui_attack");
 		_playerCharacter.Atk();
 		buffer_input()
 		# DODGE

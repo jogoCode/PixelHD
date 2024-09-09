@@ -1,0 +1,483 @@
+[gd_scene load_steps=47 format=3 uid="uid://jq1khro0he8a"]
+
+[ext_resource type="Material" uid="uid://d2qf4wrpo8jau" path="res://Assets/Ressources/ProcessMaterial/procedural_sky_material.tres" id="1_uni4v"]
+[ext_resource type="Texture2D" uid="uid://dr377r4jo52s8" path="res://Assets/Sprites/Textures/platform_text.png" id="2_ictnj"]
+[ext_resource type="Texture2D" uid="uid://q07mg38k7eep" path="res://Assets/Sprites/Weapons/FireKatana.png" id="2_v3wrf"]
+[ext_resource type="Texture2D" uid="uid://3rjr00wn07pv" path="res://Assets/Sprites/Textures/NormalMap/platform_text_n.png" id="3_mpsfr"]
+[ext_resource type="Texture2D" uid="uid://d13nq1nxkqvsh" path="res://Assets/Sprites/Characters/n_sprite_character_sit.png" id="5_yfao7"]
+[ext_resource type="Texture2D" uid="uid://bknhovv5ollip" path="res://Assets/Sprites/FX/Smoke_FX3.png" id="6_eosml"]
+[ext_resource type="PackedScene" uid="uid://cydxbf4kd30w5" path="res://Assets/Models/ModelsPrefs/wall.tscn" id="7_if3t4"]
+[ext_resource type="PackedScene" uid="uid://cvtofc5wybet1" path="res://Assets/Models/ModelsPrefs/veg01.tscn" id="8_i7djn"]
+[ext_resource type="Script" path="res://Assets/Scenes/TitleScreen.gd" id="9_nxx04"]
+[ext_resource type="FontFile" uid="uid://c3rjhfocf1qp6" path="res://Assets/Fonts/PeaberryBase.ttf" id="9_pq533"]
+
+[sub_resource type="Sky" id="Sky_ife24"]
+sky_material = ExtResource("1_uni4v")
+
+[sub_resource type="Environment" id="Environment_lcxsq"]
+background_mode = 2
+sky = SubResource("Sky_ife24")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.05
+ambient_light_energy = 2.97
+tonemap_mode = 3
+tonemap_exposure = 0.63
+ssil_radius = 16.0
+sdfgi_enabled = true
+sdfgi_energy = 0.035
+fog_light_color = Color(0.0235294, 0.0313726, 0.0392157, 1)
+fog_light_energy = 0.66
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.3308
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_emission = Color(0.0313726, 0.164706, 0.298039, 1)
+volumetric_fog_emission_energy = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujqgp"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.427451, 0.427451, 0.427451, 1)
+albedo_texture = ExtResource("2_v3wrf")
+metallic_specular = 0.0
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12emu"]
+albedo_color = Color(0.301961, 0.380392, 0.45098, 1)
+albedo_texture = ExtResource("2_ictnj")
+normal_enabled = true
+normal_scale = 0.36
+normal_texture = ExtResource("3_mpsfr")
+uv1_scale = Vector3(51.56, 34.374, 51.56)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_w3ciq"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7o08s"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="Curve" id="Curve_i1jkw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.483516), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a7abv"]
+curve = SubResource("Curve_i1jkw")
+
+[sub_resource type="Gradient" id="Gradient_nxhfh"]
+offsets = PackedFloat32Array(0.0408163, 0.209184, 0.433673, 0.566327)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0.14902, 1, 0.796078, 0.45098, 0.0509804, 1, 1, 0.152941, 0.0862745, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p8cxy"]
+gradient = SubResource("Gradient_nxhfh")
+
+[sub_resource type="Curve" id="Curve_7pgek"]
+_data = [Vector2(0, 0.923077), 0.0, 1.12708, 0, 0, Vector2(0.558036, 0.43956), -1.78249, -1.78249, 0, 0, Vector2(1, 0), -0.0770122, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ccswl"]
+curve = SubResource("Curve_7pgek")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lvele"]
+lifetime_randomness = 0.08
+emission_shape_scale = Vector3(-11.22, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(0.004, 0, 0)
+angle_max = 112.9
+initial_velocity_min = -0.1
+initial_velocity_max = 0.1
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_ccswl")
+color_ramp = SubResource("GradientTexture1D_p8cxy")
+alpha_curve = SubResource("CurveTexture_a7abv")
+anim_speed_max = 4.47
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27i6g"]
+transparency = 1
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("6_eosml")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_8xr61"]
+material = SubResource("StandardMaterial3D_27i6g")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Animation" id="Animation_6e51f"]
+resource_name = "title_anim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../OmniLight3D2:shadow_normal_bias")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 10.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [7.999, 3.396, 7.999, 3.396, 7.999]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5bs2e"]
+_data = {
+"title_anim": SubResource("Animation_6e51f")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xudv7"]
+atlas = ExtResource("5_yfao7")
+region = Rect2(0, 0, 12, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl5sm"]
+atlas = ExtResource("5_yfao7")
+region = Rect2(12, 0, 12, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qmke"]
+atlas = ExtResource("5_yfao7")
+region = Rect2(24, 0, 12, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi4ii"]
+atlas = ExtResource("5_yfao7")
+region = Rect2(36, 0, 12, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7ogm"]
+atlas = ExtResource("5_yfao7")
+region = Rect2(48, 0, 12, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0mkb"]
+atlas = ExtResource("5_yfao7")
+region = Rect2(60, 0, 12, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qthp"]
+atlas = ExtResource("5_yfao7")
+region = Rect2(72, 0, 12, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1xsn"]
+atlas = ExtResource("5_yfao7")
+region = Rect2(84, 0, 12, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mj1yv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xudv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl5sm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qmke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi4ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7ogm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0mkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qthp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1xsn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0w5o"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5k8bh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tvgd"]
+bg_color = Color(1, 1, 1, 0)
+border_width_bottom = 6
+border_color = Color(1, 0.568627, 0.454902, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ynqy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgdqi"]
+bg_color = Color(1, 1, 1, 0)
+border_width_bottom = 5
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2b2b7"]
+
+[sub_resource type="Animation" id="Animation_p3kwh"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_efmug"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mk46f"]
+_data = {
+"fade_in": SubResource("Animation_p3kwh"),
+"fade_out": SubResource("Animation_efmug")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_13pks"]
+font = ExtResource("9_pq533")
+font_size = 86
+outline_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(19.685, 4.015)
+
+[node name="TittleScreen" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.759272, 0.650774, 0, -0.650774, 0.759272, -0.171, 0.775, 0.285)
+near = 0.008
+
+[node name="Scene" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Scene"]
+environment = SubResource("Environment_lcxsq")
+
+[node name="Sprite3D" type="Sprite3D" parent="Scene"]
+transform = Transform3D(-0.312335, 0.949972, 0, -0.8227, -0.27049, 0.5, 0.474986, 0.156167, 0.866025, 0.02, 0.118, -0.190891)
+material_override = SubResource("StandardMaterial3D_ujqgp")
+pixel_size = 0.003
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("2_v3wrf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scene"]
+transform = Transform3D(9, 0, 0, 0, 0.314, 0, 0, 0, 9, 0, -0.108312, 0)
+material_override = SubResource("StandardMaterial3D_12emu")
+mesh = SubResource("BoxMesh_w3ciq")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Scene/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scene/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7o08s")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Scene/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999998, 0.00741577, -0.451284, -0.0105896)
+size = Vector3(0.975647, 2, 0.991638)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene"]
+transform = Transform3D(-0.687415, 0.539197, -0.486546, 0.0625, 0.711363, 0.70004, 0.723571, 0.450809, -0.522701, 0, 2.2756, 0)
+light_energy = 0.0
+shadow_blur = 0.0
+sky_mode = 1
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Scene"]
+transform = Transform3D(-0.866026, -0.25, 0.433012, -2.18557e-08, 0.866025, 0.5, -0.5, 0.433013, -0.75, 4, 0, 0)
+light_energy = 0.0
+sky_mode = 2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Scene"]
+transform = Transform3D(0.998441, 0, -0.0558215, 0, 1, 0, 0.0558215, 0, 0.998441, -0.232, 0.159, 0.343)
+visible = false
+light_color = Color(1, 0.894118, 0.360784, 1)
+light_energy = 6.83
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 6.36397
+shadow_blur = 0.169
+spot_angle_attenuation = 1.86607
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007, 0.09, -0.149)
+light_color = Color(0.619608, 0.364706, 0.0901961, 1)
+light_energy = 7.0784
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 10.0
+shadow_opacity = 0.4
+shadow_blur = 10.0
+omni_range = 6.875
+omni_attenuation = 1.68179
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058, -0.159012)
+amount = 10
+lifetime = 0.95
+process_material = SubResource("ParticleProcessMaterial_lvele")
+draw_pass_1 = SubResource("QuadMesh_8xr61")
+
+[node name="wall7" parent="Scene" instance=ExtResource("7_if3t4")]
+transform = Transform3D(-0.142435, 0, -0.140401, 0, 0.2, 0, 0.140401, 0, -0.142435, -0.961, 0.085, -0.516)
+visible = false
+
+[node name="wall8" parent="Scene" instance=ExtResource("7_if3t4")]
+transform = Transform3D(-0.140401, 0, 0.142435, 0, 0.2, 0, -0.142435, 0, -0.140401, -0.961, 0.085, -0.516)
+visible = false
+
+[node name="Veg" parent="Scene" instance=ExtResource("8_i7djn")]
+transform = Transform3D(0.2, 0, 0, 0, 0.5, 0, 0, 0, 0.2, -0.947945, 0.0393, -0.318068)
+visible = false
+
+[node name="Veg2" parent="Scene" instance=ExtResource("8_i7djn")]
+transform = Transform3D(0.2, 0, 0, 0, 0.5, 0, 0, 0, 0.2, -1.02833, 0.0393, -0.189892)
+visible = false
+
+[node name="Veg3" parent="Scene" instance=ExtResource("8_i7djn")]
+transform = Transform3D(0.201294, 0, 0.137068, 0, 0.5, 0, -0.116217, 0, 0.237408, -0.917647, 0.0548525, -0.170822)
+visible = false
+
+[node name="Veg4" parent="Scene" instance=ExtResource("8_i7djn")]
+transform = Transform3D(0.2, 0, 0, 0, 0.5, 0, 0, 0, 0.2, -0.714278, 0.0393, -0.522945)
+visible = false
+
+[node name="Veg5" parent="Scene" instance=ExtResource("8_i7djn")]
+transform = Transform3D(0.2, 0, 0, 0, 0.5, 0, 0, 0, 0.2, -1.04532, 0.0393, -0.596566)
+visible = false
+
+[node name="Veg6" parent="Scene" instance=ExtResource("8_i7djn")]
+transform = Transform3D(0.2, 0, 0, 0, 0.5, 0, 0, 0, 0.2, -0.668052, 0.0393001, -1.09787)
+visible = false
+
+[node name="Veg7" parent="Scene" instance=ExtResource("8_i7djn")]
+transform = Transform3D(0.2, 0, 0, 0, 0.5, 0, 0, 0, 0.2, -0.36272, 0.0393001, -1.25596)
+visible = false
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06, 0.18, -0.08)
+light_color = Color(1, 0.407843, 0.32549, 1)
+light_energy = 0.998653
+light_specular = 1.814
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.9
+shadow_blur = 2.271
+omni_range = 1.282
+
+[node name="AnimationTree" type="AnimationPlayer" parent="Scene"]
+root_node = NodePath("../OmniLight3D")
+libraries = {
+"": SubResource("AnimationLibrary_5bs2e")
+}
+autoplay = "title_anim"
+
+[node name="Visual" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14, 0, -0.211012)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visual"]
+transform = Transform3D(2.5, 0, 0, 0, 2.16506, 1.25, 0, -1.25, 2.16506, -0.237951, 0.109161, -0.055857)
+transparency = 0.55
+pixel_size = 0.004
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_mj1yv")
+autoplay = "default"
+frame_progress = 0.226002
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("9_nxx04")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 64.0
+offset_top = 376.0
+offset_right = 212.0
+offset_bottom = 503.0
+theme_override_constants/separation = 15
+
+[node name="ButtonPlay" type="Button" parent="CanvasLayer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+focus_next = NodePath("../ButtonQuit")
+theme_override_fonts/font = ExtResource("9_pq533")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_r0w5o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5k8bh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4tvgd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ynqy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mgdqi")
+text = "PLAY"
+alignment = 0
+
+[node name="ButtonQuit" type="Button" parent="CanvasLayer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_pq533")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_r0w5o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5k8bh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2b2b7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ynqy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mgdqi")
+text = "EXIT
+"
+alignment = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_mk46f")
+}
+autoplay = "fade_out"
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -358.0
+offset_top = 64.0
+offset_right = 358.0
+offset_bottom = 200.0
+grow_horizontal = 2
+size_flags_vertical = 0
+text = "IVORY GUY"
+label_settings = SubResource("LabelSettings_13pks")
+horizontal_alignment = 1
+
+[connection signal="animation_finished" from="CanvasLayer/ColorRect/AnimationPlayer" to="CanvasLayer" method="_on_animation_player_animation_finished"]
+
+[editable path="Scene/wall8"]

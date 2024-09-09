@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://brxj63iw3kexm"]
+
+[ext_resource type="Script" path="res://Assets/Content/FX/ParticleManager.gd" id="1_ieers"]
+[ext_resource type="Texture2D" uid="uid://goj4yd6oq3li" path="res://Assets/Sprites/FX/slash_fx.png" id="1_tg6tk"]
+
+[sub_resource type="Curve" id="Curve_celbb"]
+_data = [Vector2(0, 0.252747), 0.0, 0.0, 0, 0, Vector2(0.866667, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mlyi8"]
+curve = SubResource("Curve_celbb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7luu3"]
+angle_min = -720.0
+angle_max = 720.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, 0, 0)
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_mlyi8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ffju"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_tg6tk")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mfsgd"]
+material = SubResource("StandardMaterial3D_8ffju")
+orientation = 2
+
+[node name="slash_fx" type="Node3D" node_paths=PackedStringArray("_mainParticle", "_particles")]
+script = ExtResource("1_ieers")
+_destroyAtEnd = true
+_mainParticle = NodePath("GPUParticles3D")
+_particles = [NodePath("GPUParticles3D")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0148381, 0)
+emitting = false
+amount = 2
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.5
+explosiveness = 1.0
+visibility_aabb = AABB(-0.579609, -0.648243, -0.001, 1.15922, 1.29649, 0.002)
+process_material = SubResource("ParticleProcessMaterial_7luu3")
+draw_pass_1 = SubResource("PlaneMesh_mfsgd")

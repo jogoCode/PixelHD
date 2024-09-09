@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/InputManager.gd" id="3_3c572"]
 [ext_resource type="Script" path="res://Assets/Scripts/Tools/AnimationManager.gd" id="4_j28b1"]
 [ext_resource type="Script" path="res://Assets/Content/Actors/StateMachine.gd" id="4_vliv5"]
-[ext_resource type="PackedScene" uid="uid://oa8fw4qtcfsf" path="res://Assets/Prefabs/weapon.tscn" id="6_0kr4w"]
+[ext_resource type="PackedScene" uid="uid://oa8fw4qtcfsf" path="res://Assets/Content/Actors/PlayerController/Weapon/weapon.tscn" id="6_0kr4w"]
 [ext_resource type="Resource" uid="uid://crwirbvd8pxh5" path="res://Assets/Ressources/Weapons/W_WoodSword.tres" id="7_60c37"]
 [ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/RayCastInteract.gd" id="7_idtos"]
 [ext_resource type="Script" path="res://Assets/Scripts/Tools/HealthSystem.gd" id="9_141d8"]

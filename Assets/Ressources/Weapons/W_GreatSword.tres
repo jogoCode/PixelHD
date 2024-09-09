@@ -11,6 +11,6 @@ _img = ExtResource("1_gep5y")
 _dmg = 15
 _atkSpeed = 0.75
 _desc = "C'est fat"
-_hitboxSize = 1.19
+_hitboxSize = 1.05
 _fxColor = Color(0.427451, 0.458824, 0.552941, 1)
 _audio = "G_Slash"
