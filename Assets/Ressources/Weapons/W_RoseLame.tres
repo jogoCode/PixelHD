@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://cem21m7h8e58x"]
+
+[ext_resource type="Texture2D" uid="uid://d2wm3t47pj03v" path="res://Assets/Sprites/Weapons/Roselame.png" id="1_2qag5"]
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Weapons.gd" id="2_csk5x"]
+
+[resource]
+script = ExtResource("2_csk5x")
+_name = "Rose lame"
+_type = 1
+_img = ExtResource("1_2qag5")
+_dmg = 16
+_atkSpeed = 1.4
+_desc = ""
+_price = 55
+_hitboxSize = 1.05
+_fxColor = Color(0.882353, 0.737255, 0.792157, 1)
+_shaded = true
+_audio = "G_Slash"

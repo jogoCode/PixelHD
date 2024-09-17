@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://jq1khro0he8a"]
+[gd_scene load_steps=51 format=3 uid="uid://doby2s10ygbc8"]
 
 [ext_resource type="Material" uid="uid://d2qf4wrpo8jau" path="res://Assets/Ressources/ProcessMaterial/procedural_sky_material.tres" id="1_uni4v"]
 [ext_resource type="Texture2D" uid="uid://dr377r4jo52s8" path="res://Assets/Sprites/Textures/platform_text.png" id="2_ictnj"]
@@ -8,8 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://bknhovv5ollip" path="res://Assets/Sprites/FX/Smoke_FX3.png" id="6_eosml"]
 [ext_resource type="PackedScene" uid="uid://cydxbf4kd30w5" path="res://Assets/Models/ModelsPrefs/wall.tscn" id="7_if3t4"]
 [ext_resource type="PackedScene" uid="uid://cvtofc5wybet1" path="res://Assets/Models/ModelsPrefs/veg01.tscn" id="8_i7djn"]
-[ext_resource type="Script" path="res://Assets/Scenes/TitleScreen.gd" id="9_nxx04"]
+[ext_resource type="Script" path="res://Assets/Scenes/title_screen.gd" id="9_nxbfx"]
 [ext_resource type="FontFile" uid="uid://c3rjhfocf1qp6" path="res://Assets/Fonts/PeaberryBase.ttf" id="9_pq533"]
+[ext_resource type="Texture2D" uid="uid://bkvbhgsxuqjfp" path="res://Assets/Sprites/UI/use_controller.png" id="11_74d3n"]
+[ext_resource type="AudioStream" uid="uid://de5yq4p73vcwe" path="res://Assets/Sounds/loop_campfire.wav" id="11_v3iwu"]
 
 [sub_resource type="Sky" id="Sky_ife24"]
 sky_material = ExtResource("1_uni4v")
@@ -205,8 +207,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0w5o"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgdqi"]
+bg_color = Color(1, 1, 1, 0)
+border_width_bottom = 5
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ynqy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5k8bh"]
 
@@ -215,12 +221,8 @@ bg_color = Color(1, 1, 1, 0)
 border_width_bottom = 6
 border_color = Color(1, 0.568627, 0.454902, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ynqy"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgdqi"]
-bg_color = Color(1, 1, 1, 0)
-border_width_bottom = 5
-expand_margin_bottom = 5.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0w5o"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2b2b7"]
 
@@ -266,10 +268,23 @@ font_size = 86
 outline_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(19.685, 4.015)
 
+[sub_resource type="LabelSettings" id="LabelSettings_1jcns"]
+font = ExtResource("9_pq533")
+font_size = 30
+font_color = Color(1, 0.45, 0.45, 1)
+outline_size = 15
+shadow_offset = Vector2(19.685, 4.015)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s4bjd"]
+font = ExtResource("9_pq533")
+font_size = 30
+font_color = Color(1, 0.737197, 0.723036, 1)
+shadow_offset = Vector2(19.685, 4.015)
+
 [node name="TittleScreen" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.759272, 0.650774, 0, -0.650774, 0.759272, -0.171, 0.775, 0.285)
+transform = Transform3D(1, 0, 0, 0, 0.759272, 0.650774, 0, -0.650774, 0.759272, -0.046, 0.775, 0.285)
 near = 0.008
 
 [node name="Scene" type="Node3D" parent="."]
@@ -413,12 +428,12 @@ autoplay = "default"
 frame_progress = 0.226002
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("9_nxx04")
+script = ExtResource("9_nxbfx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 64.0
+offset_left = 256.0
 offset_top = 376.0
-offset_right = 212.0
+offset_right = 404.0
 offset_bottom = 503.0
 theme_override_constants/separation = 15
 
@@ -427,30 +442,45 @@ texture_filter = 1
 layout_mode = 2
 focus_next = NodePath("../ButtonQuit")
 theme_override_fonts/font = ExtResource("9_pq533")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_r0w5o")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxFlat_mgdqi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ynqy")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5k8bh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4tvgd")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ynqy")
-theme_override_styles/focus = SubResource("StyleBoxFlat_mgdqi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r0w5o")
 text = "PLAY"
+alignment = 0
+
+[node name="ButtonTutorial" type="Button" parent="CanvasLayer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+focus_next = NodePath("../ButtonQuit")
+theme_override_fonts/font = ExtResource("9_pq533")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_mgdqi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ynqy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5k8bh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4tvgd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r0w5o")
+text = "TUTORIAL"
 alignment = 0
 
 [node name="ButtonQuit" type="Button" parent="CanvasLayer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_pq533")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = SubResource("StyleBoxFlat_r0w5o")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxFlat_mgdqi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ynqy")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5k8bh")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_2b2b7")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2ynqy")
-theme_override_styles/focus = SubResource("StyleBoxFlat_mgdqi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r0w5o")
 text = "EXIT
 "
 alignment = 0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -477,6 +507,51 @@ size_flags_vertical = 0
 text = "IVORY GUY"
 label_settings = SubResource("LabelSettings_13pks")
 horizontal_alignment = 1
+
+[node name="Proto" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 128.0
+offset_top = 136.0
+offset_right = 226.0
+offset_bottom = 167.0
+grow_horizontal = 2
+size_flags_vertical = 0
+text = "PROTO
+"
+label_settings = SubResource("LabelSettings_1jcns")
+horizontal_alignment = 1
+
+[node name="Proto2" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -832.0
+offset_top = 1000.0
+offset_right = -116.0
+offset_bottom = 1136.0
+grow_horizontal = 2
+size_flags_vertical = 0
+text = "Use a controller plz plz plz
+"
+label_settings = SubResource("LabelSettings_s4bjd")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Proto2"]
+modulate = Color(1, 0.737255, 0.721569, 1)
+layout_mode = 0
+offset_left = 128.0
+offset_top = -152.0
+offset_right = 328.0
+offset_bottom = -16.0
+texture = ExtResource("11_74d3n")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_v3iwu")
+volume_db = -15.936
+pitch_scale = 0.77
+autoplay = true
 
 [connection signal="animation_finished" from="CanvasLayer/ColorRect/AnimationPlayer" to="CanvasLayer" method="_on_animation_player_animation_finished"]
 

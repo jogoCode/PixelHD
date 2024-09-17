@@ -6,8 +6,10 @@ class_name Weapon;
 var direction;
 var inputVector;
 
+@export var _sharpness:float;
+
 @export var _weaponActualStats:R_Weapon;
-@export var _sprite:Sprite3D; 
+@export var _sprite:Sprite3D;
 @export var _hitBox:CollisionShape3D;
 @export var _slashSfx:AnimatedSprite3D;
 
@@ -18,64 +20,55 @@ var _cooldown:float;
 var _hitBoxTime:float;
 var _isHit:bool;
 
-signal ChangeWeapon(newWeapon:R_Weapon,dropPos:Vector3);
+# the num off anim to sharpen
+var _numSharpenAnim:int = 4;
+# actual sharpen anim
+var _sharpenAnim:int = 0;
+
+signal ChangeWeapon(newWeapon:R_Weapon,sharpness:float,dropPos:Vector3);
 signal AtkFinished();
+signal sharpnesChanged();
+
 
 func _ready():
-	#hide();
+	$Spark.emitting = false;
 	rotation_degrees = Vector3(-45,0,-11.6);
 	await  get_tree().create_timer(0.5).timeout;
-	SetWeapon(_weaponActualStats);
+	SetWeapon(_weaponActualStats,100);
+	_owner._stateMachine.StateChanged.connect(_reset_sharpenAnim);
 
 
 func _physics_process(delta):
 	if(_owner._stateMachine.GetState() == "Atk01" or 
 	   _owner._stateMachine.GetState() == "Atk02" or 
-	   _owner._stateMachine.GetState() == "Atk03"):
+	   _owner._stateMachine.GetState() == "Atk03" or 
+	   _owner._stateMachine.GetState() == "Sharpen" or
+	   _owner._stateMachine.GetState() == "BladeBounce"):
 			#await  get_tree().create_timer(_cooldown).timeout;
 			show();
-			_slashSfx.modulate = _weaponActualStats._fxColor;
+			if (_weaponActualStats!= null):
+				_slashSfx.modulate = _weaponActualStats._fxColor;
 			_owner._stateMachine._animationTree["parameters/conditions/isAtk"] = false; 
 			if _isHit != false:
 				_hitBox.disabled = true;
 	else:
 		hide();
-		#if(_hitBox.disabled == false):
 		_hitBox.disabled = true;
 		_isHit = false;
-			#await  get_tree().create_timer(_cooldown).timeout;
 		emit_signal("AtkFinished");
 	HitBoxOrientation();
 
 func  HitBoxOrientation():
 	var area3d = _hitBox.get_parent();
-	match _owner.GetPlayerOrientation():
-		Vector3(1,0,0): #Right
-			area3d.rotation_degrees = Vector3(45,5,5);
-		Vector3(-1,0,0): #Left
-			area3d.rotation_degrees = Vector3(-45,180,-11);
-
-func WeaponOrientation()->void: #OBSOLETE
-	pass
+	if _owner.GetPlayerOrientation().x >0:
+		area3d.rotation_degrees = Vector3(45,5,5);
+	if _owner.GetPlayerOrientation().x <0:
+		area3d.rotation_degrees = Vector3(-45,180,-11);
 	#match _owner.GetPlayerOrientation():
 		#Vector3(1,0,0): #Right
-			#rotation_degrees = Vector3(0,0,0);
+			#area3d.rotation_degrees = Vector3(45,5,5);
 		#Vector3(-1,0,0): #Left
-			#rotation_degrees = Vector3(0,-180,0);
-		#Vector3(0,0,-1): #Down
-			#rotation_degrees = Vector3(0,-90,0);
-		#Vector3(0,0,1): #Up
-			#rotation_degrees = Vector3(0,90,0);
-		##----------------DIAG--------------------------
-		#Vector3(1,0,1): #DiagUpRight
-			#rotation_degrees = Vector3(0,90,0);
-		#Vector3(-1,0,1): #DiagDownLeft
-			#rotation_degrees = Vector3(0,90,0);
-		#Vector3(-1,0,-1): #DiagUpLeft
-			#rotation_degrees = Vector3(0,-90,0);
-		#Vector3(1,0,-1): #DiagDownRight
-			#rotation_degrees = Vector3(0,-90,0);	
-
+			#area3d.rotation_degrees = Vector3(-45,180,-11);
 
 func GetWeaponData():
 	return _weaponActualStats;
@@ -85,21 +78,51 @@ func ActiveHitBox(timeToDisable):
 	await get_tree().create_timer(timeToDisable).timeout;
 	_hitBox.disabled = true;
 
-func SetWeapon(newWeapon:R_Weapon):
+func SetWeapon(newWeapon:R_Weapon,sharpness):
+	if newWeapon == null:
+		return;
+	_sharpness = sharpness;
 	_weaponActualStats = newWeapon;
 	_sprite.texture = newWeapon._img;
 	_dmg =  newWeapon._dmg;
 	_cooldown = newWeapon._atkSpeed;
+	_sprite.shaded = newWeapon._shaded;
 	$Area3D/CollisionShape3D.shape.radius = 0.51;
 	$Area3D/CollisionShape3D.shape.height = newWeapon._hitboxSize;
+	sharpnesChanged.emit();
+
+func reduce_sharpenAnim(value):
+	_numSharpenAnim-=value;
+	_numSharpenAnim = clamp(_numSharpenAnim,1,6);
+	
+func _reset_sharpenAnim():
+	_sharpenAnim = 0
+
+func _add_sharpness():
+	_sharpenAnim += 1;
+	if _sharpenAnim == _numSharpenAnim:
+		_sharpness = 100;
+		sharpnesChanged.emit();
+		#_owner._stateMachine.IsAction("Idle",0.1)
+		_owner._stateMachine._stateAnimation.travel("Idle");
+
+func _use_sharpness():
+	_sharpness-=2;
+	_sharpness = clamp(_sharpness,0,100);
+	sharpnesChanged.emit();
 
 
-func _on_change_weapon(newWeapon:R_Weapon,dropPos:Vector3):
-	var pickup = preload("res://Assets/Prefabs/objPickup.tscn");
-	var pickupInstance:ObjPickup = pickup.instantiate();
-	pickupInstance._weapon = _weaponActualStats;
-	SetWeapon(newWeapon);
-	Level.CreateObject(pickupInstance,dropPos);
+func _on_change_weapon(newWeapon:R_Weapon,sharpness,dropPos:Vector3):
+	var lastWeapon
+	if _weaponActualStats != null:
+		var pickup = preload("res://Assets/Prefabs/objPickup.tscn");
+		var pickupInstance:ObjPickup = pickup.instantiate();
+		pickupInstance._weapon = _weaponActualStats;
+		pickupInstance._sharpness = _sharpness;
+		Level.CreateObject(pickupInstance,dropPos);
+		if dropPos == Vector3.DOWN:
+			pickupInstance.queue_free();
+	SetWeapon(newWeapon,sharpness);
 
 
 func _on_area_3d_area_entered(area):
@@ -108,4 +131,8 @@ func _on_area_3d_area_entered(area):
 		for node in area.get_parent().get_children():
 			if node.has_signal("TakeDamage"):
 				if node._actualHp >0 :
-					node.emit_signal("TakeDamage",_weaponActualStats._dmg,_owner);
+					_use_sharpness();
+					if _sharpness >0:
+						node.emit_signal("TakeDamage",_weaponActualStats._dmg,_owner);
+					else:
+						node.emit_signal("TakeDamage",0,_owner);

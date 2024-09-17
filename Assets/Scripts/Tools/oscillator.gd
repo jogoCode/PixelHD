@@ -46,7 +46,9 @@ func _process(delta):
 		Modes.POSITION:
 			PosMode();
 		Modes.ROTATION:
-			RotMode();	
+			RotMode();
+	if Engine.get_frames_per_second() < 10:
+		_target.scale =  _baseScale;	
 
 func Oscillator(delta):
 	var force = -_spring * _displacement - _damp * _velocity;

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://oa8fw4qtcfsf"]
+[gd_scene load_steps=8 format=3 uid="uid://oa8fw4qtcfsf"]
 
 [ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/Weapon/Weapon.gd" id="1_jxqvk"]
-[ext_resource type="Resource" uid="uid://cp3ja8rwcof3e" path="res://Assets/Ressources/Weapons/W_Branch.tres" id="2_jghgv"]
+[ext_resource type="Resource" uid="uid://cp3ja8rwcof3e" path="res://Assets/Ressources/Weapons/W_Stick.tres" id="2_jghgv"]
 [ext_resource type="Texture2D" uid="uid://o7l86ri6mgoi" path="res://Assets/Sprites/Weapons/MoonLight.png" id="3_hpmsy"]
+[ext_resource type="PackedScene" uid="uid://bf6un2fxybn1f" path="res://Assets/Content/FX/sparkFx.tscn" id="4_ahc5k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4v1r6"]
 radius = 0.509572
@@ -57,5 +58,9 @@ texture_filter = 0
 render_priority = 2
 texture = ExtResource("3_hpmsy")
 
+[node name="Spark" parent="." instance=ExtResource("4_ahc5k")]
+
 [connection signal="ChangeWeapon" from="." to="." method="_on_change_weapon"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+
+[editable path="Spark"]

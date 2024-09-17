@@ -9,12 +9,12 @@ func _ready():
 func _process(delta):
 	if(is_colliding()):
 		if(get_collider() != null):
-			get_collider().get_parent().emit_signal("DisplayStats");
+			if get_collider().get_parent().has_signal("DisplayStats"):
+				get_collider().get_parent().emit_signal("DisplayStats");
 		if(_canActive):
 			_canActive = false;
 			for node in get_collider().get_parent().get_children():
 				node.emit_signal("Interact",_owner);
-	
 	WeaponOrientation();
 
 
@@ -40,6 +40,7 @@ func WeaponOrientation()->void:
 
 
 func _on_input_manager_interact():
+	print("c'est moi",name)
 	_canActive = true;
 	await get_tree().create_timer(0.1).timeout;
 	_canActive = false;

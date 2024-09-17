@@ -39,6 +39,7 @@ func ComboTimer():
 func SetState(newState):
 	#_stateAnimation.travel(newState);
 	_actualState = _stateAnimation.get_current_node();
+	StateChanged.emit();
 
 func GetState()->String:
 	return _actualState;
@@ -52,6 +53,7 @@ func _get_configuration_warnings():
 	
 
 func IsAtk() -> void:
+	StateChanged.emit();
 	comboResetTimer += 0.5;
 	if(combo==1):
 		_animationTree["parameters/conditions/isAtk01"] = true;
@@ -71,6 +73,7 @@ func IsAtk() -> void:
 	_animationTree["parameters/conditions/isAtk03"] = false;
 
 func IsAction(newState:String,resetTime:float):
+	StateChanged.emit();
 	if(GetState()!= newState):
 		_animationTree["parameters/conditions/is"+newState] = true; 
 		await get_tree().create_timer(resetTime).timeout;
@@ -86,7 +89,8 @@ func stateCheck():
 	GetState() == "EndRoll" or
 	GetState() == "Atk02" or
 	GetState() == "Atk03" or
-	GetState() == "Hit" ):
+	GetState() == "Hit" or
+	GetState() == "BladeBounce"):
 		return true;
 	else:
 		return false;
@@ -95,7 +99,6 @@ func IsHit():
 	_animationTree["parameters/conditions/isHit"] = true;
 	await get_tree().create_timer(0.2).timeout;
 	_animationTree["parameters/conditions/isHit"] = false;
-
 
 func IsDie():
 	_animationTree["parameters/conditions/isAtk"] = false; 

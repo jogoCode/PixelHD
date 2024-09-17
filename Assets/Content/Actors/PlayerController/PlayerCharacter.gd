@@ -6,6 +6,10 @@ var _playerOrientation:Vector3;
 var _inputVector:Vector2;
 
 @export var _weapon:Weapon;
+var _delta;
+
+func _process(delta: float) -> void:
+	_delta = delta;
 
 func _physics_process(delta):
 	super._physics_process(delta);
@@ -14,7 +18,9 @@ func _physics_process(delta):
 		_stateMachine.GetState() == "Atk02" or 
 		_stateMachine.GetState() == "Atk03" or
 		_stateMachine.GetState() == "Hit" or 
-		_stateMachine.GetState() == "Die"):
+		_stateMachine.GetState() == "Die" or
+		_stateMachine.GetState() == "Sharpen" or
+		_stateMachine.GetState() == "BladeBounce"):
 		velocity = Vector3(0,velocity.y,0);
 	elif(_stateMachine.GetState() != "Hit" and
 		_stateMachine.GetState() != "Roll" and 
@@ -47,11 +53,12 @@ func Roll()->void:
 		impulseDir = Vector3(_lastDir.x,0,-_lastDir.z);
 	if(_inputVector.length() > 0):
 		impulseDir = Vector3(_direction.x,0,_direction.z);
-	applyImpulse(impulseDir*450*Level.DELTA,2);
+	applyImpulse(impulseDir*4,2);
 
 func Atk()->void:
-	#_stateMachine.IsAction("Atk",0.1);
-	if(_stateMachine.stateCheck()):
+	if _weapon._weaponActualStats == null:
+		return;
+	if(_stateMachine.stateCheck() or _stateMachine.GetState() == "Sharpen"):
 		return;
 	Level._CAMERA.ZoomCamera(-1,0.1)
 	SoundFx.play(_weapon.GetWeaponData()._audio,_weapon.GetWeaponData()._atkSpeed*0.1);
@@ -60,15 +67,16 @@ func Atk()->void:
 		impulseDir = Vector3(_lastDir.x,0,-_lastDir.z);
 	if(_inputVector.length() > 0):
 		impulseDir = Vector3(_direction.x,0,_direction.z);
-	applyImpulse(impulseDir*350*Level.DELTA,3.5);
+	applyImpulse(impulseDir*3,3.5);
 	_stateMachine.IsAtk();
-	return;
-	for child in get_children():
-		if child is Oscillator:
-			child.add_velocity.emit(Oscillator.Modes.SCALE,35);
+	
+func Sharpen():
+	if _weapon._sharpness<100:
+		_stateMachine.IsAction("Sharpen",0.2);
 
+
+func GetHp():
+	return $HealthSystem._actualHp;
 
 func GetPlayerOrientation()->Vector3:
 	return _playerOrientation;
-
-

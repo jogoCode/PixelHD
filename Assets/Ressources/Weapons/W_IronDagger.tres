@@ -5,12 +5,14 @@
 
 [resource]
 script = ExtResource("2_bk5y5")
-_name = "Iron sword"
+_name = "Iron Dagger"
 _type = 0
 _img = ExtResource("1_cgxxi")
 _dmg = 6
-_atkSpeed = 3.0
+_atkSpeed = 1.5
 _desc = "Aie sa coupe !!"
+_price = 8
 _hitboxSize = 0.5
 _fxColor = Color(0.156863, 0.360784, 0.768627, 1)
+_shaded = true
 _audio = "Slash"

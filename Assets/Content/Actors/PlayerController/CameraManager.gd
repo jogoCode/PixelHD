@@ -6,6 +6,8 @@ class_name  MainCamera;
 @export var _offset:Vector3 = Vector3(0,0,2);
 @export var _oscillator:Oscillator;
 
+var _inZoom:bool = false;
+
 func _ready():
 	await get_tree().create_timer(1).timeout;
 	for node in get_parent().get_children():
@@ -37,7 +39,11 @@ func ZoomCamera(intensity,duration):
 	tween.set_trans(6);
 	tween.tween_property($Camera3D,"fov",$Camera3D.fov+intensity,duration);
 	await get_tree().create_timer(duration*2).timeout;
+	_inZoom = true;	
 	tween = get_tree().create_tween();
-	tween.set_trans(6);
+	tween.set_trans(1);
 	tween.tween_property($Camera3D,"fov",75,duration);
-	
+	tween.finished.connect(reset_in_zoom);
+
+func reset_in_zoom():
+	_inZoom = false;

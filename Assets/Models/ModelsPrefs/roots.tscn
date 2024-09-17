@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://vwvwrkpj4dnb"]
+
+[ext_resource type="PackedScene" uid="uid://cc6bcghf7nqsv" path="res://Assets/Models/Raw/Roots.fbx" id="1_p2fkr"]
+[ext_resource type="Texture2D" uid="uid://cnntreal8rfef" path="res://Assets/Sprites/Textures/text_roots.png" id="2_ub6kw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic8bi"]
+cull_mode = 2
+albedo_texture = ExtResource("2_ub6kw")
+texture_filter = 0
+
+[node name="Roots" instance=ExtResource("1_p2fkr")]
+
+[node name="Cylindre_002" parent="." index="0"]
+transform = Transform3D(25, 0, 0, 0, -1.09278e-06, 25, 0, -25, -1.09278e-06, 0.153759, 0.276191, 0.129862)
+material_override = SubResource("StandardMaterial3D_ic8bi")

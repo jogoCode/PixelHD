@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="R_Object" load_steps=4 format=3 uid="uid://blh7alsxnbxjp"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Objects.gd" id="1_l8fik"]
+[ext_resource type="Texture2D" uid="uid://tgnky7gtlbsx" path="res://Assets/Sprites/Object/whetstone.png" id="1_lvs34"]
+
+[sub_resource type="GDScript" id="GDScript_pa04i"]
+script/source = "extends Node;
+
+func action(value):
+	Level._PLAYER._weapon.reduce_sharpenAnim(value);
+"
+
+[resource]
+script = ExtResource("1_l8fik")
+_name = "Whetstone"
+_type = 0
+_img = ExtResource("1_lvs34")
+_value = 1.0
+_bonus = SubResource("GDScript_pa04i")
+_desc = "Whest faster"
+_fxColor = Color(0, 0, 0, 1)
+_sufix = ""
+_price = 35
+_audio = ""

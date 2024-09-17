@@ -7,13 +7,15 @@ class_name AnimationManager
 
 var _animSpeed:float = 1;
 
+	
+
 func _ready():
 	if(_character == null):
 		printerr("_character variable is null");
 	if(_stateAnimation == null):
 		printerr("_stateAnimation variable is null");
+	$AnimationTree.active = true;
 
 
 func _set_anim_speed(value):
 	_animSpeed = value;
-

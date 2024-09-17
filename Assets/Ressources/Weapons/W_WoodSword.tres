@@ -5,12 +5,14 @@
 
 [resource]
 script = ExtResource("2_f87kp")
-_name = "Wooden Sword"
+_name = "Training Sword"
 _type = 0
 _img = ExtResource("1_emkle")
-_dmg = 3
-_atkSpeed = 1.0
+_dmg = 5
+_atkSpeed = 1.5
 _desc = "Sa coupe pas un merde"
-_hitboxSize = 0.8
+_price = 6
+_hitboxSize = 0.6
 _fxColor = Color(0.733333, 0.458824, 0.278431, 1)
+_shaded = true
 _audio = "Slash"

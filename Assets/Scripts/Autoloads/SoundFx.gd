@@ -10,7 +10,12 @@ var sounds = {
 	"Roll" : load("res://Assets/Sounds//audio_roll.wav"),
 	"FootSteps" : load("res://Assets/Sounds/audio_FootStep-001.wav"),
 	"BloodDrop" : load("res://Assets/Sounds/audio_blood_drop.wav"),
-	"BassDrop" : load("res://Assets/Sounds/audio_bassDrop.wav")
+	"BassDrop" : load("res://Assets/Sounds/audio_bassDrop.wav"),
+	"ZombieAtk" :load("res://Assets/Sounds/audio_zombie.wav"),
+	"SnakeAtk" :load("res://Assets/Sounds/audio_snake.wav"),
+	"BounceBlade" :load("res://Assets/Sounds/audio_bounce_blade.wav"),
+	"Sharpen01" : load('res://Assets/Sounds/audio_sharpen01.wav'),
+	"Sharpen02" : load("res://Assets/Sounds/audio_sharpen02.wav")
 }
 
 @onready var sound_players:Array = get_children();
@@ -18,7 +23,7 @@ var sounds = {
 func _ready():
 	await  get_tree().create_timer(0.1).timeout;
 
-func play(sound_name:String,delay:float):
+func play(sound_name:String,delay:float=0):
 	if is_activate:
 		await get_tree().create_timer(delay).timeout;
 		if sound_name == "Impact":
@@ -29,7 +34,7 @@ func play(sound_name:String,delay:float):
 			sound_to_play = sounds[sound_name][int(rand)];
 		for sound_player in sound_players:
 			if(sound_player.playing and sound_player.stream == sound_to_play):
-				sound_player.volume_db -=10;
+				sound_player.volume_db =-10;
 
 			if(!sound_player.playing):
 				sound_player.volume_db =0;

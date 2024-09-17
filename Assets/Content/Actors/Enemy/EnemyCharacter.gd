@@ -18,9 +18,20 @@ var _ally:Array;
 var randnum:float;
 var _canAtk:bool;
 
+@export var _soundAtk:String;
+
+@export var _mood:Moods;
+@export var _canChangeMood:bool = true;
+
+enum Moods{
+	STRATEGIC,
+	FIGHTER
+}
+
 func _ready():
 	_HitBox.disabled = true;
-	change_randnum()
+	change_randnum();
+	change_mood();
 
 func _physics_process(delta):
 	if _stateMachine.GetState() == "Die":
@@ -33,14 +44,21 @@ func _physics_process(delta):
 	if (_stateMachine.GetState() == "Hit" or 
 	_stateMachine.GetState() == "Atk" or
 	_stateMachine.GetState() == "Pre_Atk"):
+		if(_stateMachine.GetState() == "Hit"):
+			_mood = 1;
 		velocity.x = 0;
 		velocity.z = 0;
-	$Label3D.text = _stateMachine.GetState();
+	$Label3D.text = _stateMachine.GetState()+" "+str(_mood)#+" "+str(_navAgent.target_position.distance_to(global_position));
 	if _target:
-		_visionRay.target_position = global_position.direction_to(_target.global_position).normalized();
+		_visionRay.target_position = global_position.direction_to(_target.global_position).normalized()*_atkRange;
+
+func change_mood():
+	if _canChangeMood:
+		_mood = randi_range(0,1);
 
 func Atk():
 	if _atk !=null:
+		SoundFx.play(_soundAtk);
 		_atk.doAttack.emit();
 
 func change_randnum():
@@ -50,7 +68,6 @@ func change_randnum():
 
 func MoveAwayToTarget(delta)->void:
 	var negVel = -(global_position.direction_to(_target.global_position).normalized());
-	print(negVel);
 	velocity = negVel*SPEED*12*delta;
 	#velocity = velocity.lerp(negVel*SPEED/6,SPEED/6*delta);
 
@@ -66,12 +83,16 @@ func MoveToTarget(delta)->void:
 	_navAgent.target_position = Vector3(get_circle_position(randnum).x,_target.global_position.y,get_circle_position(randnum).y);
 	_direction = _navAgent.get_next_path_position() - global_position;
 	_direction = _direction.normalized();
-	
-	if _navAgent.target_position.distance_to(global_position) < _atkRange/2:
+	velocity = velocity.lerp(_direction*SPEED/6,SPEED/6*delta);
+	return
+	# test
+	if _navAgent.target_position.distance_to(global_position) < _atkRange/1.1:
 		_canAtk = true;
+		if velocity != Vector3.ZERO:
+			_lastDir = velocity;
 	else:
 		_canAtk = false;
-	velocity = velocity.lerp(_direction*SPEED/6,SPEED/6*delta);
+	
 
 func MoveToDirection(dir,delta)->void:
 	velocity = velocity.lerp(dir*SPEED/4,SPEED/2*delta);
@@ -82,8 +103,10 @@ func SetTarget(newTarget)->void:
 func RayTouchTarget()->bool:
 	if _visionRay.is_colliding() and _visionRay.get_collider().get_parent() == _target:
 		return true;
-	else:
+	if _visionRay.is_colliding() and _visionRay.get_collider().get_parent() is EnemyCharacter:
+		change_randnum();
 		return false;
+	return false;
 
 func CheckAlly():
 	var allyIsAtk:bool
@@ -96,7 +119,8 @@ func CheckAlly():
 	return allyIsAtk;
 
 func GetTargetDirection()->Vector3:
-	return _visionRay.target_position;
+	return _visionRay.target_position.normalized();
+
 
 func _on_detection_zone_area_entered(area):
 	if(area.get_parent() is PlayerCharacter):
@@ -116,6 +140,7 @@ func _on_hit_box_area_entered(area):
 				if node.has_signal("TakeDamage"):
 					node.emit_signal("TakeDamage",15,self);
 					return;
+
 
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):

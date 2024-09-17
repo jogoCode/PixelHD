@@ -4,11 +4,11 @@ class_name Character
 @export var SPEED:float;
 const JUMP_VELOCITY = 4.5
 
-var _lastDir:Vector3;
+var _lastDir:Vector3 = Vector3.RIGHT;
 var _direction:Vector3;
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _impulseVelocity = Vector3.ZERO;
-var _impulseFriction = 15.0;
+var _impulseFriction = 35.0;
 var _isImpulsing:bool
 
 var max_knockback_speed:float = 5;
@@ -29,10 +29,11 @@ func impulse(delta):
 		velocity.z = _impulseVelocity.z;
 		_impulseVelocity = _impulseVelocity.lerp(Vector3(0,velocity.y,0), _impulseFriction*delta);
 		if(_impulseVelocity.length() <= 0.01+_impulseFriction/2):
-			_impulseVelocity = Vector3.ZERO
+			_impulseVelocity = Vector3.ZERO;
 
 
 func applyImpulse(force: Vector3,impulseFriction):
+	_impulseVelocity= Vector3.ZERO;
 	_impulseFriction = impulseFriction;
 	if(_impulseVelocity.length()==0):
 		_impulseVelocity += force;

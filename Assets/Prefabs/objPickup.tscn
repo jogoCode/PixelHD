@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctoxthrmgum7c"]
+[gd_scene load_steps=7 format=3 uid="uid://ctoxthrmgum7c"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/ObjPickup.gd" id="1_f67r5"]
-[ext_resource type="Resource" uid="uid://crwirbvd8pxh5" path="res://Assets/Ressources/Weapons/W_WoodSword.tres" id="2_acquh"]
 [ext_resource type="Script" path="res://Assets/Scripts/InteractSystem.gd" id="2_cbygq"]
 [ext_resource type="Texture2D" uid="uid://jcsjub82gmk8" path="res://Assets/Sprites/Weapons/NewWoodenSword.png" id="4_mb0iu"]
 [ext_resource type="PackedScene" uid="uid://b10x10md87dxx" path="res://Assets/Content/UI/StatsDisplay.tscn" id="5_8jx2m"]
@@ -14,7 +13,6 @@ viewport_path = NodePath("SubViewport")
 
 [node name="ObjPickup" type="Node3D" node_paths=PackedStringArray("_sprite", "_StatDisplayer")]
 script = ExtResource("1_f67r5")
-_weapon = ExtResource("2_acquh")
 _sprite = NodePath("weaponImg")
 _StatDisplayer = NodePath("StatsDisplay")
 
@@ -22,7 +20,7 @@ _StatDisplayer = NodePath("StatsDisplay")
 script = ExtResource("2_cbygq")
 
 [node name="Area3D" type="StaticBody3D" parent="."]
-collision_layer = 2
+collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0556903, 0)
@@ -30,6 +28,7 @@ shape = SubResource("SphereShape3D_6tsfv")
 
 [node name="weaponImg" type="Sprite3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 0.565685, 0.565685, 0, -0.565685, 0.565685, 0, 0.0689263, 0)
+shaded = true
 alpha_cut = 2
 texture_filter = 0
 texture = ExtResource("4_mb0iu")
@@ -42,8 +41,9 @@ _owner = NodePath("../..")
 
 [node name="StatsDisplay" type="Sprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.353553, 0.353553, 0, -0.353553, 0.353553, 0, 0.572802, -0.654504)
-visible = false
 transparency = 0.1
+cast_shadow = 0
+texture_filter = 0
 render_priority = 100
 texture = SubResource("ViewportTexture_xyeem")
 

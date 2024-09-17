@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8c6i6o0bf3vi"]
+
+[ext_resource type="PackedScene" uid="uid://gcnn0xbpryxc" path="res://Assets/Models/ModelsPrefs/pillar_II.tscn" id="1_x8oal"]
+[ext_resource type="PackedScene" uid="uid://do58g1mjf34j2" path="res://Assets/Models/ModelsPrefs/rock.tscn" id="2_be3sn"]
+[ext_resource type="PackedScene" uid="uid://vwvwrkpj4dnb" path="res://Assets/Models/ModelsPrefs/roots.tscn" id="3_k6imc"]
+[ext_resource type="PackedScene" uid="uid://cydxbf4kd30w5" path="res://Assets/Models/ModelsPrefs/wall.tscn" id="4_82gpa"]
+
+[node name="Tile" type="Node3D"]
+
+[node name="pillar2" parent="." instance=ExtResource("1_x8oal")]
+
+[node name="rock" parent="." instance=ExtResource("2_be3sn")]
+
+[node name="Roots" parent="." instance=ExtResource("3_k6imc")]
+
+[node name="wall" parent="." instance=ExtResource("4_82gpa")]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://do58g1mjf34j2"]
+
+[ext_resource type="PackedScene" uid="uid://cxhqcpbh7d5ec" path="res://Assets/Models/Raw/rock.fbx" id="1_d5ve0"]
+[ext_resource type="Texture2D" uid="uid://cnntreal8rfef" path="res://Assets/Sprites/Textures/text_roots.png" id="2_efbgr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l26qf"]
+albedo_color = Color(0.775866, 0.568308, 0.462428, 1)
+albedo_texture = ExtResource("2_efbgr")
+texture_filter = 0
+
+[node name="rock" instance=ExtResource("1_d5ve0")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(15, 0, 0, 0, -6.55671e-07, 15, 0, -15, -6.55671e-07, 0, 0.0861092, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_l26qf")

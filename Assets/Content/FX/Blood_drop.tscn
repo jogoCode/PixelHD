@@ -45,7 +45,7 @@ material = SubResource("StandardMaterial3D_odk7f")
 size = Vector2(1.3, 1.3)
 
 [sub_resource type="Curve" id="Curve_wh7cw"]
-_data = [Vector2(0, 0.761205), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_farj3"]
@@ -83,7 +83,7 @@ cull_mode = 2
 diffuse_mode = 3
 specular_mode = 1
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.654902, 0, 0.223529, 1)
+albedo_color = Color(0.447059, 0.0470588, 0.137255, 1)
 albedo_texture = ExtResource("1_sdy0j")
 roughness = 0.0
 texture_filter = 0
@@ -111,9 +111,9 @@ collision_bounce = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xk65t"]
 transparency = 1
-shading_mode = 0
+diffuse_mode = 1
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.721569, 0.109804, 0.247059, 1)
+albedo_color = Color(0.448208, 0.0465988, 0.13914, 1)
 albedo_texture = ExtResource("3_bc33w")
 texture_filter = 0
 
@@ -129,7 +129,7 @@ _mainParticle = NodePath("group/GPUParticles3D")
 _particles = [NodePath("group/GPUParticles3D"), NodePath("group/BloodStain2"), NodePath("ImpactBlood")]
 
 [node name="ImpactBlood" type="GPUParticles3D" parent="."]
-transform = Transform3D(-5.1658e-08, 0.866025, -0.5, -1.3764e-08, 0.5, 0.866025, 1, 5.16191e-08, -1.39091e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91068e-15, 0, 0, 0)
 emitting = false
 amount = 25
 lifetime = 1.2

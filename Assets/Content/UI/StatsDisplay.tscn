@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b10x10md87dxx"]
+[gd_scene load_steps=7 format=3 uid="uid://b10x10md87dxx"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/UI/StatsDisplay.gd" id="1_52in5"]
-[ext_resource type="Texture2D" uid="uid://ct11yc8fm8w6p" path="res://Assets/Sprites/Weapons/GreatSword.png" id="2_cq52r"]
+[ext_resource type="Script" path="res://Assets/Content/UI/StatsDisplay.gd" id="1_52in5"]
+[ext_resource type="FontFile" uid="uid://c3rjhfocf1qp6" path="res://Assets/Fonts/PeaberryBase.ttf" id="2_htpc7"]
+[ext_resource type="Texture2D" uid="uid://bb81aihficojj" path="res://Assets/Sprites/UI/UI_ATK_icon.png" id="3_0gc85"]
+[ext_resource type="Texture2D" uid="uid://d2bseyw3c21un" path="res://Assets/Sprites/UI/UI_ATKSPD_icon.png" id="4_ii1yg"]
 
-[node name="StatsDisplay" type="Control" node_paths=PackedStringArray("_nameTxt", "_img", "_dmgTxt", "_descTxt")]
+[sub_resource type="LabelSettings" id="LabelSettings_edjse"]
+font = ExtResource("2_htpc7")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_q87o1"]
+font = ExtResource("2_htpc7")
+font_size = 25
+
+[node name="StatsDisplay" type="Control" node_paths=PackedStringArray("_nameTxt", "_img", "_dmgTxt", "_atkSpdTxt", "_descTxt")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +24,7 @@ script = ExtResource("1_52in5")
 _nameTxt = NodePath("NameTxt")
 _img = NodePath("ImgWeapon")
 _dmgTxt = NodePath("DmgTxt")
+_atkSpdTxt = NodePath("AtkSpeedTxt")
 _descTxt = NodePath("DescTxt")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -21,16 +32,6 @@ layout_mode = 0
 offset_right = 192.0
 offset_bottom = 272.0
 color = Color(0.160784, 0.160784, 0.160784, 1)
-
-[node name="NameTxt" type="Label" parent="."]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 176.0
-offset_bottom = 39.0
-text = "Name "
-autowrap_mode = 3
-justification_flags = 171
 
 [node name="Deco" type="ColorRect" parent="."]
 layout_mode = 0
@@ -41,6 +42,17 @@ offset_bottom = 127.0
 rotation = 0.785398
 color = Color(0.545098, 0.545098, 0.545098, 0.905882)
 
+[node name="NameTxt" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 176.0
+offset_bottom = 40.0
+text = "Name "
+label_settings = SubResource("LabelSettings_edjse")
+autowrap_mode = 3
+justification_flags = 171
+
 [node name="ImgWeapon" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 0
@@ -48,7 +60,6 @@ offset_top = 8.0
 offset_right = 128.0
 offset_bottom = 136.0
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_cq52r")
 expand_mode = 2
 stretch_mode = 3
 
@@ -58,17 +69,50 @@ offset_left = 16.0
 offset_top = 200.0
 offset_right = 176.0
 offset_bottom = 240.0
+theme_override_fonts/font = ExtResource("2_htpc7")
 text = "Description du objet "
 autowrap_mode = 2
 justification_flags = 171
 
 [node name="DmgTxt" type="Label" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 72.0
-offset_top = 144.0
-offset_right = 112.0
-offset_bottom = 188.0
+offset_left = 40.0
+offset_top = 176.0
+offset_right = 80.0
+offset_bottom = 231.0
 theme_override_font_sizes/font_size = 31
-text = "1
+text = "12
+
 "
+label_settings = SubResource("LabelSettings_q87o1")
 horizontal_alignment = 1
+
+[node name="AtkImg" type="TextureRect" parent="DmgTxt"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -16.0
+offset_right = 8.0
+offset_bottom = 24.0
+texture = ExtResource("3_0gc85")
+
+[node name="AtkSpeedTxt" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 136.0
+offset_top = 177.0
+offset_right = 176.0
+offset_bottom = 232.0
+theme_override_font_sizes/font_size = 31
+text = "12
+
+"
+label_settings = SubResource("LabelSettings_q87o1")
+
+[node name="AtkSpdImg" type="TextureRect" parent="AtkSpeedTxt"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -15.0
+offset_right = 8.0
+offset_bottom = 25.0
+texture = ExtResource("4_ii1yg")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cew4leu7u6vnd"]
+
+[ext_resource type="Texture2D" uid="uid://c27wgwk05w6oo" path="res://Assets/Sprites/UI/UI_Sharpnes.png" id="1_bif53"]
+[ext_resource type="Script" path="res://Assets/Content/UI/sharpnes_bar.gd" id="1_mnl4v"]
+[ext_resource type="Texture2D" uid="uid://j2d4lg8t136r" path="res://Assets/Sprites/UI/UI_SharpnesProgress.png" id="2_d7vrg"]
+
+[node name="SharpnessBar" type="Control" node_paths=PackedStringArray("_progressBar")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mnl4v")
+_progressBar = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_top = 42.0
+offset_right = 42.0
+offset_bottom = 53.0
+rotation = -1.5708
+value = 100.0
+texture_over = ExtResource("1_bif53")
+texture_progress = ExtResource("2_d7vrg")
+texture_progress_offset = Vector2(-1, 0)

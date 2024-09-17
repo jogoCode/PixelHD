@@ -7,9 +7,12 @@ class_name R_Weapon;
 @export var _dmg:int;
 @export var _atkSpeed:float;
 @export var _desc:String;
+@export var _price:int;
 @export var _hitboxSize:float;
 @export var _fxColor:Color;
+@export var _shaded:bool = true;
 @export var _audio:String;
+
 
 enum Type{
 	LIGHT,

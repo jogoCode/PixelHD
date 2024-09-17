@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://c46iwqhhm6en2"]
+
+[ext_resource type="Script" path="res://Assets/Content/UI/Store/store.gd" id="1_2j0p4"]
+[ext_resource type="FontFile" uid="uid://c3rjhfocf1qp6" path="res://Assets/Fonts/PeaberryBase.ttf" id="2_vd2d6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvn67"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60u3v"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Animation" id="Animation_1wmrh"]
+resource_name = "hide"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.189466, 0.31864),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"call_an_pause"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_eedv3"]
+resource_name = "show"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 0.9),
+"transitions": PackedFloat32Array(0.31864, 0.189466),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"call_pause"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8msc"]
+_data = {
+"hide": SubResource("Animation_1wmrh"),
+"show": SubResource("Animation_eedv3")
+}
+
+[node name="Store" type="Control"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2j0p4")
+_offset = Vector2(624, 356)
+
+[node name="ButtonQuit" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 536.0
+offset_top = 320.0
+offset_right = 577.0
+offset_bottom = 386.0
+theme_override_colors/font_focus_color = Color(0.641934, 0.641934, 0.641934, 1)
+theme_override_fonts/font = ExtResource("2_vd2d6")
+theme_override_font_sizes/font_size = 65
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hvn67")
+theme_override_styles/normal = SubResource("StyleBoxFlat_60u3v")
+text = "x"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_s8msc")
+}

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1ygj7glikpja"]
+
+[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/Projectile.gd" id="1_lgf88"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4mtka"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1yxs"]
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0.646, 0.41, 0.309804)
+refraction_scale = -0.06
+grow_amount = -0.774
+
+[sub_resource type="SphereMesh" id="SphereMesh_kk35o"]
+material = SubResource("StandardMaterial3D_a1yxs")
+
+[node name="Projectile" type="Area3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+script = ExtResource("1_lgf88")
+_SPEED = 15.0
+_damage = 50.0
+_dir = Vector3(0, 0, -1)
+_delayToDestroy = 0.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_4mtka")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_kk35o")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_kk35o")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

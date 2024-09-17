@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="R_Object" load_steps=4 format=3 uid="uid://bh5wdiej5bwde"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Objects.gd" id="1_fo6ft"]
+[ext_resource type="Texture2D" uid="uid://danns8u2f6qm" path="res://Assets/Sprites/Object/potion.png" id="1_ie61n"]
+
+[sub_resource type="GDScript" id="GDScript_a2gwf"]
+script/source = "extends Node;
+
+func action(value):
+	for node in Level._PLAYER.get_children():
+		if node.has_signal(\"Heal\"):
+			node.Heal.emit(value);
+"
+
+[resource]
+script = ExtResource("1_fo6ft")
+_name = "Potion"
+_type = 0
+_img = ExtResource("1_ie61n")
+_value = 25.0
+_bonus = SubResource("GDScript_a2gwf")
+_desc = "Give +25 HP"
+_fxColor = Color(0, 0, 0, 1)
+_sufix = "HP"
+_price = 25
+_audio = ""

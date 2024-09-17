@@ -47,20 +47,14 @@ func _on_weapon_atk_finished():
 
 func IsAtk() -> void:
 	if(_canAtk):
-		_canAtk = false;
+		#_canAtk = false;
 		_animationTree["parameters/conditions/Atk"] = true; 
 		await get_tree().create_timer(0.1).timeout;
 		_animationTree["parameters/conditions/Atk"] = false; 
 
-func IsHit():
-	_animationTree["parameters/conditions/Atk"] = false; 
-	_animationTree["parameters/conditions/Hit"] = true;
-	await get_tree().create_timer(0.2).timeout;
-	_animationTree["parameters/conditions/Hit"] = false;
-
 func IsDie():
 	_animationTree["parameters/conditions/Atk"] = false; 
-	_animationTree["parameters/conditions/Hit"] = false;
+	_animationTree["parameters/conditions/isHit"] = false;
 	_animationTree["parameters/conditions/Die"] = true;
 
 func MoveBackward():

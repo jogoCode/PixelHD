@@ -6,4 +6,4 @@ func tick(actor, blackboard: Blackboard):
 	#actor.TurnAroundTarget();
 	actor.MoveAwayToTarget(Level.DELTA);
 	actor.get_node("Label3D").text =  "RECULE"
-	return SUCCESS;
+	return SUCCESS

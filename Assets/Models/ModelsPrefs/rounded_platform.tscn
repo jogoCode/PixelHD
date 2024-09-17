@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://by1lih7605fk"]
+
+[ext_resource type="PackedScene" uid="uid://d3rtt1qijnqa5" path="res://Assets/Models/Raw/rounded_platform.fbx" id="1_ymexe"]
+[ext_resource type="Texture2D" uid="uid://dr377r4jo52s8" path="res://Assets/Sprites/Textures/platform_text.png" id="2_kivvj"]
+[ext_resource type="Texture2D" uid="uid://3rjr00wn07pv" path="res://Assets/Sprites/Textures/NormalMap/platform_text_n.png" id="3_ndddl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84m32"]
+albedo_color = Color(0.580392, 0.580392, 0.580392, 1)
+albedo_texture = ExtResource("2_kivvj")
+normal_enabled = true
+normal_scale = 0.22
+normal_texture = ExtResource("3_ndddl")
+texture_filter = 0
+
+[node name="rounded_platform" instance=ExtResource("1_ymexe")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_84m32")

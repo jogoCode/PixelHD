@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7taly3l83oop"]
+
+[ext_resource type="PackedScene" uid="uid://8f0cuj0iissi" path="res://Assets/Models/Raw/falaise.fbx" id="1_5dggc"]
+[ext_resource type="Texture2D" uid="uid://5qhxjbvvbbhq" path="res://Assets/Sprites/Textures/text_falaise.png" id="2_4frui"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t441w"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.737255, 0.847059, 0.941176, 1)
+albedo_texture = ExtResource("2_4frui")
+roughness = 0.2
+texture_filter = 0
+
+[node name="falaise" instance=ExtResource("1_5dggc")]
+
+[node name="Plan" parent="RootNode" index="0"]
+material_override = SubResource("StandardMaterial3D_t441w")

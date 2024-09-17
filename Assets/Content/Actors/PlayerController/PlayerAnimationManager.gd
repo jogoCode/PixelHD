@@ -16,6 +16,7 @@ func _physics_process(delta):
 			_animationTree["parameters/Walk/blend_position"] = vel.x;
 			_animationTree["parameters/Roll/blend_position"] = vel.x;
 			_animationTree["parameters/EndRoll/blend_position"] = vel.x;
+			_animationTree["parameters/BladeBounce/BladeBounce/blend_position"] = vel.x;
 			_animationTree["parameters/Atk01/Atk_01/blend_position"] = vel.x;
 			_animationTree["parameters/Atk01/Atk_01_H/blend_position"] = vel.x;
 			_animationTree["parameters/Atk02/Atk_02/blend_position"] = vel.x;
@@ -37,9 +38,11 @@ func set_atk_type(type):
 			_animationTree["parameters/Atk01/Blend2/blend_amount"] = 1;
 			_animationTree["parameters/Atk02/Blend2/blend_amount"] = 1;
 			_animationTree["parameters/Atk03/Blend2/blend_amount"] = 1;
-	
 
-func _on_weapon_change_weapon(newWeapon, dropPos):
+
+func _on_weapon_change_weapon(newWeapon,sharpness,dropPos):
+	if newWeapon == null:
+		return;
 	_animSpeed = newWeapon._atkSpeed;
 	set_atk_type(newWeapon._type);
 	_animationTree["parameters/Atk01/TimeScale/scale"] = _animSpeed;

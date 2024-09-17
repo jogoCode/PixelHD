@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://dn30vdgtmap8k"]
+
+[ext_resource type="Texture2D" uid="uid://bb32gmgd6tpq" path="res://Assets/Sprites/Weapons/ImperialBlade.png" id="1_gsyk5"]
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Weapons.gd" id="2_0hltf"]
+
+[resource]
+script = ExtResource("2_0hltf")
+_name = "Imperial great sword"
+_type = 1
+_img = ExtResource("1_gsyk5")
+_dmg = 20
+_atkSpeed = 0.8
+_desc = "C'est fat"
+_price = 75
+_hitboxSize = 1.05
+_fxColor = Color(0.427451, 0.458824, 0.552941, 1)
+_shaded = true
+_audio = "G_Slash"

@@ -17,7 +17,8 @@ func _ready():
 func _physics_process(delta):
 	if _playerCharacter._stateMachine.GetState() == "Die":
 		return;
-	update_buffer_timer();
+	if Engine.time_scale == 1:
+		update_buffer_timer();
 		# MOVE
 	var inputDir = Input.get_vector("ui_left","ui_right","ui_up","ui_down");
 	_playerCharacter.setDirection(inputDir.normalized());	
@@ -39,8 +40,12 @@ func _physics_process(delta):
 		# INTERACT
 	if(Input.is_action_just_pressed("Interact")):
 		emit_signal("Interact");
+		# SHARP
+	if(Input.is_action_just_pressed("dp_up")):
+		_playerCharacter.Sharpen();
 		
-	if _playerCharacter._stateMachine.GetState() == "Hit":
+	if (_playerCharacter._stateMachine.GetState() == "Hit" or
+	 	_playerCharacter._stateMachine.GetState() == "Dodge"):
 		clear_inputs_lib(0);
 
 
@@ -56,7 +61,7 @@ func buffer_input():
 
 func process_input(action):
 	match action:
-			"ui_accept":
+			"ui_attack":
 					_playerCharacter.Atk();
 					return;		
 			"Dodge":
@@ -94,6 +99,7 @@ func _get_configuration_warnings():
 
 
 
-func _on_weapon_change_weapon(newWeapon, dropPos):
+func _on_weapon_change_weapon(newWeapon,sharpness, dropPos):
+	if newWeapon == null:
+		return;
 	set_buffer_time(newWeapon._atkSpeed);
-	print(_bufferTime);

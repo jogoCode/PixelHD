@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="R_Weapon" load_steps=3 format=3 uid="uid://d6scjur3h3yx"]
+
+[ext_resource type="Texture2D" uid="uid://ss1nqjs1e7m" path="res://Assets/Sprites/Weapons/Guillotine.png" id="1_2nf1v"]
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Weapons.gd" id="2_5kgbx"]
+
+[resource]
+script = ExtResource("2_5kgbx")
+_name = "Guillotine"
+_type = 1
+_img = ExtResource("1_2nf1v")
+_dmg = 12
+_atkSpeed = 0.85
+_desc = "C'est froit"
+_price = 24
+_hitboxSize = 1.05
+_fxColor = Color(0.639216, 0.866667, 1, 1)
+_shaded = true
+_audio = "G_Slash"
