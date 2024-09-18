@@ -1,4 +1,4 @@
-[gd_scene load_steps=297 format=3 uid="uid://d0u2g2ybwrr02"]
+[gd_scene load_steps=298 format=3 uid="uid://d0u2g2ybwrr02"]
 
 [ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/PlayerCharacter.gd" id="1_8n4f4"]
 [ext_resource type="Texture2D" uid="uid://bmlbof84l3x3c" path="res://Assets/Sprites/Characters/n_sprite_character.png" id="2_dqccm"]
@@ -4152,6 +4152,152 @@ tracks/5/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_02kij"]
+resource_name = "SharpenFinishedL"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Visual/AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"sharpen"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Visual/AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Weapon/origin:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(0.610865, 0, 0.0872665)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Weapon/origin:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(-0.15, 0.01, 0.05)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Weapon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_add_sharpness"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Weapon/SlashFx:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Weapon/Spark:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Weapon/Spark:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.1, 0, 0.1), Vector3(0.2, 0, 0.1)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Oscillator")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, 15.0],
+"method": &"_add_velocity"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../SoundMethod")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["Sharpen01"],
+"method": &"_play"
+}, {
+"args": ["Sharpen02"],
+"method": &"_play"
+}]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Weapon/Area3D/CollisionShape3D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5dexs"]
 _data = {
 "AtkL_01": SubResource("Animation_8i68s"),
@@ -4179,6 +4325,7 @@ _data = {
 "RESET": SubResource("Animation_dqu1b"),
 "RollL": SubResource("Animation_pwugx"),
 "RollR": SubResource("Animation_ss0lh"),
+"SharpenFinishedL": SubResource("Animation_02kij"),
 "SharpenL": SubResource("Animation_ejntg"),
 "WalkL": SubResource("Animation_kabxc"),
 "WalkR": SubResource("Animation_w5k8h")
@@ -4496,12 +4643,12 @@ shape = SubResource("CapsuleShape3D_l48ms")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visual"]
 transform = Transform3D(2.5, 0, 0, 0, 1.76777, 1.76777, 0, -1.76777, 1.76777, 0, 0.091204, 0)
+flip_h = true
 shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_g7ngw")
-animation = &"Idle"
-frame = 2
+animation = &"sharpen"
 
 [node name="Weapon" parent="." node_paths=PackedStringArray("_owner", "_slashSfx") instance=ExtResource("7_avkv0")]
 transform = Transform3D(0.78366, 0.160862, 0, -0.160862, 0.78366, 0, 0, 0, 0.799999, 0, 0.091204, 0)
@@ -4522,6 +4669,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172727, 0, 0.1)
 
 [node name="SlashFx" type="AnimatedSprite3D" parent="Weapon"]
 transform = Transform3D(2.5, 5.96046e-08, 0, 0, 2.41482, 0.647049, 0, -0.647049, 2.41482, 0, 0, 0)
+flip_h = true
 modulate = Color(0.956863, 0.486275, 0.109804, 1)
 billboard = 1
 texture_filter = 0
