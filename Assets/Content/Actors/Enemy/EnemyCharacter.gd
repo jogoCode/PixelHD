@@ -45,6 +45,7 @@ func _physics_process(delta):
 	_stateMachine.GetState() == "Atk" or
 	_stateMachine.GetState() == "Pre_Atk"):
 		if(_stateMachine.GetState() == "Hit"):
+			#change the mood of the enemy when he is hit
 			_mood = 1;
 		velocity.x = 0;
 		velocity.z = 0;
@@ -84,14 +85,6 @@ func MoveToTarget(delta)->void:
 	_direction = _navAgent.get_next_path_position() - global_position;
 	_direction = _direction.normalized();
 	velocity = velocity.lerp(_direction*SPEED/6,SPEED/6*delta);
-	return
-	# test
-	if _navAgent.target_position.distance_to(global_position) < _atkRange/1.1:
-		_canAtk = true;
-		if velocity != Vector3.ZERO:
-			_lastDir = velocity;
-	else:
-		_canAtk = false;
 	
 
 func MoveToDirection(dir,delta)->void:

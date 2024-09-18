@@ -20,7 +20,6 @@ func _process(delta):
 func _on_area_entered(area):	
 	#if !(area.get_parent() is EnemyCharacter) and area.get_parent() is Character:
 	if !(area.get_parent() is EnemyCharacter) and area.get_parent() is Character:
-		print(area.get_parent().name)
 		if area.get_parent() != self.get_parent() and area.name == "HurtBox":
 			for node in area.get_parent().get_children():
 				if node.has_signal("TakeDamage"):

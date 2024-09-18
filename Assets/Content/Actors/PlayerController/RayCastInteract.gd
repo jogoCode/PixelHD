@@ -40,7 +40,6 @@ func WeaponOrientation()->void:
 
 
 func _on_input_manager_interact():
-	print("c'est moi",name)
 	_canActive = true;
 	await get_tree().create_timer(0.1).timeout;
 	_canActive = false;

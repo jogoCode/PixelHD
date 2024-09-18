@@ -128,7 +128,6 @@ func EnemyCharacterFeedBack(damage,damager,impulseDir)->void:
 			if child is Oscillator:
 				child.add_velocity.emit(Oscillator.Modes.ROTATION,2*damage);
 	
-
 func _on_take_damage(damage,damager):
 	if(_owner is Character): #Chnage l'état du Character
 		if _owner._stateMachine.GetState() == "Roll" or !_canTakeDamage :

@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta):
 	super._physics_process(delta);
 	
-	if( _stateMachine.GetState() == "Atk01" or 
+	if( _stateMachine.GetState() == "Atk" or 
 		_stateMachine.GetState() == "Atk02" or 
 		_stateMachine.GetState() == "Atk03" or
 		_stateMachine.GetState() == "Hit" or 
@@ -60,7 +60,7 @@ func Atk()->void:
 		return;
 	if(_stateMachine.stateCheck() or _stateMachine.GetState() == "Sharpen"):
 		return;
-	Level._CAMERA.ZoomCamera(-1,0.1)
+	Level._CAMERA.ZoomCamera(-1,0.1);
 	SoundFx.play(_weapon.GetWeaponData()._audio,_weapon.GetWeaponData()._atkSpeed*0.1);
 	var impulseDir = Vector3(getLastDir().x,0,-getLastDir().z);
 	if(_inputVector.length() == 0): 

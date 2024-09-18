@@ -39,7 +39,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	if(_owner._stateMachine.GetState() == "Atk01" or 
+	if(_owner._stateMachine.GetState() == "Atk" or 
 	   _owner._stateMachine.GetState() == "Atk02" or 
 	   _owner._stateMachine.GetState() == "Atk03" or 
 	   _owner._stateMachine.GetState() == "Sharpen" or
@@ -48,7 +48,7 @@ func _physics_process(delta):
 			show();
 			if (_weaponActualStats!= null):
 				_slashSfx.modulate = _weaponActualStats._fxColor;
-			_owner._stateMachine._animationTree["parameters/conditions/isAtk"] = false; 
+			#_owner._stateMachine._animationTree["parameters/conditions/isAtk"] = false; 
 			if _isHit != false:
 				_hitBox.disabled = true;
 	else:
@@ -103,7 +103,6 @@ func _add_sharpness():
 	if _sharpenAnim == _numSharpenAnim:
 		_sharpness = 100;
 		sharpnesChanged.emit();
-		#_owner._stateMachine.IsAction("Idle",0.1)
 		_owner._stateMachine._stateAnimation.travel("Idle");
 
 func _use_sharpness():

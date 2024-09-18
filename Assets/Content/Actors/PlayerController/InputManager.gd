@@ -18,7 +18,7 @@ func _physics_process(delta):
 	if _playerCharacter._stateMachine.GetState() == "Die":
 		return;
 	if Engine.time_scale == 1:
-		update_buffer_timer();
+		update_buffer_timer(delta);
 		# MOVE
 	var inputDir = Input.get_vector("ui_left","ui_right","ui_up","ui_down");
 	_playerCharacter.setDirection(inputDir.normalized());	
@@ -44,13 +44,12 @@ func _physics_process(delta):
 	if(Input.is_action_just_pressed("dp_up")):
 		_playerCharacter.Sharpen();
 		
-	if (_playerCharacter._stateMachine.GetState() == "Hit" or
-	 	_playerCharacter._stateMachine.GetState() == "Dodge"):
+	if (_playerCharacter._stateMachine.GetState() == "Hit"):
 		clear_inputs_lib(0);
 
 
-func update_buffer_timer():
-	_bufferTimer-=Level.DELTA;
+func update_buffer_timer(delta):
+	_bufferTimer-=delta;
 	_bufferTimer = clamp(_bufferTimer,0,1);
 	if _bufferTimer <= 0 and _inputsLib.size() > 0:
 		var action =  _inputsLib.pop_front();
@@ -82,7 +81,7 @@ func clear_inputs_lib(id:int):
 
 func set_buffer_time(atkSpeed):
 	if(atkSpeed) >=1.5:
-		_bufferTime = 0.1;
+		_bufferTime = 0.3;
 	elif(atkSpeed) <1:
 		_bufferTime = 0.25;
 	else:

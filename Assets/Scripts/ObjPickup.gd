@@ -29,7 +29,6 @@ func _on_interact_system_interact(interacter):
 		for node in interacter.get_children():
 			if node.has_signal("ChangeWeapon"):
 				node.emit_signal("ChangeWeapon",_weapon,_sharpness,position);
-		print("ohhhouihjh");
 		queue_free();
 
 func _on_display_stats():

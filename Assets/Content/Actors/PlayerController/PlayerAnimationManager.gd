@@ -12,17 +12,18 @@ func _physics_process(delta):
 				lastVel.z = 0;
 			if(lastVel == Vector3(0,0,1) || lastVel == Vector3(0,0,-1)):
 				lastVel.x = 0;
-			_animationTree["parameters/Idle/blend_position"] = lastVel.x;
-			_animationTree["parameters/Walk/blend_position"] = vel.x;
+			match _character._stateMachine.GetState():
+				"Idle":
+					_animationTree["parameters/Idle/blend_position"] = lastVel.x;
+				"Walk":
+					_animationTree["parameters/Walk/blend_position"] = vel.x;
+			_animationTree["parameters/BladeBounce/BladeBounce/blend_position"] = vel.x;	
+			var _type = _character._stateMachine._weaponType;
 			_animationTree["parameters/Roll/blend_position"] = vel.x;
 			_animationTree["parameters/EndRoll/blend_position"] = vel.x;
-			_animationTree["parameters/BladeBounce/BladeBounce/blend_position"] = vel.x;
-			_animationTree["parameters/Atk01/Atk_01/blend_position"] = vel.x;
-			_animationTree["parameters/Atk01/Atk_01_H/blend_position"] = vel.x;
-			_animationTree["parameters/Atk02/Atk_02/blend_position"] = vel.x;
-			_animationTree["parameters/Atk02/Atk_02_H/blend_position"] = vel.x;
-			_animationTree["parameters/Atk03/Atk_03/blend_position"] = vel.x;
-			_animationTree["parameters/Atk03/Atk_03_H/blend_position"] = vel.x;
+			_animationTree["parameters/Atk/"+_type+"/Atk01/Atk01/blend_position"] = vel.x;
+			_animationTree["parameters/Atk/"+_type+"/Atk02/Atk02/blend_position"] = vel.x;
+			_animationTree["parameters/Atk/"+_type+"/Atk03/Atk03/blend_position"] = vel.x;
 	if _character._impulseVelocity.x > 0:	
 		_animationTree["parameters/Hit/blend_position"] = 1;
 	elif _character._impulseVelocity.x < 0:	
@@ -31,13 +32,9 @@ func _physics_process(delta):
 func set_atk_type(type):
 	match type:
 		R_Weapon.Type.LIGHT:
-			_animationTree["parameters/Atk01/Blend2/blend_amount"] = 0;
-			_animationTree["parameters/Atk02/Blend2/blend_amount"] = 0;
-			_animationTree["parameters/Atk03/Blend2/blend_amount"] = 0;
+			_character._stateMachine._weaponType = "Light";
 		R_Weapon.Type.HEAVY:
-			_animationTree["parameters/Atk01/Blend2/blend_amount"] = 1;
-			_animationTree["parameters/Atk02/Blend2/blend_amount"] = 1;
-			_animationTree["parameters/Atk03/Blend2/blend_amount"] = 1;
+			_character._stateMachine._weaponType = "Heavy";
 
 
 func _on_weapon_change_weapon(newWeapon,sharpness,dropPos):
@@ -45,6 +42,7 @@ func _on_weapon_change_weapon(newWeapon,sharpness,dropPos):
 		return;
 	_animSpeed = newWeapon._atkSpeed;
 	set_atk_type(newWeapon._type);
-	_animationTree["parameters/Atk01/TimeScale/scale"] = _animSpeed;
-	_animationTree["parameters/Atk02/TimeScale/scale"] = _animSpeed;
-	_animationTree["parameters/Atk03/TimeScale/scale"] = _animSpeed;
+	var _type = _character._stateMachine._weaponType;
+	_animationTree["parameters/Atk/"+_type+"/Atk01/TimeScale/scale"] = _animSpeed;
+	_animationTree["parameters/Atk/"+_type+"/Atk02/TimeScale/scale"] = _animSpeed;
+	_animationTree["parameters/Atk/"+_type+"/Atk03/TimeScale/scale"] = _animSpeed;
