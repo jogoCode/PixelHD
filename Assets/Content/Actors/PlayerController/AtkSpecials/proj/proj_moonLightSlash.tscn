@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://drbj1le41x3dn"]
+
+[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/Projectile.gd" id="1_6dmhb"]
+[ext_resource type="PackedScene" uid="uid://cc4lt84oghxg0" path="res://Assets/Content/FX/slash_proj_fx.tscn" id="2_n50i8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f11pe"]
+height = 0.497863
+radius = 0.245901
+
+[node name="MoonLightSlash" type="Area3D" node_paths=PackedStringArray("_visual")]
+script = ExtResource("1_6dmhb")
+_SPEED = 4.0
+_canAccelerate = true
+_delayToDestroy = 0.5
+_destroyAtTouch = false
+_hideAtTouch = false
+_lookAtDir = true
+_visual = NodePath("MoonLightSlashFx")
+
+[node name="MoonLightSlashFx" parent="." instance=ExtResource("2_n50i8")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_f11pe")

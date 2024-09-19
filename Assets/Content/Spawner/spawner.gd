@@ -10,7 +10,6 @@ var _spawnFx= preload("res://Assets/Content/FX/spawn_fx.tscn")
 
 var _isRestarting:bool = false;
 var _wave:int;
-var _base
 @export var _delayToStart:float = 2;
 @export var _enemyForWave:int = 4; 
 @export var _delayBetweenSpawn:bool = true;
@@ -81,6 +80,7 @@ func spawn():
 	_enemySpawn+= 1;
 	if _enemySpawn % _enemyForWave:
 		spawn();
+
 
 func can_start_new_wave():
 		await  get_tree().create_timer(_delayToStart).timeout;

@@ -49,6 +49,7 @@ func _process(delta):
 			RotMode();
 	if Engine.get_frames_per_second() < 10:
 		_target.scale =  _baseScale;	
+		_displacement = 0;
 
 func Oscillator(delta):
 	var force = -_spring * _displacement - _damp * _velocity;
@@ -79,3 +80,5 @@ func _add_velocity(mode:Modes,amplitude:float):
 	if Engine.get_frames_per_second() > 5:
 		_mode = mode;
 		_velocity = amplitude;
+	else:
+		return;

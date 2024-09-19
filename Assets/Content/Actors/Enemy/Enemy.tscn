@@ -751,7 +751,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_ml38o"]
 resource_name = "HitLeft"
-length = 0.25
+length = 0.15
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -792,7 +792,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_dfte5"]
 resource_name = "HitRight"
-length = 0.25
+length = 0.15
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1268,12 +1268,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.163155, 0)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Visual"]
 transform = Transform3D(2.5, 0, 0, 0, 1.76777, 1.76777, 0, -1.76777, 1.76777, 0, 0.135648, 0)
-flip_h = true
 shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_jwnjq")
-animation = &"Atk"
+animation = &"Die"
 
 [node name="HitBox" type="Area3D" parent="."]
 
@@ -1307,7 +1306,7 @@ avoidance_mask = 3
 [node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("6_72jau")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@17317")
+blackboard = NodePath("@Node@17313")
 actor = NodePath("..")
 
 [node name="BaseSequence" type="Node" parent="BeehaveTree"]

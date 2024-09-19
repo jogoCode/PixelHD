@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://o0ylkrcuieja"]
+[gd_scene load_steps=17 format=3 uid="uid://o0ylkrcuieja"]
 
 [ext_resource type="Texture2D" uid="uid://dgual1ihsmlrd" path="res://Assets/Sprites/FX/Bubble.png" id="1_5srg8"]
 [ext_resource type="Texture2D" uid="uid://d3ysbcjflw4vh" path="res://Assets/Sprites/FX/Smoke_FX1.png" id="2_entcd"]
@@ -26,6 +26,13 @@ _data = {
 "idle": SubResource("Animation_b8f45")
 }
 
+[sub_resource type="Curve" id="Curve_0ofim"]
+_data = [Vector2(0, 0.813187), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_amlum"]
+curve = SubResource("Curve_0ofim")
+
 [sub_resource type="Gradient" id="Gradient_3bw6r"]
 colors = PackedColorArray(0.188235, 0.0784314, 0.247059, 1, 0.952612, 0.734301, 0.723891, 1)
 
@@ -52,6 +59,7 @@ scale_max = 1.2
 scale_curve = SubResource("CurveTexture_d213a")
 color = Color(0.909804, 0.34902, 0.705882, 1)
 color_ramp = SubResource("GradientTexture1D_1yxk0")
+alpha_curve = SubResource("CurveTexture_amlum")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynmec"]
 transparency = 1
@@ -86,8 +94,8 @@ transform = Transform3D(1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0, 1, 0, 0, 0)
 modulate = Color(0.984314, 0.498039, 0.568627, 1)
 pixel_size = 0.12
 billboard = 1
-no_depth_test = true
 texture_filter = 0
+render_priority = 1
 texture = ExtResource("1_5srg8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -104,8 +112,3 @@ process_material = SubResource("ParticleProcessMaterial_bj8ka")
 draw_passes = 2
 draw_pass_1 = SubResource("QuadMesh_2lby1")
 draw_pass_2 = SubResource("PlaneMesh_n5ffy")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_color = Color(0.972549, 0.6, 0.682353, 1)
-light_energy = 2.182
-omni_range = 0.178609

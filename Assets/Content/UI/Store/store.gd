@@ -29,12 +29,12 @@ func update_items():
 	var previouses:Array;
 	for node in get_children():
 		var rand 
-		rand = randi_range(0,1);
+		rand = randi_range(0,2);
 		print("WAVE",Level._wave)
 		if Level._wave < 10:
 			rand = 0;
 		if(Level._PLAYER.GetHp() < 25):
-			rand = randi_range(0,2);
+			rand = randi_range(0,5);
 		if node is StoreChoice:
 			 #WEAPON
 			if rand < 1:
@@ -72,7 +72,7 @@ func update_items():
 
 func _show():
 	$AnimationPlayer.play("show");
-	await get_tree().create_timer(1).timeout;
+	await get_tree().create_timer(2).timeout;
 	for node in get_children():
 		if node is StoreChoice:
 			node.grab_focus();
@@ -81,7 +81,7 @@ func _show():
 
 func _hide():
 	for node in get_children():
-		if node is StoreChoice:
+		if node is Button:
 			node.release_focus();
 	$AnimationPlayer.play("hide");
 

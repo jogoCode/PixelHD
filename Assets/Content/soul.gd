@@ -4,7 +4,7 @@ var time = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	apply_impulse(Vector3.UP*4);
+	apply_central_impulse(Vector3.UP*4);
 	await  get_tree().create_timer(0.1).timeout;
 	var tween = get_tree().create_tween();
 	#tween.set_trans(6);
@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	print(area.get_parent().name);
 	if area.get_parent() is PlayerCharacter:
-		$center/GPUParticles3D.emitting = false;
+		#$GPUParticles3D.emitting = false;
 		Level.addSoul.emit();
 		await  get_tree().create_timer(0.2).timeout;
 		queue_free();

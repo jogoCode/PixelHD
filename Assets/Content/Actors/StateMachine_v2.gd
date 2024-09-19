@@ -60,19 +60,12 @@ func IsAtk() -> void:
 	_animationTree["parameters/conditions/isIdle"] = false;
 	_animationTree["parameters/conditions/isMoving"] = false;
 	_animationTree["parameters/Atk/conditions/is"+_weaponType] = true;
-	if(combo==1):
-		_animationTree["parameters/Atk/"+_weaponType+"/conditions/isAtk01"] = true;
-	elif(combo==2):
-		_animationTree["parameters/Atk/"+_weaponType+"/conditions/isAtk02"] = true;
-	elif(combo==3):
-		_animationTree["parameters/Atk/"+_weaponType+"/conditions/isAtk03"] = true;
-	#_animationTree["parameters/Atk/Light/conditions/isAtk0"+str(combo)] = true;
+	#System de combo v2
+	_animationTree["parameters/Atk/"+_weaponType+"/conditions/isAtk0"+str(combo)] = true;
 	combo+= 1;
 	if combo >3:
 		combo = 1;
 	await get_tree().create_timer(0.001).timeout;
-	#_animationTree["parameters/conditions/isAtk01"] = false;
-	#_animationTree["parameters/conditions/isAtk0"+str(combo)] = true;
 	_animationTree["parameters/Atk/conditions/is"+_weaponType] = false;
 	_animationTree["parameters/Atk/"+_weaponType+"/conditions/isAtk01"] = false; 
 	_animationTree["parameters/Atk/"+_weaponType+"/conditions/isAtk02"] = false;
@@ -95,10 +88,9 @@ func stateCheck():
 	if(GetState() == "Atk" or 
 	GetState() == "Roll" or
 	GetState() == "EndRoll" or
-	GetState() == "Atk02" or
-	GetState() == "Atk03" or
 	GetState() == "Hit" or
-	GetState() == "BladeBounce"):
+	GetState() == "BladeBounce" or 
+	GetState() == "EndSharpen" ):
 		return true;
 	else:
 		return false;

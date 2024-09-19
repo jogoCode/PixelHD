@@ -5,11 +5,12 @@
 
 [resource]
 script = ExtResource("2_orfio")
-_name = "Iron Dagger"
+_name = "Iron Katana"
 _type = 0
 _img = ExtResource("1_o10yi")
 _dmg = 6
-_atkSpeed = 1.3
+_atkSpeed = 1.35
+_atkSpe = 1
 _desc = "Aie sa coupe !!"
 _price = 16
 _hitboxSize = 0.5

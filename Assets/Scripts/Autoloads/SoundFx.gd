@@ -15,7 +15,8 @@ var sounds = {
 	"SnakeAtk" :load("res://Assets/Sounds/audio_snake.wav"),
 	"BounceBlade" :load("res://Assets/Sounds/audio_bounce_blade.wav"),
 	"Sharpen01" : load('res://Assets/Sounds/audio_sharpen01.wav'),
-	"Sharpen02" : load("res://Assets/Sounds/audio_sharpen02.wav")
+	"Sharpen02" : load("res://Assets/Sounds/audio_sharpen02.wav"),
+	"Ting" : load("res://Assets/Sounds/audio_ting.wav")
 }
 
 @onready var sound_players:Array = get_children();
@@ -34,9 +35,14 @@ func play(sound_name:String,delay:float=0):
 			sound_to_play = sounds[sound_name][int(rand)];
 		for sound_player in sound_players:
 			if(sound_player.playing and sound_player.stream == sound_to_play):
-				sound_player.volume_db =-10;
-
+				sound_player.volume_db =-5;
 			if(!sound_player.playing):
+				sound_player.volume_db =0;
+				sound_player.stream = sound_to_play;
+				sound_player.pitch_scale = randf_range(0.98,1.05);
+				sound_player.play();
+				return;
+			if(sound_player.playing and sound_name == "G_Slash"):
 				sound_player.volume_db =0;
 				sound_player.stream = sound_to_play;
 				sound_player.pitch_scale = randf_range(0.98,1.05);

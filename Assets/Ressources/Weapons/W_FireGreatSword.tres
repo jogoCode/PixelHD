@@ -14,5 +14,5 @@ _desc = "Arme sublime"
 _price = 35
 _hitboxSize = 1.05
 _fxColor = Color(1, 0.835294, 0.254902, 1)
-_shaded = true
+_shaded = false
 _audio = "G_Slash"

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkom8cbqblopr"]
+
+[ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/AtkSpecials/AtkSpe_Spin.gd" id="1_gaamo"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/AtkSpecials/AtkSpe_projo.gd" id="2_lrcov"]
+
+[node name="AtkSpeLib" type="Node"]
+
+[node name="AtkSpeSpin" type="Node" parent="."]
+script = ExtResource("1_gaamo")
+
+[node name="AtkSpeProjo" type="Node" parent="."]
+script = ExtResource("2_lrcov")

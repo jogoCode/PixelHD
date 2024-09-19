@@ -46,3 +46,5 @@ func _on_weapon_change_weapon(newWeapon,sharpness,dropPos):
 	_animationTree["parameters/Atk/"+_type+"/Atk01/TimeScale/scale"] = _animSpeed;
 	_animationTree["parameters/Atk/"+_type+"/Atk02/TimeScale/scale"] = _animSpeed;
 	_animationTree["parameters/Atk/"+_type+"/Atk03/TimeScale/scale"] = _animSpeed;
+	_animationTree["parameters/AtkSpe/Spin/TimeScale/scale"] = _animSpeed;
+	

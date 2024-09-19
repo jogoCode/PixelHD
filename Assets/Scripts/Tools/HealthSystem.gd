@@ -17,6 +17,7 @@ var _canTakeDamage:bool = true;
 var fx = preload("res://Assets/Content/FX/AnimatedFx.tscn");
 var slashFx = preload("res://Assets/Content/FX/Slash_Fx.tscn")
 var bloodDrop = preload("res://Assets/Content/FX/Blood_drop.tscn");
+var soul = preload("res://Assets/Content/soul.tscn");
 
 signal isDead();
 signal TakeDamage(damage,damager);
@@ -58,10 +59,10 @@ func CanDeath() -> void: #TODO REMANIER ICI AUSSI
 			Level.GameFinished.emit();
 		elif _owner is EnemyCharacter:  # Enemy Death
 			#spawn soul
-			var soul = load("res://Assets/Content/soul.tscn").instantiate();
-			soul.global_position.y = 1;
-			_owner.get_parent().add_child(soul)
-			soul.global_position = _owner.global_position;
+			var soulInst = soul.instantiate()
+			soulInst .global_position.y = 1;
+			soulInst .global_position = _owner.global_position;
+			_owner.get_parent().add_child(soulInst)
 			Level.MonsterKill.emit();
 		emit_signal("isDead");
 
@@ -83,18 +84,23 @@ func FeedBack(damage,damager) -> void: #Hit Feedback;
 
 
 func CharacterFeedBack(damage,damager) -> void:
+	var impulseDir:Vector3
+	if damager is Character and damager != null:
+		impulseDir = Vector3(damager.getLastDir().x,0,damager.getLastDir().z);
+	elif damager is Projectile: # for projectile
+		impulseDir = (damager._vel*10).normalized();
+		
 	var BloodInstance = bloodDrop.instantiate();
 	if( damager !=null):
 		# create blood fx
 		if damage >1:
 			Level.CreateFx(BloodInstance,Vector3(_owner.global_position.x,0.5,_owner.global_position.z),damager.global_position,int(pow(damage,0.001)*pow(damage,0.8)));
 		# apply damage impulse
-		var impulseDir = Vector3(damager.getLastDir().x,0,damager.getLastDir().z);
 		if _owner is PlayerCharacter:
-			#for player character-----------------------
+#for player character-----------------------
 			PlayerCharacterFeedBack(damage,damager,impulseDir);
 		else:
-			#for enemy character-----------------------
+#for enemy character-----------------------
 			EnemyCharacterFeedBack(damage,damager,impulseDir)
 		_owner.get_node("Visual/AnimatedSprite3D").modulate =Color(1,1,1,0.5);
 		await get_tree().create_timer(0.1).timeout;
@@ -103,7 +109,7 @@ func CharacterFeedBack(damage,damager) -> void:
 
 func PlayerCharacterFeedBack(damage,damager,impulseDir)->void:
 	#for player character-----------------------
-	_owner.applyImpulse(impulseDir*damager.getLastDir().length()*5,4.5);
+	_owner.applyImpulse(impulseDir*5,4.5);
 	for child in _owner.get_children():
 		if child is Oscillator:
 			child.add_velocity.emit(Oscillator.Modes.SCALE,2*damage);
@@ -111,7 +117,7 @@ func PlayerCharacterFeedBack(damage,damager,impulseDir)->void:
 
 func EnemyCharacterFeedBack(damage,damager,impulseDir)->void:
 	#for enemy character------------------------
-		if damage <1:
+		if damage <1 and damager is Character:# 0 damage feed back
 			#if weapon sharpness = 0
 			SoundFx.play("BounceBlade");
 			damager._stateMachine.IsAction("BladeBounce",0.2)
@@ -122,8 +128,10 @@ func EnemyCharacterFeedBack(damage,damager,impulseDir)->void:
 	
 		_owner.change_randnum()
 		if damage >1 and _canBeImpulse:
-			_owner.applyImpulse(impulseDir*damager.getLastDir().length()*4,4.5);
-		Level.FreezeFrame(0.001,0.07);
+			_owner.applyImpulse(impulseDir*4,4.5);
+		if damager is Character:
+			if !damager._stateMachine.GetState() == "AtkSpe":
+				Level.FreezeFrame(0.001,0.07);
 		for child in _owner.get_children():
 			if child is Oscillator:
 				child.add_velocity.emit(Oscillator.Modes.ROTATION,2*damage);

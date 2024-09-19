@@ -5,6 +5,7 @@ extends Node
 var _inputsLib:Array;
 @export var _bufferTimer:float = 0;
 @export var _bufferTime:float = 0.2;
+var _speBufferTime:float;
 
 
 signal Interact;
@@ -43,15 +44,22 @@ func _physics_process(delta):
 		# SHARP
 	if(Input.is_action_just_pressed("dp_up")):
 		_playerCharacter.Sharpen();
+		#ATK SPE
+	if(Input.is_action_just_pressed("Atk_spe")):
+		add_to_inputs_lib("Atk_spe");
+		_bufferTime = _speBufferTime/4;
+		_playerCharacter.AtkSpe();
+		buffer_input()
+		
 		
 	if (_playerCharacter._stateMachine.GetState() == "Hit"):
-		clear_inputs_lib(0);
+		_inputsLib.clear();
 
 
 func update_buffer_timer(delta):
 	_bufferTimer-=delta;
 	_bufferTimer = clamp(_bufferTimer,0,1);
-	if _bufferTimer <= 0 and _inputsLib.size() > 0:
+	if _bufferTimer <= 0 and _inputsLib.size() > 0 :
 		var action =  _inputsLib.pop_front();
 		process_input(action);
 
@@ -59,12 +67,16 @@ func buffer_input():
 	_bufferTimer = _bufferTime;
 
 func process_input(action):
+	_bufferTime = _speBufferTime;
 	match action:
 			"ui_attack":
 					_playerCharacter.Atk();
 					return;		
 			"Dodge":
 					_playerCharacter.Roll();
+					return;
+			"Atk_spe":
+					_playerCharacter.AtkSpe();
 					return;
 
 func add_to_inputs_lib(inputName:String):
@@ -82,10 +94,12 @@ func clear_inputs_lib(id:int):
 func set_buffer_time(atkSpeed):
 	if(atkSpeed) >=1.5:
 		_bufferTime = 0.3;
-	elif(atkSpeed) <1:
-		_bufferTime = 0.25;
-	else:
-		_bufferTime = 0.2;
+	elif(atkSpeed) <=1.5 and(atkSpeed) >1:
+		_bufferTime = 0.4;
+	if(atkSpeed>0 and atkSpeed<=1):
+		_bufferTime = 0.5;
+	_speBufferTime = _bufferTime
+	print(_bufferTime);
 
 func _get_configuration_warnings():
 	var warnings = []

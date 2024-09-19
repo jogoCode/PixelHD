@@ -1306,7 +1306,7 @@ avoidance_mask = 3
 [node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("6_i1ytu")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@49864")
+blackboard = NodePath("@Node@17311")
 actor = NodePath("..")
 
 [node name="BaseSequence" type="Node" parent="BeehaveTree"]
@@ -1376,7 +1376,7 @@ _armor = 50.0
 
 [node name="AtkMelee" type="Node" parent="."]
 script = ExtResource("17_dk17b")
-_dashDist = 650.0
+_dashDist = 6.0
 
 [node name="exclamation" type="Sprite3D" parent="."]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.0112939, 0.298366, -0.254338)

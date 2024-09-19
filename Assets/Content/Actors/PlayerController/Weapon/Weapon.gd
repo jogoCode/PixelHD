@@ -7,6 +7,7 @@ var direction;
 var inputVector;
 
 @export var _sharpness:float;
+@export var _usageSharpness:float = 2;
 
 @export var _weaponActualStats:R_Weapon;
 @export var _sprite:Sprite3D;
@@ -40,9 +41,9 @@ func _ready():
 
 func _physics_process(delta):
 	if(_owner._stateMachine.GetState() == "Atk" or 
-	   _owner._stateMachine.GetState() == "Atk02" or 
-	   _owner._stateMachine.GetState() == "Atk03" or 
+		_owner._stateMachine.GetState() == "AtkSpe" or 
 	   _owner._stateMachine.GetState() == "Sharpen" or
+	 _owner._stateMachine.GetState() == "EndSharpen" or
 	   _owner._stateMachine.GetState() == "BladeBounce"):
 			#await  get_tree().create_timer(_cooldown).timeout;
 			show();
@@ -50,6 +51,7 @@ func _physics_process(delta):
 				_slashSfx.modulate = _weaponActualStats._fxColor;
 			#_owner._stateMachine._animationTree["parameters/conditions/isAtk"] = false; 
 			if _isHit != false:
+				return;
 				_hitBox.disabled = true;
 	else:
 		hide();
@@ -91,6 +93,14 @@ func SetWeapon(newWeapon:R_Weapon,sharpness):
 	$Area3D/CollisionShape3D.shape.height = newWeapon._hitboxSize;
 	sharpnesChanged.emit();
 
+func GetWeaponType()->String:
+	match _weaponActualStats._type:
+		0:
+			return "Light";
+		1:
+			return "Heavy";
+	return "null";
+
 func reduce_sharpenAnim(value):
 	_numSharpenAnim-=value;
 	_numSharpenAnim = clamp(_numSharpenAnim,1,6);
@@ -106,7 +116,7 @@ func _add_sharpness():
 		_owner._stateMachine._stateAnimation.travel("Idle");
 
 func _use_sharpness():
-	_sharpness-=2;
+	_sharpness-=_usageSharpness;
 	_sharpness = clamp(_sharpness,0,100);
 	sharpnesChanged.emit();
 

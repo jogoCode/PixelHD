@@ -13,6 +13,6 @@ _atkSpeed = 0.85
 _desc = "C'est froit"
 _price = 24
 _hitboxSize = 1.05
-_fxColor = Color(0.639216, 0.866667, 1, 1)
+_fxColor = Color(0.141176, 0.133333, 0.203922, 1)
 _shaded = true
 _audio = "G_Slash"
