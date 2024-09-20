@@ -26,7 +26,7 @@ func action():
 		projoInst._owner = _owner; 
 		projoInst.global_position = _origin.global_position;
 		await get_tree().create_timer(0.2).timeout;
-		_owner.get_parent().add_child(projoInst);
+		Level.main.add_child(projoInst);
 
 func _process(delta: float) -> void:
 	if _isActive:

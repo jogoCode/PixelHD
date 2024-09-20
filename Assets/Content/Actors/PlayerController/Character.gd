@@ -24,6 +24,7 @@ func _physics_process(delta):
 
 #---------MY LOGIC--------------------------------------------------------------
 func impulse(delta):
+	#_impulseVelocity= Vector3.ZERO;
 	if _impulseVelocity.length() > 0:
 		velocity.x = _impulseVelocity.x;
 		velocity.z = _impulseVelocity.z;

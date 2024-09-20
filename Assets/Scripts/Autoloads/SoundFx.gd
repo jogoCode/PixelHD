@@ -30,12 +30,13 @@ func play(sound_name:String,delay:float=0):
 		if sound_name == "Impact":
 			num+=1;
 		var sound_to_play = sounds[sound_name];
-		if(sounds[sound_name] is Array):
+		if(sounds[sound_name] is Array):# plusieur variante de son
 			var rand = randf_range(0,sounds[sound_name].size());
 			sound_to_play = sounds[sound_name][int(rand)];
 		for sound_player in sound_players:
 			if(sound_player.playing and sound_player.stream == sound_to_play):
-				sound_player.volume_db =-5;
+				sound_player.play();
+				return;
 			if(!sound_player.playing):
 				sound_player.volume_db =0;
 				sound_player.stream = sound_to_play;

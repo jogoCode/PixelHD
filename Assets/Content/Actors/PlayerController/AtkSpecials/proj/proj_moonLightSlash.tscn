@@ -17,7 +17,7 @@ _hideAtTouch = false
 _lookAtDir = true
 _visual = NodePath("MoonLightSlashFx")
 
-[node name="MoonLightSlashFx" parent="." instance=ExtResource("2_n50i8")]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_f11pe")
+
+[node name="MoonLightSlashFx" parent="." instance=ExtResource("2_n50i8")]

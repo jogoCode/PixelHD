@@ -33,7 +33,7 @@ func GoToNormalRoom(anim_name):
 		get_tree().change_scene_to_file("res://Assets/Scenes/room.tscn");
 
 func UpdateScore():
-	$CanvasLayer/Kill.text = "KILL "+str(Level._score);
+	$Hud/Kill.text = "KILL "+str(Level._score);
 
 func UpdateSoul():
-	$CanvasLayer/Soul.text = str(Level._soul);
+	$Hud/Soul.text = str(Level._soul);

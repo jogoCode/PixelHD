@@ -43,7 +43,7 @@ blend_point_0/node = SubResource("AnimationNodeAnimation_jb753")
 blend_point_0/pos = Vector2(-1, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_tpl8y")
 blend_point_1/pos = Vector2(1, 0)
-blend_mode = 1
+blend_mode = 2
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_floqe"]
 animation = &"DieLeft"
@@ -135,7 +135,6 @@ blend_point_0/pos = Vector2(-1, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_rmjdt")
 blend_point_1/pos = Vector2(1, 0)
 blend_mode = 2
-sync = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_771j0"]
 switch_mode = 2
@@ -229,7 +228,7 @@ states/Pre_Atk/node = SubResource("AnimationNodeBlendSpace2D_he7f6")
 states/Pre_Atk/position = Vector2(329, 278)
 states/Start/position = Vector2(195, 100)
 transitions = ["Hit", "Move", SubResource("AnimationNodeStateMachineTransition_771j0"), "Move", "Hit", SubResource("AnimationNodeStateMachineTransition_0337h"), "Atk", "Move", SubResource("AnimationNodeStateMachineTransition_6uplr"), "Atk", "Hit", SubResource("AnimationNodeStateMachineTransition_lef67"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_vpm6i"), "Atk", "Idle", SubResource("AnimationNodeStateMachineTransition_i16q5"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_ngigp"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_skj8v"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_twy5l"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_5omv0"), "Idle", "Pre_Atk", SubResource("AnimationNodeStateMachineTransition_5qsnn"), "Pre_Atk", "Atk", SubResource("AnimationNodeStateMachineTransition_u0fmv"), "Move", "Pre_Atk", SubResource("AnimationNodeStateMachineTransition_tesw4"), "Pre_Atk", "Hit", SubResource("AnimationNodeStateMachineTransition_mr52b"), "Pre_Atk", "Idle", SubResource("AnimationNodeStateMachineTransition_qlqph"), "Move", "Die", SubResource("AnimationNodeStateMachineTransition_3r7oh"), "Hit", "Die", SubResource("AnimationNodeStateMachineTransition_ukhdb"), "Atk", "Die", SubResource("AnimationNodeStateMachineTransition_slpd3")]
-graph_offset = Vector2(-79, 81)
+graph_offset = Vector2(-48, 41)
 
 [sub_resource type="Animation" id="Animation_kt4ti"]
 resource_name = "AtkLeft"
@@ -1091,7 +1090,7 @@ avoidance_mask = 3
 [node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_cel0d")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@17319")
+blackboard = NodePath("@Node@17304")
 actor = NodePath("..")
 
 [node name="BaseSequence" type="Node" parent="BeehaveTree"]

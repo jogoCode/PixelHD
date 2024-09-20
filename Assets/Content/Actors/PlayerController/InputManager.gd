@@ -18,6 +18,7 @@ func _ready():
 func _physics_process(delta):
 	if _playerCharacter._stateMachine.GetState() == "Die":
 		return;
+	print(_inputsLib);
 	if Engine.time_scale == 1:
 		update_buffer_timer(delta);
 		# MOVE
@@ -60,8 +61,9 @@ func update_buffer_timer(delta):
 	_bufferTimer-=delta;
 	_bufferTimer = clamp(_bufferTimer,0,1);
 	if _bufferTimer <= 0 and _inputsLib.size() > 0 :
-		var action =  _inputsLib.pop_front();
-		process_input(action);
+		_inputsLib.remove_at(0);
+	var action =  _inputsLib.front()
+	process_input(action);
 
 func buffer_input():
 	_bufferTimer = _bufferTime;
@@ -80,7 +82,6 @@ func process_input(action):
 					return;
 
 func add_to_inputs_lib(inputName:String):
-	await get_tree().create_timer(_bufferTimer*2).timeout;
 	_inputsLib.insert(0,inputName);
 	if(_inputsLib.size()>4):
 		_inputsLib.resize(4);
@@ -93,9 +94,9 @@ func clear_inputs_lib(id:int):
 
 func set_buffer_time(atkSpeed):
 	if(atkSpeed) >=1.5:
-		_bufferTime = 0.3;
+		_bufferTime = 0.2;
 	elif(atkSpeed) <=1.5 and(atkSpeed) >1:
-		_bufferTime = 0.4;
+		_bufferTime = 0.3;
 	if(atkSpeed>0 and atkSpeed<=1):
 		_bufferTime = 0.5;
 	_speBufferTime = _bufferTime

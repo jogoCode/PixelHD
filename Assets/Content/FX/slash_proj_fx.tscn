@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://lqfnuc0hygao" path="res://Assets/Sprites/FX/flocon_FX.png" id="2_spwvf"]
 
 [sub_resource type="Curve" id="Curve_o5nf7"]
-_data = [Vector2(0, 0.989011), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.538168, 0), -1.65823, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_rh3ey"]
@@ -76,9 +76,9 @@ angle_min = -720.0
 angle_max = 557.4
 angular_velocity_min = -603.87
 angular_velocity_max = 720.0
-gravity = Vector3(0, 2, 0)
-scale_min = 0.25
-scale_max = 0.25
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.15
+scale_max = 0.35
 scale_curve = SubResource("CurveTexture_43xt4")
 color_ramp = SubResource("GradientTexture1D_8t0kk")
 
@@ -90,13 +90,13 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-lifetime = 0.08
+lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_g7btb")
 draw_pass_1 = SubResource("PlaneMesh_skkru")
 
 [node name="particle" type="GPUParticles3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_67yec")
-amount = 15
+amount = 25
 process_material = SubResource("ParticleProcessMaterial_ve2mn")
 draw_pass_1 = SubResource("PlaneMesh_6iu30")

@@ -1,122 +1,122 @@
-[gd_scene load_steps=106 format=3 uid="uid://bqf1ndsmpr7ns"]
+[gd_scene load_steps=106 format=3 uid="uid://dwdf6htouufpq"]
 
-[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/EnemyCharacter.gd" id="1_e0ixj"]
-[ext_resource type="Texture2D" uid="uid://cfqnmsx1fvf0x" path="res://Assets/Sprites/Characters/n_sprite_zombie_2.png" id="2_0g7vl"]
-[ext_resource type="Texture2D" uid="uid://dukmn8dyoc1my" path="res://Assets/Sprites/Characters/Zombie.png" id="2_2rnn3"]
-[ext_resource type="Texture2D" uid="uid://2kimohmlkesx" path="res://Assets/Sprites/Characters/Zombie_atk (1).png" id="3_247wu"]
-[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/EnemyAnimationManager.gd" id="4_o4uso"]
-[ext_resource type="Texture2D" uid="uid://scsaahtpcu1g" path="res://Assets/Sprites/Characters/n_sprite_zombie_die_2.png" id="4_wuq6s"]
-[ext_resource type="Script" path="res://Assets/Content/Actors/StateMachine.gd" id="5_fcnhd"]
-[ext_resource type="Script" path="res://Assets/Scripts/Tools/HealthSystem.gd" id="6_2i8kn"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="6_72jau"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="7_1qx3y"]
-[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/BaseEnemie/Condition/CanIFollowTarget.gd" id="12_muh2u"]
-[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/BaseEnemie/AtkAction.gd" id="13_ctf6r"]
-[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/BaseEnemie/FollowTarget.gd" id="13_iusrb"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/delayer.gd" id="14_y4l3a"]
-[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/BaseEnemie/CanIAtk.gd" id="15_5iwin"]
-[ext_resource type="Script" path="res://Assets/Scripts/Tools/oscillator.gd" id="17_dpcnc"]
-[ext_resource type="Texture2D" uid="uid://cdgwslyh7yoqb" path="res://Assets/Sprites/UI/UI_Exclamation.png" id="19_e6710"]
-[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/Attack/MeleeAtk.gd" id="19_n2y33"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/EnemyCharacter.gd" id="1_swmw1"]
+[ext_resource type="Texture2D" uid="uid://cfqnmsx1fvf0x" path="res://Assets/Sprites/Characters/n_sprite_zombie_2.png" id="2_gm0ux"]
+[ext_resource type="Texture2D" uid="uid://2kimohmlkesx" path="res://Assets/Sprites/Characters/Zombie_atk (1).png" id="3_k4qm1"]
+[ext_resource type="Texture2D" uid="uid://scsaahtpcu1g" path="res://Assets/Sprites/Characters/n_sprite_zombie_die_2.png" id="4_mdecu"]
+[ext_resource type="Texture2D" uid="uid://dukmn8dyoc1my" path="res://Assets/Sprites/Characters/Zombie.png" id="5_rttn3"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="6_yk3gx"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="7_7kr2y"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/BaseEnemie/Condition/CanIFollowTarget.gd" id="8_gowor"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/BaseEnemie/FollowTarget.gd" id="9_wxouj"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/delayer.gd" id="10_xqjwl"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/BaseEnemie/CanIAtk.gd" id="11_vnfdv"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/BaseEnemie/AtkAction.gd" id="12_nsshh"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/EnemyAnimationManager.gd" id="13_1enlk"]
+[ext_resource type="Script" path="res://Assets/Scripts/Tools/oscillator.gd" id="14_wfx5m"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/StateMachine.gd" id="15_g0hof"]
+[ext_resource type="Script" path="res://Assets/Scripts/Tools/HealthSystem.gd" id="16_na3of"]
+[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/Attack/MeleeAtk.gd" id="17_y5t8c"]
+[ext_resource type="Texture2D" uid="uid://cdgwslyh7yoqb" path="res://Assets/Sprites/UI/UI_Exclamation.png" id="18_c6fl5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_83pww"]
 radius = 0.13356
 height = 0.550118
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1826"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(0, 48, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m22mq"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(29, 48, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vyrre"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(58, 48, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qngrk"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(87, 48, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2cdgf"]
-atlas = ExtResource("3_247wu")
+atlas = ExtResource("3_k4qm1")
 region = Rect2(560, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o0oxe"]
-atlas = ExtResource("3_247wu")
+atlas = ExtResource("3_k4qm1")
 region = Rect2(672, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gecw"]
-atlas = ExtResource("3_247wu")
+atlas = ExtResource("3_k4qm1")
 region = Rect2(784, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1pxq"]
-atlas = ExtResource("3_247wu")
+atlas = ExtResource("3_k4qm1")
 region = Rect2(896, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpxj6"]
-atlas = ExtResource("4_wuq6s")
+atlas = ExtResource("4_mdecu")
 region = Rect2(0, 0, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fifnr"]
-atlas = ExtResource("4_wuq6s")
+atlas = ExtResource("4_mdecu")
 region = Rect2(29, 0, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x6iur"]
-atlas = ExtResource("4_wuq6s")
+atlas = ExtResource("4_mdecu")
 region = Rect2(58, 0, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jd1yw"]
-atlas = ExtResource("2_2rnn3")
+atlas = ExtResource("5_rttn3")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsbxm"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(0, 32, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o71v5"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(29, 32, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sv7pf"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(58, 32, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjia4"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(87, 32, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7dmr"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(116, 32, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kw88r"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(145, 32, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rahj3"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(174, 32, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_llgko"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(203, 32, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3htv"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(0, 16, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mfjcs"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(29, 16, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1id13"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(58, 16, 29, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uuu8j"]
-atlas = ExtResource("2_0g7vl")
+atlas = ExtResource("2_gm0ux")
 region = Rect2(87, 16, 29, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jwnjq"]
@@ -1238,7 +1238,7 @@ _data = {
 [node name="EnemyCharacter" type="CharacterBody3D" node_paths=PackedStringArray("_HitBox", "_HurtBox", "_visionRay", "_atk")]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_e0ixj")
+script = ExtResource("1_swmw1")
 _HitBox = NodePath("HitBox/CollisionShape3D")
 _HurtBox = NodePath("HurtBox/CollisionShape3D")
 _atkRange = 1.0
@@ -1291,13 +1291,24 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone"]
 shape = SubResource("SphereShape3D_ad4o2")
 
-[node name="HealthSystem" type="Node" parent="."]
-script = ExtResource("6_2i8kn")
-_baseHp = 50.0
+[node name="Oscillator" type="Node" parent="." node_paths=PackedStringArray("_target")]
+script = ExtResource("14_wfx5m")
+_target = NodePath("../Visual")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("_animationTree")]
-script = ExtResource("5_fcnhd")
+script = ExtResource("15_g0hof")
 _animationTree = NodePath("../AnimationManager/AnimationTree")
+
+[node name="HealthSystem" type="Node" parent="."]
+script = ExtResource("16_na3of")
+_baseHp = 50.0
+
+[node name="exclamation" type="Sprite3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.0112939, 0.298366, -0.254338)
+visible = false
+billboard = 1
+texture_filter = 0
+texture = ExtResource("18_c6fl5")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
@@ -1310,44 +1321,33 @@ use_3d_avoidance = true
 avoidance_layers = 3
 avoidance_mask = 3
 
-[node name="Oscillator" type="Node" parent="." node_paths=PackedStringArray("_target")]
-script = ExtResource("17_dpcnc")
-_target = NodePath("../Visual")
-
-[node name="exclamation" type="Sprite3D" parent="."]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.0112939, 0.298366, -0.254338)
-visible = false
-billboard = 1
-texture_filter = 0
-texture = ExtResource("19_e6710")
-
 [node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
-script = ExtResource("6_72jau")
+script = ExtResource("6_yk3gx")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@62175")
+blackboard = NodePath("@Node@62164")
 actor = NodePath("..")
 
 [node name="BaseSequence" type="Node" parent="BeehaveTree"]
-script = ExtResource("7_1qx3y")
+script = ExtResource("7_7kr2y")
 
 [node name="CanIFollowTarget" type="Node" parent="BeehaveTree/BaseSequence"]
-script = ExtResource("12_muh2u")
+script = ExtResource("8_gowor")
 
 [node name="MoveToTarget" type="Node" parent="BeehaveTree/BaseSequence"]
-script = ExtResource("13_iusrb")
+script = ExtResource("9_wxouj")
 
 [node name="DelayDecoratorCanAtk" type="Node" parent="BeehaveTree/BaseSequence"]
-script = ExtResource("14_y4l3a")
+script = ExtResource("10_xqjwl")
 wait_time = 1.0
 
 [node name="CanIAtk" type="Node" parent="BeehaveTree/BaseSequence/DelayDecoratorCanAtk"]
-script = ExtResource("15_5iwin")
+script = ExtResource("11_vnfdv")
 
 [node name="ActionAtk" type="Node" parent="BeehaveTree/BaseSequence"]
-script = ExtResource("13_ctf6r")
+script = ExtResource("12_nsshh")
 
 [node name="AnimationManager" type="Node" parent="." node_paths=PackedStringArray("_character", "_animationTree")]
-script = ExtResource("4_o4uso")
+script = ExtResource("13_1enlk")
 _character = NodePath("..")
 _animationTree = NodePath("AnimationTree")
 
@@ -1380,12 +1380,12 @@ libraries = {
 }
 
 [node name="AtkMelee" type="Node" parent="."]
-script = ExtResource("19_n2y33")
+script = ExtResource("17_y5t8c")
 _dashDist = 6.0
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="DetectionZone" to="." method="_on_detection_zone_area_entered"]
+[connection signal="ChangeState" from="StateMachine" to="StateMachine" method="_on_change_state"]
 [connection signal="TakeDamage" from="HealthSystem" to="." method="_on_health_system_take_damage"]
 [connection signal="TakeDamage" from="HealthSystem" to="HealthSystem" method="_on_take_damage"]
-[connection signal="ChangeState" from="StateMachine" to="StateMachine" method="_on_change_state"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

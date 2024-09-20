@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_n6clq")
-_name = "Moon light great sword"
+_name = "Moon light"
 _type = 1
 _img = ExtResource("1_xspfw")
 _dmg = 13

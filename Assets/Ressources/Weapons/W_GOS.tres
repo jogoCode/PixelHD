@@ -10,6 +10,7 @@ _type = 1
 _img = ExtResource("1_3vc8d")
 _dmg = 14
 _atkSpeed = 1.0
+_atkSpe = 0
 _desc = ""
 _price = 30
 _hitboxSize = 1.5

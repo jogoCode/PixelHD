@@ -12,7 +12,7 @@ var _owner:Character;
 @export var _lookAtDir:bool = false;
 @export var _visual:Node3D;
 var _vel:Vector3;
-@onready var _collision:CollisionShape3D = $CollisionShape3D;
+@onready var _collision:CollisionShape3D = get_node("CollisionShape3D");
 
 var _targPossible;
 func _ready():
@@ -30,38 +30,42 @@ func _physics_process(delta: float):
 	if _canAccelerate:
 		_SPEED = lerp(_SPEED,_SPEED*2,delta*2);
 	if _lookAtDir:
-		_visual.look_at(global_position+-_dir);
+		if _visual:
+			_visual.look_at(global_position+-_dir);
 	
 func stop_projo():
 	_collision.disabled = true;
+	_SPEED = 0;
 	if _visual != null:
 		for node in _visual.get_children():
 			if node is GPUParticles3D:
 				node.emitting = false;
-		await get_tree().create_timer(_delayToDestroy).timeout;
+			if node is Sprite3D: 
+				node.hide();
+		await get_tree().create_timer(0.1).timeout;
 		queue_free();
 	else:
 		queue_free();
 
 func _on_area_entered(area):	
-	var targetType:Character;
 	if area.get_parent() == _owner:
 		return;
 	if area is Projectile:
 		stop_projo();
-		print("POTO");
+		print(_owner.name,":",area._collision.disabled)
 		return;
-	if _owner is EnemyCharacter:
-		if area.get_parent() is EnemyCharacter:
-			return;
+		
+	if _owner:
+		if _owner is EnemyCharacter:
+			if area.get_parent() is EnemyCharacter:
+				return;
 	if area.get_parent() != _owner and area.name == "HurtBox":
 		for node in area.get_parent().get_children():
 			if node.has_signal("TakeDamage"):
 				node.emit_signal("TakeDamage",_damage,self);
-				if area.get_parent()._stateMachine.GetState() != "Roll":
-					if _hideAtTouch:
-						hide()
-					await get_tree().create_timer(0.1).timeout;
-					if _destroyAtTouch:
-						queue_free();
+				if _hideAtTouch:
+					hide();
+				await get_tree().create_timer(0.1).timeout;
+				if _destroyAtTouch:
+					queue_free();
 				return; # Replace with function body.

@@ -6,10 +6,11 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_33s3o"]
 radius = 0.0790991
 
-[node name="proj_poison" type="Area3D"]
+[node name="proj_poison" type="Area3D" node_paths=PackedStringArray("_visual")]
 script = ExtResource("1_mc3my")
 _SPEED = 3.0
 _damage = 10.0
+_visual = NodePath("BallPoison")
 
 [node name="BallPoison" parent="." instance=ExtResource("2_1w0w1")]
 

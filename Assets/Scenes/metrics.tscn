@@ -1,18 +1,14 @@
-[gd_scene load_steps=53 format=3 uid="uid://b6tlups1ekayh"]
+[gd_scene load_steps=30 format=3 uid="uid://b6tlups1ekayh"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Tools/Room.gd" id="1_kkfiq"]
-[ext_resource type="PackedScene" uid="uid://c46iwqhhm6en2" path="res://Assets/Content/UI/Store/store.tscn" id="2_ae88y"]
-[ext_resource type="PackedScene" uid="uid://dkv04n4vrlu2h" path="res://Assets/Content/UI/HealthBar.tscn" id="3_14pv4"]
-[ext_resource type="PackedScene" uid="uid://cew4leu7u6vnd" path="res://Assets/Content/UI/SharpnesBar.tscn" id="4_e81jq"]
-[ext_resource type="FontFile" uid="uid://c3rjhfocf1qp6" path="res://Assets/Fonts/PeaberryBase.ttf" id="5_4hq2e"]
-[ext_resource type="Texture2D" uid="uid://ypdypue51nrh" path="res://Assets/Sprites/Object/Soul.png" id="6_c06u8"]
-[ext_resource type="PackedScene" uid="uid://b10x10md87dxx" path="res://Assets/Content/UI/StatsDisplay.tscn" id="7_aa771"]
+[ext_resource type="PackedScene" uid="uid://bbv8cw44ayyg0" path="res://Assets/Content/UI/HUD/main_hud.tscn" id="2_6edob"]
 [ext_resource type="PackedScene" uid="uid://ceuncfasenarg" path="res://Assets/Prefabs/Camera.tscn" id="8_hogue"]
 [ext_resource type="Texture2D" uid="uid://8ssjpejw70op" path="res://Assets/Sprites/Textures/skybox.jpeg" id="9_3xlwt"]
 [ext_resource type="PackedScene" uid="uid://d0u2g2ybwrr02" path="res://Assets/Content/Actors/PlayerController/playerV2.tscn" id="10_65fp0"]
 [ext_resource type="PackedScene" uid="uid://by1lih7605fk" path="res://Assets/Models/ModelsPrefs/rounded_platform.tscn" id="11_r1m7u"]
 [ext_resource type="Texture2D" uid="uid://dr377r4jo52s8" path="res://Assets/Sprites/Textures/platform_text.png" id="12_urrr0"]
 [ext_resource type="Texture2D" uid="uid://3rjr00wn07pv" path="res://Assets/Sprites/Textures/NormalMap/platform_text_n.png" id="13_ayx58"]
+[ext_resource type="Resource" uid="uid://cem21m7h8e58x" path="res://Assets/Ressources/Weapons/W_RoseLame.tres" id="13_f7v18"]
 [ext_resource type="PackedScene" uid="uid://gcnn0xbpryxc" path="res://Assets/Models/ModelsPrefs/pillar_II.tscn" id="14_0mwqn"]
 [ext_resource type="Resource" uid="uid://c62xqan7atuvr" path="res://Assets/Ressources/Weapons/W_IronKatana.tres" id="14_ne0e3"]
 [ext_resource type="PackedScene" uid="uid://cydxbf4kd30w5" path="res://Assets/Models/ModelsPrefs/wall.tscn" id="15_bqxkq"]
@@ -23,156 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://33d0d6gtxfhd" path="res://Assets/Content/soul.tscn" id="22_n5u72"]
 [ext_resource type="PackedScene" uid="uid://b2bkiebp1rsa7" path="res://Assets/Content/Spawner/spawner.tscn" id="23_17bnt"]
 [ext_resource type="PackedScene" uid="uid://ctoxthrmgum7c" path="res://Assets/Prefabs/objPickup.tscn" id="25_h3fqb"]
-[ext_resource type="Resource" uid="uid://crwirbvd8pxh5" path="res://Assets/Ressources/Weapons/W_WoodSword.tres" id="26_k8oky"]
-
-[sub_resource type="Animation" id="Animation_p3kwh"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_bqc4x"]
-resource_name = "fade_in_tuto"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_efmug"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mk46f"]
-_data = {
-"fade_in": SubResource("Animation_p3kwh"),
-"fade_in_tuto": SubResource("Animation_bqc4x"),
-"fade_out": SubResource("Animation_efmug")
-}
-
-[sub_resource type="LabelSettings" id="LabelSettings_13xvj"]
-font = ExtResource("5_4hq2e")
-font_size = 36
-outline_size = 15
-outline_color = Color(0.541176, 0.921569, 0.945098, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i7yxe"]
-atlas = ExtResource("6_c06u8")
-region = Rect2(0, 0, 8, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovlfl"]
-atlas = ExtResource("6_c06u8")
-region = Rect2(8, 0, 8, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eo4u5"]
-atlas = ExtResource("6_c06u8")
-region = Rect2(16, 0, 8, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_imfsk"]
-atlas = ExtResource("6_c06u8")
-region = Rect2(24, 0, 8, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uxd2x"]
-atlas = ExtResource("6_c06u8")
-region = Rect2(32, 0, 8, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gslov"]
-atlas = ExtResource("6_c06u8")
-region = Rect2(40, 0, 8, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r0u2c"]
-atlas = ExtResource("6_c06u8")
-region = Rect2(48, 0, 8, 14)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j37qr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i7yxe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ovlfl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eo4u5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_imfsk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uxd2x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gslov")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r0u2c")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 10.0
-}]
-
-[sub_resource type="LabelSettings" id="LabelSettings_m61qj"]
-font = ExtResource("5_4hq2e")
-font_size = 55
-
-[sub_resource type="LabelSettings" id="LabelSettings_qwq2q"]
-font = ExtResource("5_4hq2e")
-font_size = 36
-outline_size = 25
-outline_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_kyypp"]
-font = ExtResource("5_4hq2e")
-font_size = 35
-font_color = Color(0, 0, 0, 1)
-outline_size = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u783f"]
-bg_color = Color(0.18, 0.18, 0.18, 0.784314)
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_detail = 1
-anti_aliasing = false
-anti_aliasing_size = 0.01
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m1m2"]
-bg_color = Color(0.18, 0.18, 0.18, 0.784314)
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 1
-anti_aliasing = false
-anti_aliasing_size = 0.01
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1ouuw"]
 panorama = ExtResource("9_3xlwt")
@@ -222,182 +68,16 @@ texture_filter = 0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("_blackScreenAnimPlayer")]
 script = ExtResource("1_kkfiq")
-_blackScreenAnimPlayer = NodePath("CanvasLayer/ColorRect/AnimationPlayer")
+_blackScreenAnimPlayer = NodePath("Hud/ColorRect/AnimationPlayer")
 _actualType = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Hud" parent="." instance=ExtResource("2_6edob")]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
-libraries = {
-"": SubResource("AnimationLibrary_mk46f")
-}
-autoplay = "fade_out"
-
-[node name="Store" parent="CanvasLayer" instance=ExtResource("2_ae88y")]
-
-[node name="HealthBar" parent="CanvasLayer" node_paths=PackedStringArray("_owner") instance=ExtResource("3_14pv4")]
-offset_left = 64.0
-offset_top = 64.0
-offset_right = -1088.0
-offset_bottom = -584.0
-scale = Vector2(4, 4)
+[node name="HealthBar" parent="Hud" index="2" node_paths=PackedStringArray("_owner")]
 _owner = NodePath("../../Player")
 
-[node name="SharpnessBar" parent="CanvasLayer" node_paths=PackedStringArray("_owner") instance=ExtResource("4_e81jq")]
-offset_left = 240.0
-offset_top = 111.0
-offset_right = -912.0
-offset_bottom = -537.0
-rotation = 1.57079
-scale = Vector2(4, 4)
+[node name="SharpnessBar" parent="Hud" index="3" node_paths=PackedStringArray("_owner")]
 _owner = NodePath("../../Player")
-
-[node name="Soul" type="Label" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 760.0
-offset_top = 1000.0
-offset_right = 859.0
-offset_bottom = 1027.0
-grow_horizontal = 2
-text = "1
-"
-label_settings = SubResource("LabelSettings_13xvj")
-horizontal_alignment = 2
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Soul"]
-texture_filter = 1
-position = Vector2(120, 0)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_j37qr")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="Message" type="Label" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -251.0
-offset_top = -348.0
-offset_right = 251.0
-offset_bottom = -292.0
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_m61qj")
-horizontal_alignment = 1
-
-[node name="Kill" type="Label" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -67.0
-offset_top = 112.0
-offset_right = 70.0
-offset_bottom = 148.0
-grow_horizontal = 2
-text = "KILL  0"
-label_settings = SubResource("LabelSettings_qwq2q")
-
-[node name="Wave" type="Label" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -251.0
-offset_top = 56.0
-offset_right = 251.0
-offset_bottom = 112.0
-grow_horizontal = 2
-text = "WAVE 0"
-label_settings = SubResource("LabelSettings_kyypp")
-horizontal_alignment = 1
-
-[node name="Weapon" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 40.0
-offset_right = 80.0
-offset_bottom = 40.0
-
-[node name="BGWeapon" type="Panel" parent="CanvasLayer/Weapon"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = 750.0
-offset_right = 156.0
-offset_bottom = 947.0
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_u783f")
-
-[node name="BGstats" type="Panel" parent="CanvasLayer/Weapon"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = 950.0
-offset_right = 230.0
-offset_bottom = 1024.0
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4m1m2")
-
-[node name="StatsDisplay" parent="CanvasLayer/Weapon" instance=ExtResource("7_aa771")]
-layout_mode = 1
-offset_left = 40.0
-offset_top = 816.0
-offset_right = 40.0
-offset_bottom = 816.0
-scale = Vector2(1.5, 1.5)
-
-[node name="ColorRect" parent="CanvasLayer/Weapon/StatsDisplay" index="0"]
-visible = false
-
-[node name="Deco" parent="CanvasLayer/Weapon/StatsDisplay" index="1"]
-visible = false
-
-[node name="NameTxt" parent="CanvasLayer/Weapon/StatsDisplay" index="2"]
-visible = false
-
-[node name="ImgWeapon" parent="CanvasLayer/Weapon/StatsDisplay" index="3"]
-offset_left = -29.3333
-offset_top = 110.667
-offset_right = 98.6667
-offset_bottom = 238.667
-rotation = -1.57079
-scale = Vector2(1, 1)
-
-[node name="DescTxt" parent="CanvasLayer/Weapon/StatsDisplay" index="4"]
-visible = false
-
-[node name="DmgTxt" parent="CanvasLayer/Weapon/StatsDisplay" index="5"]
-offset_left = 20.0
-offset_top = 132.667
-offset_right = 60.0
-offset_bottom = 187.667
-text = "
-"
-
-[node name="AtkSpeedTxt" parent="CanvasLayer/Weapon/StatsDisplay" index="6"]
-offset_left = 89.3333
-offset_top = 134.0
-offset_right = 129.333
-offset_bottom = 189.0
-text = "
-
-"
 
 [node name="Camera" parent="." instance=ExtResource("8_hogue")]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -1.00707, 3.21244, 1.63763)
@@ -420,7 +100,7 @@ shadow_blur = 0.406
 
 [node name="ObjPickup" parent="." instance=ExtResource("25_h3fqb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49546, 0.46342, -0.528117)
-_weapon = ExtResource("26_k8oky")
+_weapon = ExtResource("13_f7v18")
 _sharpness = 1500.0
 
 [node name="ObjPickup2" parent="." instance=ExtResource("25_h3fqb")]
@@ -587,6 +267,8 @@ skeleton = NodePath("../../..")
 [node name="Spawner" parent="." instance=ExtResource("23_17bnt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.61664, 0.205183, 1.75698)
 _enemiesLib = Array[PackedScene]([ExtResource("17_1222f"), ExtResource("20_6ahek"), ExtResource("21_mmqg4")])
+_delayToStart = 1.0
+_enemyForWave = 15000
 _isActive = true
 _spawnParticle = true
 
@@ -608,6 +290,10 @@ transform = Transform3D(0.999536, 0, -0.0304513, 0, 1, 0, 0.0304513, 0, 0.999536
 [node name="EnemyCharacterDist" parent="." instance=ExtResource("20_6ahek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.70501, 1.17635, 1.21754)
 
-[editable path="CanvasLayer/Weapon/StatsDisplay"]
+[node name="EnemyCharacter" parent="." instance=ExtResource("17_1222f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55485, 0.964263, 2.84194)
+
+[editable path="Hud"]
+[editable path="Hud/Weapon/StatsDisplay"]
 [editable path="Camera"]
 [editable path="Decors/door"]

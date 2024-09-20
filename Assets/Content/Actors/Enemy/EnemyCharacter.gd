@@ -49,7 +49,7 @@ func _physics_process(delta):
 			_mood = 1;
 		velocity.x = 0;
 		velocity.z = 0;
-	$Label3D.text = _stateMachine.GetState()+" "+str(_mood)#+" "+str(_navAgent.target_position.distance_to(global_position));
+	$Label3D.text = str(velocity)
 	if _target:
 		_visionRay.target_position = global_position.direction_to(_target.global_position).normalized()*_atkRange;
 

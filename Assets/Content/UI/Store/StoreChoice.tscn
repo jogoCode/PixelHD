@@ -109,7 +109,7 @@ animations = [{
 process_mode = 3
 texture_filter = 1
 offset_right = 192.0
-offset_bottom = 352.0
+offset_bottom = 390.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxFlat_2uh8p")
@@ -122,12 +122,15 @@ _weapon = ExtResource("2_13yhi")
 layout_mode = 1
 _owner = NodePath("..")
 
+[node name="Deco2" parent="StatsDisplay" index="1"]
+offset_bottom = 250.0
+
 [node name="PriceLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 304.0
-offset_right = 130.0
-offset_bottom = 340.0
+offset_left = 88.0
+offset_top = 352.0
+offset_right = 154.0
+offset_bottom = 388.0
 text = "0
 "
 label_settings = SubResource("LabelSettings_c6hby")

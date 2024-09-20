@@ -34,7 +34,8 @@ texture_filter = 0
 texture = ExtResource("4_mb0iu")
 
 [node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(191, 252)
+transparent_bg = true
+size = Vector2i(191, 307)
 
 [node name="StatsDisplay" parent="SubViewport" node_paths=PackedStringArray("_owner") instance=ExtResource("5_8jx2m")]
 _owner = NodePath("../..")

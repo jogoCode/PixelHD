@@ -86,7 +86,7 @@ func FeedBack(damage,damager) -> void: #Hit Feedback;
 func CharacterFeedBack(damage,damager) -> void:
 	var impulseDir:Vector3
 	if damager is Character and damager != null:
-		impulseDir = Vector3(damager.getLastDir().x,0,damager.getLastDir().z);
+			impulseDir = Vector3(damager.getLastDir().x,0,damager.getLastDir().z).normalized();
 	elif damager is Projectile: # for projectile
 		impulseDir = (damager._vel*10).normalized();
 		
@@ -128,7 +128,8 @@ func EnemyCharacterFeedBack(damage,damager,impulseDir)->void:
 	
 		_owner.change_randnum()
 		if damage >1 and _canBeImpulse:
-			_owner.applyImpulse(impulseDir*4,4.5);
+			_owner.applyImpulse(impulseDir*4,6);
+			_canBeImpulse = false;
 		if damager is Character:
 			if !damager._stateMachine.GetState() == "AtkSpe":
 				Level.FreezeFrame(0.001,0.07);
@@ -138,7 +139,7 @@ func EnemyCharacterFeedBack(damage,damager,impulseDir)->void:
 	
 func _on_take_damage(damage,damager):
 	if(_owner is Character): #Chnage l'état du Character
-		if _owner._stateMachine.GetState() == "Roll" or !_canTakeDamage :
+		if !_canTakeDamage :
 			return;
 		_canTakeDamage = false;
 		# change hp
@@ -146,10 +147,13 @@ func _on_take_damage(damage,damager):
 		# feed back function
 		FeedBack(damage,damager);
 		# change state
-		if _armor < 50 and damage >2:
+		if _armor < 50 and damage >2 and !_canTakeDamage :
+			#_owner.applyImpulse(Vector3.ZERO,150000);
 			_owner._stateMachine.IsAction("Hit",0.2);
-		await get_tree().create_timer(0.3).timeout;
+		await get_tree().create_timer(0.1).timeout;
 		_canTakeDamage = true;
+		await get_tree().create_timer(0.3).timeout;
+		_canBeImpulse =  true;
 	else:
 		FeedBack(damage,damager);
 		AddActualHp(-damage);

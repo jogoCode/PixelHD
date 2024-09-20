@@ -10,6 +10,7 @@ _type = 1
 _img = ExtResource("1_2qag5")
 _dmg = 16
 _atkSpeed = 1.4
+_atkSpe = 0
 _desc = ""
 _price = 55
 _hitboxSize = 1.05

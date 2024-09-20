@@ -24,7 +24,7 @@ func Atk():
 		projInstance._dir = _owner._visionRay.target_position.normalized();
 		projInstance._owner = owner;
 	if _canShoot:
-		add_child(projInstance);
+		Level.main.add_child(projInstance);
 		_canShoot = false;
-		await get_tree().create_timer(_cooldown).timeout
+		await get_tree().create_timer(_cooldown*1).timeout
 		_canShoot = true;

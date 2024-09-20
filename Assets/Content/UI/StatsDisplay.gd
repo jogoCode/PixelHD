@@ -55,12 +55,10 @@ func DisplayState():
 
 
 func atkDisplayer(atkSpd):
+	_atkSpdTxt.text = str(atkSpd);
 	if atkSpd >=1.5:
-		_atkSpdTxt.text = "A";
 		_atkSpdTxt.modulate = Color.html("#c2d672");
 	if atkSpd >=1 and atkSpd < 1.5:
-		_atkSpdTxt.text = "B";
 		_atkSpdTxt.modulate = Color.html("f5c75d");
 	if atkSpd >0 and atkSpd <1:
-		_atkSpdTxt.text = "C";	
 		_atkSpdTxt.modulate = Color.html("#c36050");
