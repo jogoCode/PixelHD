@@ -49,7 +49,7 @@ func _physics_process(delta):
 			_mood = 1;
 		velocity.x = 0;
 		velocity.z = 0;
-	$Label3D.text = str(velocity)
+	$Label3D.text = str(_impulseVelocity)
 	if _target:
 		_visionRay.target_position = global_position.direction_to(_target.global_position).normalized()*_atkRange;
 

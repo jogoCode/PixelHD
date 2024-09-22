@@ -18,7 +18,6 @@ func _ready():
 func _physics_process(delta):
 	if _playerCharacter._stateMachine.GetState() == "Die":
 		return;
-	print(_inputsLib);
 	if Engine.time_scale == 1:
 		update_buffer_timer(delta);
 		# MOVE
@@ -48,7 +47,7 @@ func _physics_process(delta):
 		#ATK SPE
 	if(Input.is_action_just_pressed("Atk_spe")):
 		add_to_inputs_lib("Atk_spe");
-		_bufferTime = _speBufferTime/4;
+		#_bufferTime = _speBufferTime/4;
 		_playerCharacter.AtkSpe();
 		buffer_input()
 		
@@ -58,12 +57,14 @@ func _physics_process(delta):
 
 
 func update_buffer_timer(delta):
-	_bufferTimer-=delta;
-	_bufferTimer = clamp(_bufferTimer,0,1);
-	if _bufferTimer <= 0 and _inputsLib.size() > 0 :
-		_inputsLib.remove_at(0);
-	var action =  _inputsLib.front()
-	process_input(action);
+	if !_inputsLib.is_empty():
+		_bufferTimer-=delta;
+		_bufferTimer = clamp(_bufferTimer,0,1);
+		if _bufferTimer <= 0 and _inputsLib.size() > 0 :
+			_inputsLib.remove_at(0);
+		if !_inputsLib.is_empty():
+			var action =  _inputsLib.front()
+			process_input(action);
 
 func buffer_input():
 	_bufferTimer = _bufferTime;

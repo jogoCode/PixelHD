@@ -6,6 +6,7 @@ var time = 0;
 func _ready() -> void:
 	apply_central_impulse(Vector3.UP*4);
 	await  get_tree().create_timer(0.1).timeout;
+	SoundFx.play("Soul",0.2);
 	var tween = get_tree().create_tween();
 	#tween.set_trans(6);
 	#tween.tween_property(self,"position",Level._PLAYER.global_position,1);

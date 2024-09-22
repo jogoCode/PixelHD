@@ -32,6 +32,9 @@ func DisplayState():
 			if _statsWeapon != null:
 				_nameTxt.text = _statsWeapon._name;
 				_img.texture = _statsWeapon._img;
+				if get_parent().name != "Weapon":
+					_img.rotation_degrees = -45;
+					_img.position = Vector2(-36,130);
 				_dmgTxt.text = str(_statsWeapon._dmg);
 				atkDisplayer(_statsWeapon._atkSpeed);
 				_atkSpdTxt.show();
@@ -47,6 +50,8 @@ func DisplayState():
 				_statsObject.init();
 			_nameTxt.text = _statsObject._name;
 			_img.texture = _statsObject._img;
+			_img.rotation_degrees = 0;
+			_img.position = Vector2(0,16);
 			_dmgTxt.text = "";
 			_descTxt.text = _statsObject._desc;
 			_atkSpdTxt.hide();

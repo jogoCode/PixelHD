@@ -114,12 +114,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxFlat_2uh8p")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_sixi8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2uh8p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g1fk0")
+disabled = true
 script = ExtResource("1_2sx5i")
 _weapon = ExtResource("2_13yhi")
 
 [node name="StatsDisplay" parent="." node_paths=PackedStringArray("_owner") instance=ExtResource("1_px1wr")]
 layout_mode = 1
+offset_top = 40.0
+offset_right = -192.0
+offset_bottom = -350.0
+mouse_filter = 2
 _owner = NodePath("..")
 
 [node name="Deco2" parent="StatsDisplay" index="1"]

@@ -41,7 +41,7 @@ func _ready():
 
 func _physics_process(delta):
 	if(_owner._stateMachine.GetState() == "Atk" or 
-		_owner._stateMachine.GetState() == "AtkSpe" or 
+		_owner._stateMachine.GetState() == "Spin" or 
 	   _owner._stateMachine.GetState() == "Sharpen" or
 	 _owner._stateMachine.GetState() == "EndSharpen" or
 	   _owner._stateMachine.GetState() == "BladeBounce"):
@@ -66,11 +66,6 @@ func  HitBoxOrientation():
 		area3d.rotation_degrees = Vector3(45,5,5);
 	if _owner.GetPlayerOrientation().x <0:
 		area3d.rotation_degrees = Vector3(-45,180,-11);
-	#match _owner.GetPlayerOrientation():
-		#Vector3(1,0,0): #Right
-			#area3d.rotation_degrees = Vector3(45,5,5);
-		#Vector3(-1,0,0): #Left
-			#area3d.rotation_degrees = Vector3(-45,180,-11);
 
 func GetWeaponData():
 	return _weaponActualStats;

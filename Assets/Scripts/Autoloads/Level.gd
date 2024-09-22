@@ -3,7 +3,6 @@ extends Node
 
 var _CAMERA:MainCamera;
 var _PLAYER:PlayerCharacter;
-var DELTA:float;
 @onready var main = get_node("/root/Main");
 var _dungeonSize:int = 11;
 
@@ -23,9 +22,6 @@ func _ready():
 	MonsterKill.connect(_add_score);
 	addSoul.connect(_add_soul);
 	removeSoul.connect(_remove_soul);
-
-func _process(delta):
-	DELTA = delta;
 
 func CreateObject(sceneToIntance:Node3D,pos:Vector3,rot:Vector3 = Vector3(0,0,1)):
 	sceneToIntance.global_position = pos;

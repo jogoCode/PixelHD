@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://w8iky7li4b0i"]
+
+[ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/StaminaSystem.gd" id="1_fbosk"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaminaSystem" type="Node" parent="."]
+script = ExtResource("1_fbosk")
+_staminaRegen = 2.0

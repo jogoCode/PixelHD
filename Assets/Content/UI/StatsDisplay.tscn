@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://b10x10md87dxx"]
 
 [ext_resource type="Script" path="res://Assets/Content/UI/StatsDisplay.gd" id="1_52in5"]
+[ext_resource type="Texture2D" uid="uid://danns8u2f6qm" path="res://Assets/Sprites/Object/potion.png" id="2_3b7uu"]
 [ext_resource type="FontFile" uid="uid://c3rjhfocf1qp6" path="res://Assets/Fonts/PeaberryBase.ttf" id="2_htpc7"]
-[ext_resource type="Texture2D" uid="uid://d2wm3t47pj03v" path="res://Assets/Sprites/Weapons/Roselame.png" id="2_q8nhb"]
 [ext_resource type="Texture2D" uid="uid://bb81aihficojj" path="res://Assets/Sprites/UI/UI_ATK_icon.png" id="3_0gc85"]
 [ext_resource type="Texture2D" uid="uid://d2bseyw3c21un" path="res://Assets/Sprites/UI/UI_ATKSPD_icon.png" id="4_ii1yg"]
 [ext_resource type="Texture2D" uid="uid://dmmjwt7nqrw0j" path="res://Assets/Sprites/UI/Border/panel-border-000.png" id="6_sbvug"]
@@ -40,13 +40,9 @@ corner_detail = 1
 
 [node name="StatsDisplay" type="Control" node_paths=PackedStringArray("_nameTxt", "_img", "_dmgTxt", "_atkSpdTxt", "_descTxt")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 32.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_top = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_52in5")
 _nameTxt = NodePath("NameTxt")
 _img = NodePath("ImgWeapon")
@@ -77,59 +73,59 @@ offset_right = 92.0
 offset_bottom = 258.0
 rotation = -0.785397
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_q8nhb")
+texture = ExtResource("2_3b7uu")
 expand_mode = 2
 stretch_mode = 3
 
 [node name="DescTxt" type="Label" parent="."]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 261.0
+offset_top = 184.0
 offset_right = 176.0
-offset_bottom = 301.0
+offset_bottom = 224.0
 theme_override_fonts/font = ExtResource("2_htpc7")
-text = "Description du objet "
+theme_override_font_sizes/font_size = 19
+text = "Description du objet"
 autowrap_mode = 2
 justification_flags = 171
 
 [node name="DmgTxt" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 118.0
+offset_left = 72.0
 offset_top = 184.0
-offset_right = 158.0
-offset_bottom = 251.0
+offset_right = 146.0
+offset_bottom = 207.0
 theme_override_font_sizes/font_size = 31
-text = "12
-
-"
+text = "12"
 label_settings = SubResource("LabelSettings_q87o1")
+horizontal_alignment = 2
+text_direction = 1
 
 [node name="AtkImg" type="TextureRect" parent="DmgTxt"]
 layout_mode = 0
-offset_left = 18.0
+offset_left = 64.0
 offset_top = -20.0
-offset_right = 58.0
+offset_right = 104.0
 offset_bottom = 20.0
 texture = ExtResource("3_0gc85")
 
 [node name="AtkSpeedTxt" type="Label" parent="."]
 layout_mode = 0
-offset_left = 96.0
+offset_left = 40.0
 offset_top = 224.0
 offset_right = 146.0
-offset_bottom = 291.0
+offset_bottom = 247.0
 theme_override_font_sizes/font_size = 31
-text = "2.21
-
-"
+text = "2.21"
 label_settings = SubResource("LabelSettings_q87o1")
+horizontal_alignment = 2
 
 [node name="AtkSpdImg" type="TextureRect" parent="AtkSpeedTxt"]
 layout_mode = 0
-offset_left = 47.0
+offset_left = 103.0
 offset_top = -18.0
-offset_right = 87.0
+offset_right = 143.0
 offset_bottom = 22.0
 texture = ExtResource("4_ii1yg")
 

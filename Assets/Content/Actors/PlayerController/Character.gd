@@ -26,11 +26,12 @@ func _physics_process(delta):
 func impulse(delta):
 	#_impulseVelocity= Vector3.ZERO;
 	if _impulseVelocity.length() > 0:
+		_impulseVelocity = _impulseVelocity.lerp(Vector3(0,velocity.y,0), _impulseFriction*delta);
 		velocity.x = _impulseVelocity.x;
 		velocity.z = _impulseVelocity.z;
-		_impulseVelocity = _impulseVelocity.lerp(Vector3(0,velocity.y,0), _impulseFriction*delta);
 		if(_impulseVelocity.length() <= 0.01+_impulseFriction/2):
 			_impulseVelocity = Vector3.ZERO;
+			velocity = Vector3.ZERO;
 
 
 func applyImpulse(force: Vector3,impulseFriction):
@@ -38,8 +39,8 @@ func applyImpulse(force: Vector3,impulseFriction):
 	_impulseFriction = impulseFriction;
 	if(_impulseVelocity.length()==0):
 		_impulseVelocity += force;
-	elif(_impulseVelocity.length()>0.5):
-		_impulseVelocity = Vector3.ZERO
+	#elif(_impulseVelocity.length()>0.5):
+		#_impulseVelocity = Vector3.ZERO
 		#if _impulseVelocity.length() >= max_knockback_speed:
 			#_impulseVelocity = _impulseVelocity.normalized() * max_knockback_speed;
 

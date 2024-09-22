@@ -14,6 +14,7 @@ func _ready() -> void:
 		printerr("no atkspe lib");
 
 func _process(delta: float) -> void:
+	$debug.text = _stateMachine.GetState();
 	_delta = delta;
 
 func _physics_process(delta):
@@ -47,7 +48,7 @@ func jump()->void:
 
 func Roll()->void:
 	if(_stateMachine.stateCheck() or
-		_stateMachine.GetState() == "AtkSpe"):
+		_stateMachine.GetState() == "Spin"):
 		return;
 	_stateMachine.IsAction("Roll",0.5);
 	Level._CAMERA.ZoomCamera(-1,0.1)
@@ -60,7 +61,7 @@ func Atk()->void:
 		return;
 	if(_stateMachine.stateCheck() or 
 	   _stateMachine.GetState() == "Sharpen" or
-	   _stateMachine.GetState() == "AtkSpe"):
+	   _stateMachine.GetState() == "Spin"):
 		return;
 	Level._CAMERA.ZoomCamera(-1,0.1);
 	SoundFx.play(_weapon.GetWeaponData()._audio,_weapon.GetWeaponData()._atkSpeed*0.1);
@@ -73,7 +74,7 @@ func AtkSpe()->void:
 		return;
 	if( _stateMachine.GetState() == "Roll" or 
 		_stateMachine.GetState() == "EndRoll" or 
-		_stateMachine.GetState() == "Hit" ):
+		_stateMachine.GetState() == "Hit"):
 		return;
 	
 	if	_atkSpeLib.get_child(_weapon._weaponActualStats._atkSpe)!=null:

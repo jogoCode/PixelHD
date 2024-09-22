@@ -8,6 +8,8 @@ func _ready() -> void:
 	super._ready();
 
 func action():
+	if _owner._stateMachine.GetState() == "Atk":
+		return;
 	_projo = _owner._weapon._weaponActualStats._projo;
 	if _projo == null:
 		return;

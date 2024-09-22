@@ -2,9 +2,9 @@ extends ActionLeaf
 
 var _actor;
 
-func _process(delta):
+func _physics_process(delta):
 	if(_actor!= null):
-		_actor.MoveToTarget(Level.DELTA);
+		_actor.MoveToTarget(delta);
 
 func tick(actor, blackboard: Blackboard):
 	if actor._stateMachine.GetState() == "Die":

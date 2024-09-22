@@ -9,13 +9,15 @@ radius = 0.245901
 
 [node name="MoonLightSlash" type="Area3D" node_paths=PackedStringArray("_visual")]
 script = ExtResource("1_6dmhb")
-_SPEED = 4.0
+_SPEED = 2.5
+_accel = 3.0
 _canAccelerate = true
-_delayToDestroy = 0.5
+_delayToDestroy = 0.55
 _destroyAtTouch = false
 _hideAtTouch = false
 _lookAtDir = true
 _visual = NodePath("MoonLightSlashFx")
+_audio = "MoonLightProj"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_f11pe")

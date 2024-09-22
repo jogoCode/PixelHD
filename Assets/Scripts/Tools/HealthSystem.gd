@@ -76,7 +76,7 @@ func FeedBack(damage,damager) -> void: #Hit Feedback;
 	# impact fx
 	Level.CreateFx(SlashInstance,Vector3(_owner.global_position.x,0.5,_owner.global_position.z),Vector3.ZERO);
 	await get_tree().create_timer(0.1).timeout;
-	Level._CAMERA.ShakeCamera(0.05*damage/3,0.15);
+	Level._CAMERA.ShakeCamera(0.05*damage/4,0.15);
 	
 	# character Hit FeedBack
 	if(_owner is Character):
@@ -85,8 +85,8 @@ func FeedBack(damage,damager) -> void: #Hit Feedback;
 
 func CharacterFeedBack(damage,damager) -> void:
 	var impulseDir:Vector3
-	if damager is Character and damager != null:
-			impulseDir = Vector3(damager.getLastDir().x,0,damager.getLastDir().z).normalized();
+	if damager != null and damager is Character:
+		impulseDir = Vector3(damager.getLastDir().x,0,damager.getLastDir().z).normalized();
 	elif damager is Projectile: # for projectile
 		impulseDir = (damager._vel*10).normalized();
 		
@@ -97,10 +97,10 @@ func CharacterFeedBack(damage,damager) -> void:
 			Level.CreateFx(BloodInstance,Vector3(_owner.global_position.x,0.5,_owner.global_position.z),damager.global_position,int(pow(damage,0.001)*pow(damage,0.8)));
 		# apply damage impulse
 		if _owner is PlayerCharacter:
-#for player character-----------------------
+			#for player character-----------------------
 			PlayerCharacterFeedBack(damage,damager,impulseDir);
 		else:
-#for enemy character-----------------------
+			#for enemy character-----------------------
 			EnemyCharacterFeedBack(damage,damager,impulseDir)
 		_owner.get_node("Visual/AnimatedSprite3D").modulate =Color(1,1,1,0.5);
 		await get_tree().create_timer(0.1).timeout;
@@ -128,10 +128,10 @@ func EnemyCharacterFeedBack(damage,damager,impulseDir)->void:
 	
 		_owner.change_randnum()
 		if damage >1 and _canBeImpulse:
-			_owner.applyImpulse(impulseDir*4,6);
+			_owner.applyImpulse(impulseDir*4,5);
 			_canBeImpulse = false;
 		if damager is Character:
-			if !damager._stateMachine.GetState() == "AtkSpe":
+			if !damager._stateMachine.GetState() == "Spin":
 				Level.FreezeFrame(0.001,0.07);
 		for child in _owner.get_children():
 			if child is Oscillator:
@@ -152,7 +152,7 @@ func _on_take_damage(damage,damager):
 			_owner._stateMachine.IsAction("Hit",0.2);
 		await get_tree().create_timer(0.1).timeout;
 		_canTakeDamage = true;
-		await get_tree().create_timer(0.3).timeout;
+		#await get_tree().create_timer(0.4).timeout;
 		_canBeImpulse =  true;
 	else:
 		FeedBack(damage,damager);

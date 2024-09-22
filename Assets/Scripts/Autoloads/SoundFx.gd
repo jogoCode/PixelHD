@@ -16,7 +16,9 @@ var sounds = {
 	"BounceBlade" :load("res://Assets/Sounds/audio_bounce_blade.wav"),
 	"Sharpen01" : load('res://Assets/Sounds/audio_sharpen01.wav'),
 	"Sharpen02" : load("res://Assets/Sounds/audio_sharpen02.wav"),
-	"Ting" : load("res://Assets/Sounds/audio_ting.wav")
+	"Ting" : load("res://Assets/Sounds/audio_ting.wav"),
+	"MoonLightProj" : load("res://Assets/Sounds/audio_moonlightSlash.wav"),
+	"Soul" : load("res://Assets/Sounds/audio_soul.wav")
 }
 
 @onready var sound_players:Array = get_children();

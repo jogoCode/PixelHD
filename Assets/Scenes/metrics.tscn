@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b6tlups1ekayh"]
+[gd_scene load_steps=31 format=3 uid="uid://b6tlups1ekayh"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Tools/Room.gd" id="1_kkfiq"]
 [ext_resource type="PackedScene" uid="uid://bbv8cw44ayyg0" path="res://Assets/Content/UI/HUD/main_hud.tscn" id="2_6edob"]
@@ -13,9 +13,10 @@
 [ext_resource type="Resource" uid="uid://c62xqan7atuvr" path="res://Assets/Ressources/Weapons/W_IronKatana.tres" id="14_ne0e3"]
 [ext_resource type="PackedScene" uid="uid://cydxbf4kd30w5" path="res://Assets/Models/ModelsPrefs/wall.tscn" id="15_bqxkq"]
 [ext_resource type="Resource" uid="uid://tpdt0wkjtcqj" path="res://Assets/Ressources/Weapons/W_MoonLight.tres" id="15_ybevo"]
-[ext_resource type="PackedScene" uid="uid://bqf1ndsmpr7ns" path="res://Assets/Content/Actors/Enemy/Enemy.tscn" id="17_1222f"]
-[ext_resource type="PackedScene" uid="uid://4jf2ookbpt8v" path="res://Assets/Content/Actors/Enemy/EnemyDistance.tscn" id="20_6ahek"]
-[ext_resource type="PackedScene" uid="uid://c23hj1btfr1mc" path="res://Assets/Content/Actors/Enemy/enm_BZombie.tscn" id="21_mmqg4"]
+[ext_resource type="PackedScene" uid="uid://x0fdkqldi0h4" path="res://Assets/Content/Actors/Enemy/Enemies/enmy_zombie.tscn" id="20_5rdyb"]
+[ext_resource type="PackedScene" uid="uid://4jf2ookbpt8v" path="res://Assets/Content/Actors/Enemy/Obsolete/EnemyDistance.tscn" id="20_6ahek"]
+[ext_resource type="PackedScene" uid="uid://bnsmld4l3j35e" path="res://Assets/Content/Actors/Enemy/Enemies/enemy_snake.tscn" id="20_63nq5"]
+[ext_resource type="PackedScene" uid="uid://c23hj1btfr1mc" path="res://Assets/Content/Actors/Enemy/Obsolete/enm_BZombie.tscn" id="21_mmqg4"]
 [ext_resource type="PackedScene" uid="uid://33d0d6gtxfhd" path="res://Assets/Content/soul.tscn" id="22_n5u72"]
 [ext_resource type="PackedScene" uid="uid://b2bkiebp1rsa7" path="res://Assets/Content/Spawner/spawner.tscn" id="23_17bnt"]
 [ext_resource type="PackedScene" uid="uid://ctoxthrmgum7c" path="res://Assets/Prefabs/objPickup.tscn" id="25_h3fqb"]
@@ -264,13 +265,14 @@ material_override = SubResource("StandardMaterial3D_6vjsy")
 mesh = SubResource("BoxMesh_l54df")
 skeleton = NodePath("../../..")
 
-[node name="Spawner" parent="." instance=ExtResource("23_17bnt")]
+[node name="Spawner" parent="." node_paths=PackedStringArray("_messageLabel", "_waveNumLabel") instance=ExtResource("23_17bnt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.61664, 0.205183, 1.75698)
-_enemiesLib = Array[PackedScene]([ExtResource("17_1222f"), ExtResource("20_6ahek"), ExtResource("21_mmqg4")])
-_delayToStart = 1.0
-_enemyForWave = 15000
+_enemiesLib = Array[PackedScene]([ExtResource("20_5rdyb"), ExtResource("20_6ahek"), ExtResource("21_mmqg4")])
+_enemyForWave = 20
 _isActive = true
 _spawnParticle = true
+_messageLabel = NodePath("../Hud/Message")
+_waveNumLabel = NodePath("../Hud/Wave")
 
 [node name="Node3D" type="Node3D" parent="Spawner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09194, 0.119179, -2.76541)
@@ -287,13 +289,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73784, 0.064782, 2.78878)
 [node name="Soul" parent="." instance=ExtResource("22_n5u72")]
 transform = Transform3D(0.999536, 0, -0.0304513, 0, 1, 0, 0.0304513, 0, 0.999536, 4.61777, 1.66311, 2.21732)
 
-[node name="EnemyCharacterDist" parent="." instance=ExtResource("20_6ahek")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.70501, 1.17635, 1.21754)
+[node name="EnemySnake" parent="." instance=ExtResource("20_63nq5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.68144, 0.731561, 0)
 
-[node name="EnemyCharacter" parent="." instance=ExtResource("17_1222f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55485, 0.964263, 2.84194)
+[node name="HealthSystem" parent="EnemySnake" index="8"]
+_baseHp = 80.0
+
+[node name="BeehaveTree" parent="EnemySnake" index="12" node_paths=PackedStringArray("blackboard")]
+blackboard = NodePath("@Node@220106")
 
 [editable path="Hud"]
 [editable path="Hud/Weapon/StatsDisplay"]
 [editable path="Camera"]
 [editable path="Decors/door"]
+[editable path="EnemySnake"]

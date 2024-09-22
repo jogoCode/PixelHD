@@ -165,6 +165,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
@@ -278,7 +279,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 28.0
 offset_top = 950.0
-offset_right = 312.0
+offset_right = 280.0
 offset_bottom = 1024.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bywnc")
@@ -309,21 +310,31 @@ scale = Vector2(1, 1)
 visible = false
 
 [node name="DmgTxt" parent="Weapon/StatsDisplay" index="4"]
-offset_left = 20.0
-offset_top = 132.667
-offset_right = 60.0
-offset_bottom = 187.667
+offset_left = -37.0
+offset_top = 112.0
+offset_right = 32.0
+offset_bottom = 167.0
 text = "
-"
+21"
+
+[node name="AtkImg" parent="Weapon/StatsDisplay/DmgTxt" index="0"]
+offset_left = 58.3333
+offset_top = 5.33333
+offset_right = 98.3333
+offset_bottom = 45.3333
 
 [node name="AtkSpeedTxt" parent="Weapon/StatsDisplay" index="5"]
 texture_filter = 1
-offset_left = 89.3333
-offset_top = 134.0
-offset_right = 129.333
-offset_bottom = 189.0
-text = "
+offset_left = 37.0
+offset_top = 138.0
+offset_right = 114.0
+offset_bottom = 193.0
+text = "55.0
 "
+
+[node name="AtkSpdImg" parent="Weapon/StatsDisplay/AtkSpeedTxt" index="0"]
+offset_left = 75.0
+offset_right = 115.0
 
 [node name="ninepathbg" parent="Weapon/StatsDisplay" index="6"]
 visible = false

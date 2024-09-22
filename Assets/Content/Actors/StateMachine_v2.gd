@@ -43,6 +43,8 @@ func SetState(newState):
 	StateChanged.emit();
 
 func GetState()->String:
+	if _actualState == "AtkSpe":
+		return _animationTree["parameters/AtkSpe/playback"].get_current_node();
 	return _actualState;
 
 

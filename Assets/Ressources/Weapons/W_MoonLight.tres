@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Weapons.gd" id="1_n6clq"]
 [ext_resource type="Texture2D" uid="uid://o7l86ri6mgoi" path="res://Assets/Sprites/Weapons/MoonLight.png" id="1_xspfw"]
-[ext_resource type="PackedScene" uid="uid://drbj1le41x3dn" path="res://Assets/Content/Actors/PlayerController/AtkSpecials/proj/proj_moonLightSlash.tscn" id="2_340ua"]
+[ext_resource type="PackedScene" uid="uid://drbj1le41x3dn" path="res://Assets/Content/Projectile/proj_moonLightSlash.tscn" id="2_tqocg"]
 
 [resource]
 script = ExtResource("1_n6clq")
@@ -18,4 +18,4 @@ _hitboxSize = 1.05
 _fxColor = Color(0.639216, 0.866667, 1, 1)
 _shaded = false
 _audio = "G_Slash"
-_projo = ExtResource("2_340ua")
+_projo = ExtResource("2_tqocg")
