@@ -1,4 +1,4 @@
-extends Node
+extends JaugeSystem
 class_name HealthSystem;
 
 @export var _baseHp:float;
@@ -26,6 +26,9 @@ signal Heal(value);
 
 
 func _ready():
+	_actualValue = _actualHp;
+	_baseValue = _actualHp;
+	_maxValue = _actualHp;
 	setActualHp(_baseHp);
 	setMaxHp(_baseHp);
 	Heal.connect(AddActualHp);
@@ -37,17 +40,21 @@ func _physics_process(delta):
 
 func setMaxHp(value:float):
 	_maxHp = value;
+	_maxValue = _maxHp;
 
 func setActualHp(value:float):
 	_actualHp = value;
+	_actualValue = _actualHp;
 
 func AddActualHp(newHp:int)->void:
 	_actualHp += newHp;
+	_actualValue = _actualHp; 
 	_actualHp = clampf(_actualHp,0,_maxHp);
 	CanDeath();
 	if newHp <0:
 		_canTakeDamage = false;
 	hpChanged.emit();
+	actualValueChanged.emit();
 	
 func CanDeath() -> void: #TODO REMANIER ICI AUSSI
 	if(_actualHp <= 0):
@@ -87,7 +94,7 @@ func CharacterFeedBack(damage,damager) -> void:
 	var impulseDir:Vector3
 	if damager != null and damager is Character:
 		impulseDir = Vector3(damager.getLastDir().x,0,damager.getLastDir().z).normalized();
-	elif damager is Projectile: # for projectile
+	elif damager != null and damager is Projectile: # for projectile
 		impulseDir = (damager._vel*10).normalized();
 		
 	var BloodInstance = bloodDrop.instantiate();

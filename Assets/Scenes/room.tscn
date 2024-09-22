@@ -112,17 +112,22 @@ _blackScreenAnimPlayer = NodePath("Hud/ColorRect/AnimationPlayer")
 offset_top = -8.0
 offset_bottom = -8.0
 
-[node name="HealthBar" parent="Hud" index="2" node_paths=PackedStringArray("_owner")]
+[node name="HealthBar" parent="Hud" index="2" node_paths=PackedStringArray("_ownerJaugeSys", "_owner")]
 offset_right = -1810.0
 offset_bottom = -1004.0
+_ownerJaugeSys = NodePath("../../Player/HealthSystem")
 _owner = NodePath("../../Player")
 
-[node name="SharpnessBar" parent="Hud" index="3" node_paths=PackedStringArray("_owner")]
+[node name="StaminaBar" parent="Hud" index="3" node_paths=PackedStringArray("_ownerJaugeSys", "_owner")]
+_ownerJaugeSys = NodePath("../../Player/StaminaSystem")
+_owner = NodePath("../../Player")
+
+[node name="SharpnessBar" parent="Hud" index="4" node_paths=PackedStringArray("_owner")]
 offset_right = -1669.0
 offset_bottom = -927.0
 _owner = NodePath("../../Player")
 
-[node name="Weapon" parent="Hud" index="8"]
+[node name="Weapon" parent="Hud" index="10"]
 mouse_filter = 2
 
 [node name="DmgTxt" parent="Hud/Weapon/StatsDisplay" index="4"]
@@ -415,3 +420,8 @@ _weapon = ExtResource("25_neaad")
 [editable path="Hud"]
 [editable path="Hud/Weapon/StatsDisplay"]
 [editable path="Camera"]
+[editable path="Player"]
+[editable path="Player/Weapon"]
+[editable path="Player/Weapon/Spark"]
+[editable path="Player/Particle"]
+[editable path="Player/AtkSpeLib"]

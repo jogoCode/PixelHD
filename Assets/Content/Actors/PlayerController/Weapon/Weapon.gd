@@ -43,8 +43,9 @@ func _physics_process(delta):
 	if(_owner._stateMachine.GetState() == "Atk" or 
 		_owner._stateMachine.GetState() == "Spin" or 
 	   _owner._stateMachine.GetState() == "Sharpen" or
-	 _owner._stateMachine.GetState() == "EndSharpen" or
-	   _owner._stateMachine.GetState() == "BladeBounce"):
+		_owner._stateMachine.GetState() == "EndSharpen" or
+	   _owner._stateMachine.GetState() == "BladeBounce" or 
+		_owner._stateMachine.GetState() == "BigBlade"):
 			#await  get_tree().create_timer(_cooldown).timeout;
 			show();
 			if (_weaponActualStats!= null):

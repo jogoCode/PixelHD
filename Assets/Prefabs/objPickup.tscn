@@ -42,6 +42,7 @@ _owner = NodePath("../..")
 
 [node name="StatsDisplay" type="Sprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.353553, 0.353553, 0, -0.353553, 0.353553, 0, 0.572802, -0.654504)
+visible = false
 transparency = 0.06
 cast_shadow = 0
 billboard = 1

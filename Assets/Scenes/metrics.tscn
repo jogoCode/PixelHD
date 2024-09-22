@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://b6tlups1ekayh"]
+[gd_scene load_steps=33 format=3 uid="uid://b6tlups1ekayh"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Tools/Room.gd" id="1_kkfiq"]
 [ext_resource type="PackedScene" uid="uid://bbv8cw44ayyg0" path="res://Assets/Content/UI/HUD/main_hud.tscn" id="2_6edob"]
 [ext_resource type="PackedScene" uid="uid://ceuncfasenarg" path="res://Assets/Prefabs/Camera.tscn" id="8_hogue"]
 [ext_resource type="Texture2D" uid="uid://8ssjpejw70op" path="res://Assets/Sprites/Textures/skybox.jpeg" id="9_3xlwt"]
 [ext_resource type="PackedScene" uid="uid://d0u2g2ybwrr02" path="res://Assets/Content/Actors/PlayerController/playerV2.tscn" id="10_65fp0"]
+[ext_resource type="Resource" uid="uid://ehsif27px68g" path="res://Assets/Ressources/Weapons/W_FireGreatSword.tres" id="11_cnbnc"]
 [ext_resource type="PackedScene" uid="uid://by1lih7605fk" path="res://Assets/Models/ModelsPrefs/rounded_platform.tscn" id="11_r1m7u"]
 [ext_resource type="Texture2D" uid="uid://dr377r4jo52s8" path="res://Assets/Sprites/Textures/platform_text.png" id="12_urrr0"]
 [ext_resource type="Texture2D" uid="uid://3rjr00wn07pv" path="res://Assets/Sprites/Textures/NormalMap/platform_text_n.png" id="13_ayx58"]
@@ -15,8 +16,9 @@
 [ext_resource type="Resource" uid="uid://tpdt0wkjtcqj" path="res://Assets/Ressources/Weapons/W_MoonLight.tres" id="15_ybevo"]
 [ext_resource type="PackedScene" uid="uid://x0fdkqldi0h4" path="res://Assets/Content/Actors/Enemy/Enemies/enmy_zombie.tscn" id="20_5rdyb"]
 [ext_resource type="PackedScene" uid="uid://4jf2ookbpt8v" path="res://Assets/Content/Actors/Enemy/Obsolete/EnemyDistance.tscn" id="20_6ahek"]
-[ext_resource type="PackedScene" uid="uid://bnsmld4l3j35e" path="res://Assets/Content/Actors/Enemy/Enemies/enemy_snake.tscn" id="20_63nq5"]
+[ext_resource type="PackedScene" uid="uid://d2hnc60rhkegt" path="res://Assets/Content/Actors/Enemy/Puppet.tscn" id="21_7qj4a"]
 [ext_resource type="PackedScene" uid="uid://c23hj1btfr1mc" path="res://Assets/Content/Actors/Enemy/Obsolete/enm_BZombie.tscn" id="21_mmqg4"]
+[ext_resource type="PackedScene" uid="uid://clai0yotmk27a" path="res://Assets/Content/Actors/Enemy/Enemies/enemy_g_zombie.tscn" id="22_5034t"]
 [ext_resource type="PackedScene" uid="uid://33d0d6gtxfhd" path="res://Assets/Content/soul.tscn" id="22_n5u72"]
 [ext_resource type="PackedScene" uid="uid://b2bkiebp1rsa7" path="res://Assets/Content/Spawner/spawner.tscn" id="23_17bnt"]
 [ext_resource type="PackedScene" uid="uid://ctoxthrmgum7c" path="res://Assets/Prefabs/objPickup.tscn" id="25_h3fqb"]
@@ -74,10 +76,15 @@ _actualType = 1
 
 [node name="Hud" parent="." instance=ExtResource("2_6edob")]
 
-[node name="HealthBar" parent="Hud" index="2" node_paths=PackedStringArray("_owner")]
+[node name="HealthBar" parent="Hud" index="2" node_paths=PackedStringArray("_ownerJaugeSys", "_owner")]
+_ownerJaugeSys = NodePath("../../Player/HealthSystem")
 _owner = NodePath("../../Player")
 
-[node name="SharpnessBar" parent="Hud" index="3" node_paths=PackedStringArray("_owner")]
+[node name="StaminaBar" parent="Hud" index="3" node_paths=PackedStringArray("_ownerJaugeSys", "_owner")]
+_ownerJaugeSys = NodePath("../../Player/StaminaSystem")
+_owner = NodePath("../../Player")
+
+[node name="SharpnessBar" parent="Hud" index="4" node_paths=PackedStringArray("_owner")]
 _owner = NodePath("../../Player")
 
 [node name="Camera" parent="." instance=ExtResource("8_hogue")]
@@ -112,6 +119,11 @@ _sharpness = 1500.0
 [node name="ObjPickup3" parent="." instance=ExtResource("25_h3fqb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0362253, 0.46342, 0.985681)
 _weapon = ExtResource("15_ybevo")
+_sharpness = 1500.0
+
+[node name="ObjPickup4" parent="." instance=ExtResource("25_h3fqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47796, 0.46342, 0.985681)
+_weapon = ExtResource("11_cnbnc")
 _sharpness = 1500.0
 
 [node name="Decors" type="Node3D" parent="."]
@@ -269,7 +281,6 @@ skeleton = NodePath("../../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.61664, 0.205183, 1.75698)
 _enemiesLib = Array[PackedScene]([ExtResource("20_5rdyb"), ExtResource("20_6ahek"), ExtResource("21_mmqg4")])
 _enemyForWave = 20
-_isActive = true
 _spawnParticle = true
 _messageLabel = NodePath("../Hud/Message")
 _waveNumLabel = NodePath("../Hud/Wave")
@@ -289,17 +300,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73784, 0.064782, 2.78878)
 [node name="Soul" parent="." instance=ExtResource("22_n5u72")]
 transform = Transform3D(0.999536, 0, -0.0304513, 0, 1, 0, 0.0304513, 0, 0.999536, 4.61777, 1.66311, 2.21732)
 
-[node name="EnemySnake" parent="." instance=ExtResource("20_63nq5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.68144, 0.731561, 0)
+[node name="EnemyCharacter" parent="." instance=ExtResource("21_7qj4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34842, 0.609459, 0.733099)
 
-[node name="HealthSystem" parent="EnemySnake" index="8"]
-_baseHp = 80.0
+[node name="BeehaveTree" parent="EnemyCharacter" index="8" node_paths=PackedStringArray("blackboard")]
+blackboard = NodePath("@Node@70359")
 
-[node name="BeehaveTree" parent="EnemySnake" index="12" node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@220106")
+[node name="HealthSystem" parent="EnemyCharacter" index="12"]
+_baseHp = 50000.0
+_armor = 50.0
+
+[node name="EnemyCharacter2" parent="." instance=ExtResource("22_5034t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02432, 0.800606, 0.809952)
 
 [editable path="Hud"]
 [editable path="Hud/Weapon/StatsDisplay"]
 [editable path="Camera"]
+[editable path="Player"]
+[editable path="Player/Weapon"]
+[editable path="Player/Weapon/Spark"]
+[editable path="Player/Particle"]
+[editable path="Player/AtkSpeLib"]
 [editable path="Decors/door"]
-[editable path="EnemySnake"]
+[editable path="EnemyCharacter"]

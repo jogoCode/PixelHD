@@ -1,7 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cc4lt84oghxg0"]
+[gd_scene load_steps=25 format=3 uid="uid://cc4lt84oghxg0"]
 
 [ext_resource type="Texture2D" uid="uid://dt5dxj02gf1f" path="res://Assets/Sprites/FX/slash_proj_fx.png" id="1_q4fix"]
 [ext_resource type="Texture2D" uid="uid://lqfnuc0hygao" path="res://Assets/Sprites/FX/flocon_FX.png" id="2_spwvf"]
+[ext_resource type="Shader" uid="uid://dtsweogbi4hd3" path="res://Assets/Shader/pillar.tres" id="3_5ugdy"]
+[ext_resource type="Texture2D" uid="uid://6jn5ok2vsx4f" path="res://Assets/Sprites/Textures/text_shader_flame_x32.png" id="4_vn2jo"]
 
 [sub_resource type="Curve" id="Curve_o5nf7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.538168, 0), -1.65823, 0.0, 0, 0]
@@ -85,6 +87,25 @@ color_ramp = SubResource("GradientTexture1D_8t0kk")
 [sub_resource type="PlaneMesh" id="PlaneMesh_6iu30"]
 orientation = 2
 
+[sub_resource type="Gradient" id="Gradient_4mudf"]
+offsets = PackedFloat32Array(0, 0.0677291, 1)
+colors = PackedColorArray(0.18, 0.603667, 1, 0, 0.22, 0.883, 1, 1, 0.49, 0.7535, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ocbfw"]
+gradient = SubResource("Gradient_4mudf")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(1, 0.141026)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bwdau"]
+render_priority = 0
+shader = ExtResource("3_5ugdy")
+shader_parameter/Speed = Vector2(0, 0.2)
+shader_parameter/BaseColor = SubResource("GradientTexture2D_ocbfw")
+shader_parameter/Texture = ExtResource("4_vn2jo")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yu813"]
+size = Vector2(0.36, 1)
+
 [node name="MoonLightSlashFx" type="Node3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
@@ -100,3 +121,8 @@ material_override = SubResource("StandardMaterial3D_67yec")
 amount = 25
 process_material = SubResource("ParticleProcessMaterial_ve2mn")
 draw_pass_1 = SubResource("PlaneMesh_6iu30")
+
+[node name="BaseFlamePillar" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, -0.00128372, -0.0128304, -0.407733)
+material_override = SubResource("ShaderMaterial_bwdau")
+mesh = SubResource("PlaneMesh_yu813")

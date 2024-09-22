@@ -1326,7 +1326,8 @@ _data = {
 "RunRight": SubResource("Animation_cjbe8")
 }
 
-[node name="EnemyCharacter" instance=ExtResource("1_pw0re")]
+[node name="EnemyCharacter" node_paths=PackedStringArray("_atk") instance=ExtResource("1_pw0re")]
+_atk = NodePath("AtkMelee")
 
 [node name="CollisionShape3D" parent="." index="1"]
 disabled = true
@@ -1337,14 +1338,20 @@ disabled = true
 [node name="HurtBoxCollisionShape3D" parent="HurtBox" index="0"]
 disabled = true
 
+[node name="Oscillator" parent="." index="6" node_paths=PackedStringArray("_target")]
+_target = NodePath("../Visual")
+
+[node name="StateMachine" parent="." index="7" node_paths=PackedStringArray("_animationTree")]
+_animationTree = NodePath("../AnimationManager/AnimationTree")
+
 [node name="HealthSystem" parent="." index="8"]
 _armor = 50.0
 
 [node name="BeehaveTree" type="Node" parent="." index="11" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("2_lba8h")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@316733")
-actor = NodePath("")
+blackboard = NodePath("@Node@56334")
+actor = NodePath("..")
 
 [node name="BaseSequence" type="Node" parent="BeehaveTree" index="0"]
 script = ExtResource("3_fj1b8")
@@ -1379,7 +1386,7 @@ animation = &"Die"
 
 [node name="AnimationManager" type="Node" parent="." index="13" node_paths=PackedStringArray("_character", "_animationTree")]
 script = ExtResource("13_pk6eq")
-_character = NodePath("")
+_character = NodePath("..")
 _animationTree = NodePath("AnimationTree")
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationManager" index="0"]

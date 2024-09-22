@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1ygj7glikpja"]
 
-[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/Projectile.gd" id="1_lgf88"]
+[ext_resource type="Script" path="res://Assets/Content/Projectile/Projectile.gd" id="1_lgf88"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4mtka"]
 

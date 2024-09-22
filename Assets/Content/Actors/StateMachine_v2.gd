@@ -92,7 +92,8 @@ func stateCheck():
 	GetState() == "EndRoll" or
 	GetState() == "Hit" or
 	GetState() == "BladeBounce" or 
-	GetState() == "EndSharpen" ):
+	GetState() == "EndSharpen" or
+	GetState() == "BigBlade"):
 		return true;
 	else:
 		return false;
@@ -106,6 +107,7 @@ func IsDie():
 	StateChanged.emit();
 	#_animationTree["parameters/conditions/isAtk"] = false; 
 	#_animationTree["parameters/conditions/isHit"] = false;
+	_stateAnimation.travel("Die");
 	_animationTree["parameters/conditions/isDie"] = true;
 
 func _on_change_state(newState:String):

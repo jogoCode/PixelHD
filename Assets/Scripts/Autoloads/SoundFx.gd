@@ -18,7 +18,9 @@ var sounds = {
 	"Sharpen02" : load("res://Assets/Sounds/audio_sharpen02.wav"),
 	"Ting" : load("res://Assets/Sounds/audio_ting.wav"),
 	"MoonLightProj" : load("res://Assets/Sounds/audio_moonlightSlash.wav"),
-	"Soul" : load("res://Assets/Sounds/audio_soul.wav")
+	"Soul" : load("res://Assets/Sounds/audio_soul.wav"),
+	"StartFlameBigBlade" : load("res://Assets/Sounds/audio_StartFlameBigBlade.wav"),
+	"FlameBigBlade" : load("res://Assets/Sounds/audio_FlameBigBlade.wav")
 }
 
 @onready var sound_players:Array = get_children();

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://drbj1le41x3dn"]
 
-[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/Projectile.gd" id="1_6dmhb"]
+[ext_resource type="Script" path="res://Assets/Content/Projectile/Projectile.gd" id="1_6dmhb"]
 [ext_resource type="PackedScene" uid="uid://cc4lt84oghxg0" path="res://Assets/Content/FX/slash_proj_fx.tscn" id="2_n50i8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_f11pe"]

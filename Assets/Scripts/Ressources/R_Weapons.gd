@@ -21,5 +21,6 @@ enum Type{
 
 enum AtkSpecials{
 	SPIN,
-	PROJO
+	PROJO,
+	PILLARFLAME
 }

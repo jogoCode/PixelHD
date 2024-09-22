@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1gxdhiwr3fwd"]
+
+[ext_resource type="Script" path="res://Assets/Content/UI/ProgressBar.gd" id="1_tslc1"]
+[ext_resource type="Texture2D" uid="uid://db0ok8k2fn263" path="res://Assets/Sprites/UI/UI_StaminaUnder.png" id="2_4oe0y"]
+[ext_resource type="Texture2D" uid="uid://eyac5st1k7uk" path="res://Assets/Sprites/UI/UI_StaminaBlankProgress.png" id="2_bdx24"]
+[ext_resource type="Texture2D" uid="uid://bbw8p8qcyfdmh" path="res://Assets/Sprites/UI/UI_staminaBorder.png" id="3_h0u1v"]
+[ext_resource type="Texture2D" uid="uid://br7pdc5l6gtoh" path="res://Assets/Sprites/UI/UI_StaminaProgress.png" id="4_dt3cd"]
+
+[node name="StaminaBar" type="Control" node_paths=PackedStringArray("_blancProgressVar", "_progressBar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1824.0
+offset_bottom = -1072.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tslc1")
+_blancProgressVar = NodePath("consumeStamina")
+_progressBar = NodePath("ProgressBarStamina")
+_tweenType = 0
+
+[node name="consumeStamina" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+texture_under = ExtResource("2_4oe0y")
+texture_progress = ExtResource("2_bdx24")
+
+[node name="ProgressBarStamina" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 6.0
+value = 100.0
+texture_over = ExtResource("3_h0u1v")
+texture_progress = ExtResource("4_dt3cd")

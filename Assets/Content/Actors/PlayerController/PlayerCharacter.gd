@@ -8,10 +8,15 @@ var _inputVector:Vector2;
 @export var _weapon:Weapon;
 @export var _atkSpeLib:Node;
 var _delta;
+var _staminaSys:StaminaSystem;
 
 func _ready() -> void:
 	if !_atkSpeLib:
 		printerr("no atkspe lib");
+		
+	for node in get_children():
+		if node.has_signal("remove_stamina"):
+			_staminaSys = node;
 
 func _process(delta: float) -> void:
 	$debug.text = _stateMachine.GetState();
@@ -25,7 +30,8 @@ func _physics_process(delta):
 		_stateMachine.GetState() == "Die" or
 		_stateMachine.GetState() == "Sharpen" or
 		_stateMachine.GetState() == "EndSharpen" or
-		_stateMachine.GetState() == "BladeBounce"):
+		_stateMachine.GetState() == "BladeBounce" or 
+		_stateMachine.GetState() == "BigBlade" ):
 		velocity = Vector3(0,velocity.y,0);
 	elif(_stateMachine.GetState() != "Hit" and
 		_stateMachine.GetState() != "Roll" and 
@@ -50,6 +56,9 @@ func Roll()->void:
 	if(_stateMachine.stateCheck() or
 		_stateMachine.GetState() == "Spin"):
 		return;
+	if !_staminaSys._can_use_stamina():
+		return;
+	_staminaSys.remove_stamina.emit(10);
 	_stateMachine.IsAction("Roll",0.5);
 	Level._CAMERA.ZoomCamera(-1,0.1)
 	SoundFx.play("Roll",0.2);
@@ -78,9 +87,12 @@ func AtkSpe()->void:
 		return;
 	
 	if	_atkSpeLib.get_child(_weapon._weaponActualStats._atkSpe)!=null:
-		_atkSpeLib.get_child(_weapon._weaponActualStats._atkSpe).action();
+		var atkSpe:AtkSpe = _atkSpeLib.get_child(_weapon._weaponActualStats._atkSpe);
+		if !_staminaSys._can_use_stamina(atkSpe._staminaCost):
+			return;
+		atkSpe.action();
 
-			
+	
 func Sharpen():
 	if(_stateMachine.stateCheck()):
 		return;

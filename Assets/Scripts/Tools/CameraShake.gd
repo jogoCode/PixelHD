@@ -22,8 +22,11 @@ func _process(delta):
 			#_camera.global_transform.origin = lerp(_camera.global_transform.origin,originalTransform.origin,delta);
 
 # Fonction pour commencer la vibration de la caméra
-func startShake(intensity, duration):	
-	_camera._oscillator.add_velocity.emit(Oscillator.Modes.POSITION,intensity);
+func startShake(intensity, duration):
+	_camera._oscillator.add_velocity.emit(Oscillator.Modes.POSITION,_shakeIntensity);
+	_shakeIntensity = intensity;
+	_shakeDuration = duration;
+	
 
 
 func _on_shake(intensity,duration):

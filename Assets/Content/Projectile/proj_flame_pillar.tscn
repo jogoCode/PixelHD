@@ -1,0 +1,251 @@
+[gd_scene load_steps=19 format=3 uid="uid://ccfomm6ogvxul"]
+
+[ext_resource type="PackedScene" uid="uid://xho18k66qno3" path="res://Assets/Content/Projectile/projectile.tscn" id="1_lm7mh"]
+[ext_resource type="PackedScene" uid="uid://dibd875h3u1qi" path="res://Assets/Content/FX/fx_fire_pillar.tscn" id="2_aitwb"]
+[ext_resource type="Shader" uid="uid://dtsweogbi4hd3" path="res://Assets/Shader/pillar.tres" id="3_5e0ad"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_eimre"]
+height = 1.0925
+radius = 0.309883
+
+[sub_resource type="Animation" id="Animation_vdhfu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0sbb5"]
+resource_name = "despawn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("origin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_projo"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_eubwy"]
+resource_name = "idle"
+length = 0.9
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("origin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 4, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y6ojf"]
+resource_name = "idle_2"
+length = 0.9
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("origin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_sjymb"]
+resource_name = "spawn"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("origin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.5, 0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("../CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nwi62"]
+_data = {
+"RESET": SubResource("Animation_vdhfu"),
+"despawn": SubResource("Animation_0sbb5"),
+"idle": SubResource("Animation_eubwy"),
+"idle_2": SubResource("Animation_y6ojf"),
+"spawn": SubResource("Animation_sjymb")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xn4t2"]
+animation = &"despawn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yssly"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dbppx"]
+animation = &"spawn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b388u"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rhyh5"]
+break_loop_at_end = true
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qydgs"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0yjns"]
+states/Start/position = Vector2(201, 100)
+states/despawn/node = SubResource("AnimationNodeAnimation_xn4t2")
+states/despawn/position = Vector2(632, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_yssly")
+states/idle/position = Vector2(462, 100)
+states/spawn/node = SubResource("AnimationNodeAnimation_dbppx")
+states/spawn/position = Vector2(345, 100)
+transitions = ["spawn", "idle", SubResource("AnimationNodeStateMachineTransition_b388u"), "idle", "despawn", SubResource("AnimationNodeStateMachineTransition_rhyh5"), "Start", "spawn", SubResource("AnimationNodeStateMachineTransition_qydgs")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8wo5d"]
+render_priority = 0
+shader = ExtResource("3_5e0ad")
+shader_parameter/Speed = null
+
+[node name="Projectile" instance=ExtResource("1_lm7mh")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+_SPEED = 0.0
+_damage = 5.0
+_delayToDestroy = 15.0
+_destroyAtTouch = false
+_hideAtTouch = false
+_audio = "FlameBigBlade"
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.574558, 0)
+shape = SubResource("CylinderShape3D_eimre")
+disabled = true
+
+[node name="fx_fire_pillar" parent="." index="1" instance=ExtResource("2_aitwb")]
+
+[node name="origin" parent="fx_fire_pillar" index="0"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="GPUParticles3D" parent="fx_fire_pillar/origin" index="4"]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+root_node = NodePath("../fx_fire_pillar")
+libraries = {
+"": SubResource("AnimationLibrary_nwi62")
+}
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+root_node = NodePath("../fx_fire_pillar")
+tree_root = SubResource("AnimationNodeStateMachine_0yjns")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="TrailEmitter" type="TrailEmitter" parent="." index="4"]
+material = SubResource("ShaderMaterial_8wo5d")
+
+[editable path="fx_fire_pillar"]

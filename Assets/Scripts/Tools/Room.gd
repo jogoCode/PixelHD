@@ -16,6 +16,9 @@ func _ready():
 	Level.GameFinished.connect(_game_finished);
 	_blackScreenAnimPlayer.animation_finished.connect(GoToEndScreen);
 
+func _process(delta: float) -> void:
+	UpdateFps();
+
 func _game_finished():
 	Level.save_score();
 	_blackScreenAnimPlayer.play("fade_in");
@@ -37,3 +40,7 @@ func UpdateScore():
 
 func UpdateSoul():
 	$Hud/Soul.text = str(Level._soul);
+
+func UpdateFps():	
+	return;
+	$Hud/Fps.text = "fps "+str(Engine.get_frames_per_second());

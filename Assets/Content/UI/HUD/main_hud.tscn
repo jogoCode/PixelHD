@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://bbv8cw44ayyg0"]
+[gd_scene load_steps=27 format=3 uid="uid://bbv8cw44ayyg0"]
 
 [ext_resource type="PackedScene" uid="uid://c46iwqhhm6en2" path="res://Assets/Content/UI/Store/store.tscn" id="1_l64m0"]
 [ext_resource type="PackedScene" uid="uid://dkv04n4vrlu2h" path="res://Assets/Content/UI/HealthBar.tscn" id="2_fkk2q"]
+[ext_resource type="PackedScene" uid="uid://d1gxdhiwr3fwd" path="res://Assets/Content/UI/StaminaBar.tscn" id="3_k55qk"]
 [ext_resource type="PackedScene" uid="uid://cew4leu7u6vnd" path="res://Assets/Content/UI/SharpnesBar.tscn" id="3_mbpap"]
 [ext_resource type="FontFile" uid="uid://c3rjhfocf1qp6" path="res://Assets/Fonts/PeaberryBase.ttf" id="4_4hdxg"]
 [ext_resource type="Texture2D" uid="uid://ypdypue51nrh" path="res://Assets/Sprites/Object/Soul.png" id="5_hf4m0"]
@@ -132,6 +133,11 @@ font_size = 36
 outline_size = 25
 outline_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_p1g23"]
+font = ExtResource("4_4hdxg")
+outline_size = 2
+outline_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_8ii5t"]
 font = ExtResource("4_4hdxg")
 font_size = 35
@@ -177,17 +183,24 @@ autoplay = "fade_out"
 [node name="Store" parent="." instance=ExtResource("1_l64m0")]
 
 [node name="HealthBar" parent="." instance=ExtResource("2_fkk2q")]
-offset_left = 64.0
+offset_left = 56.0
 offset_top = 64.0
-offset_right = -1088.0
+offset_right = -1096.0
 offset_bottom = -584.0
 scale = Vector2(4, 4)
 
+[node name="StaminaBar" parent="." instance=ExtResource("3_k55qk")]
+offset_left = 64.0
+offset_top = 112.0
+offset_right = -1856.0
+offset_bottom = -968.0
+scale = Vector2(4, 4)
+
 [node name="SharpnessBar" parent="." instance=ExtResource("3_mbpap")]
-offset_left = 240.0
-offset_top = 111.0
-offset_right = -912.0
-offset_bottom = -537.0
+offset_left = 232.0
+offset_top = 139.0
+offset_right = -1678.0
+offset_bottom = -899.0
 rotation = 1.57079
 scale = Vector2(4, 4)
 
@@ -239,6 +252,20 @@ offset_bottom = 148.0
 grow_horizontal = 2
 text = "KILL  0"
 label_settings = SubResource("LabelSettings_qb1bo")
+
+[node name="Fps" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_top = 8.0
+offset_right = -15.0
+offset_bottom = 44.0
+grow_horizontal = 0
+text = "
+ 0"
+label_settings = SubResource("LabelSettings_p1g23")
+horizontal_alignment = 2
 
 [node name="Wave" type="Label" parent="."]
 anchors_preset = 5

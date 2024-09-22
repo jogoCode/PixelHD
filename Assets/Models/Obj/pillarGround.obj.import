@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cxxq26lj74n0o"
+path="res://.godot/imported/pillarGround.obj-cfea7dc579c9fda5d2e605862a5f5e69.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pillarGround.obj-cfea7dc579c9fda5d2e605862a5f5e69.mesh"]
+
+source_file="res://Assets/Models/Obj/pillarGround.obj"
+dest_files=["res://.godot/imported/pillarGround.obj-cfea7dc579c9fda5d2e605862a5f5e69.mesh", "res://.godot/imported/pillarGround.obj-cfea7dc579c9fda5d2e605862a5f5e69.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

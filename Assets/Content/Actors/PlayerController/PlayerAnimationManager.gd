@@ -24,6 +24,7 @@ func _physics_process(delta):
 			_animationTree["parameters/Atk/"+_type+"/Atk01/Atk01/blend_position"] = vel.x;
 			_animationTree["parameters/Atk/"+_type+"/Atk02/Atk02/blend_position"] = vel.x;
 			_animationTree["parameters/Atk/"+_type+"/Atk03/Atk03/blend_position"] = vel.x;
+			_animationTree["parameters/AtkSpe/BigBlade/BigBlade/blend_position"] = vel.x;
 	if _character._impulseVelocity.x > 0:	
 		_animationTree["parameters/Hit/blend_position"] = 1;
 	elif _character._impulseVelocity.x < 0:	

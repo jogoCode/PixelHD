@@ -6,17 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://djuwrk84rh7tv" path="res://Assets/Sprites/UI/UI_LifeUnder2.png" id="3_ba27x"]
 [ext_resource type="Texture2D" uid="uid://cs4w6xdx77yob" path="res://Assets/Sprites/UI/UI_LifeProgress2.png" id="4_j8w7s"]
 
-[node name="HealthBar" type="Control" node_paths=PackedStringArray("_progressBar")]
+[node name="HealthBar" type="Control" node_paths=PackedStringArray("_blancProgressVar", "_progressBar")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1111.0
+offset_left = -1.0
+offset_right = -1112.0
 offset_bottom = -639.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u31bt")
+_blancProgressVar = NodePath("DmgBar")
 _progressBar = NodePath("TextureProgressBar")
 
 [node name="DmgBar" type="TextureProgressBar" parent="."]

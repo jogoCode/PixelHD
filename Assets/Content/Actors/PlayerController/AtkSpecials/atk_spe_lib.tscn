@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkom8cbqblopr"]
+[gd_scene load_steps=4 format=3 uid="uid://bkom8cbqblopr"]
 
 [ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/AtkSpecials/AtkSpe_Spin.gd" id="1_gaamo"]
 [ext_resource type="Script" path="res://Assets/Content/Actors/PlayerController/AtkSpecials/AtkSpe_projo.gd" id="2_lrcov"]
+[ext_resource type="Script" path="res://AtkSpe_FlamePillar.gd" id="3_37y2h"]
 
 [node name="AtkSpeLib" type="Node"]
 
 [node name="AtkSpeSpin" type="Node" parent="."]
 script = ExtResource("1_gaamo")
+_staminaCost = 15.0
 
 [node name="AtkSpeProjo" type="Node" parent="."]
 script = ExtResource("2_lrcov")
+_staminaCost = 25.0
+
+[node name="AtkSpeFlameBigBlade" type="Node" parent="."]
+script = ExtResource("3_37y2h")

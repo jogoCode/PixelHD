@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2tv3p4m1smfd"]
 
-[ext_resource type="Script" path="res://Assets/Content/Actors/Enemy/Projectile.gd" id="1_mc3my"]
+[ext_resource type="Script" path="res://Assets/Content/Projectile/Projectile.gd" id="1_mc3my"]
 [ext_resource type="PackedScene" uid="uid://o0ylkrcuieja" path="res://Assets/Content/FX/fx_ball_poison.tscn" id="2_1w0w1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_33s3o"]

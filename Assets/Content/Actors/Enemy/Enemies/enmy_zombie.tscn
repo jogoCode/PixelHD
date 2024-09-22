@@ -1347,7 +1347,7 @@ _animationTree = NodePath("../AnimationManager/AnimationTree")
 [node name="BeehaveTree" type="Node" parent="." index="11" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("2_nkeh0")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@311467")
+blackboard = NodePath("@Node@57108")
 actor = NodePath("..")
 
 [node name="BaseSequence" type="Node" parent="BeehaveTree" index="0"]
