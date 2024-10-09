@@ -15,11 +15,13 @@ var _canRegen:bool = false;
 @export var _startRegenTime:float = 2;
 var _timer:Timer;
 
+signal add_max_stamina(value);
 signal remove_stamina(value);
 signal start_regen();
 
 func _ready() -> void:
 	remove_stamina.connect(_remove_actual_stamina);
+	add_max_stamina.connect(_add_max_stamina);
 	init();
 
 func _process(delta: float) -> void:
@@ -64,6 +66,13 @@ func _remove_actual_stamina(value)->void:
 	_canRegen = false;
 	actualValueChanged.emit();
 	_timer.start(_startRegenTime);
+
+func _add_max_stamina(value):
+	_maxStamina += value;
+	_maxValue = _maxStamina;
+	actualValueChanged.emit();
+	#maxValueChange.emit()
+
 
 func _start_regen():
 	#await get_tree().create_timer(2).timeout; #remove hard value;

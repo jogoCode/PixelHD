@@ -12,12 +12,11 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_rh3ey"]
 curve = SubResource("Curve_o5nf7")
 
-[sub_resource type="Gradient" id="Gradient_imcy2"]
-offsets = PackedFloat32Array(0.606061, 1)
-colors = PackedColorArray(0.0378413, 0.413467, 0.552197, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_5qbrn"]
+colors = PackedColorArray(0.312, 0.694267, 0.8, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uckod"]
-gradient = SubResource("Gradient_imcy2")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lujst"]
+gradient = SubResource("Gradient_5qbrn")
 
 [sub_resource type="Curve" id="Curve_rnqup"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.956044), -0.113435, 0.0, 0, 0]
@@ -31,12 +30,14 @@ gravity = Vector3(0, 0, 0.5)
 scale_min = 0.25
 scale_max = 0.25
 scale_curve = SubResource("CurveTexture_jvbuy")
-color_ramp = SubResource("GradientTexture1D_uckod")
+color = Color(0.35, 0.7725, 1, 1)
+color_ramp = SubResource("GradientTexture1D_lujst")
 alpha_curve = SubResource("CurveTexture_rh3ey")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3m2gm"]
 transparency = 1
 blend_mode = 1
+cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_q4fix")
@@ -57,11 +58,11 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id="Gradient_vq7pf"]
-colors = PackedColorArray(0.00999999, 0.5545, 1, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_c20wr"]
+colors = PackedColorArray(0, 0.716667, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_8t0kk"]
-gradient = SubResource("Gradient_vq7pf")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b7fj5"]
+gradient = SubResource("Gradient_c20wr")
 
 [sub_resource type="Curve" id="Curve_0vf4q"]
 _data = [Vector2(0, 0.373626), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -82,7 +83,7 @@ gravity = Vector3(0, 0.1, 0)
 scale_min = 0.15
 scale_max = 0.35
 scale_curve = SubResource("CurveTexture_43xt4")
-color_ramp = SubResource("GradientTexture1D_8t0kk")
+color_ramp = SubResource("GradientTexture1D_b7fj5")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6iu30"]
 orientation = 2
@@ -91,7 +92,7 @@ orientation = 2
 offsets = PackedFloat32Array(0, 0.0677291, 1)
 colors = PackedColorArray(0.18, 0.603667, 1, 0, 0.22, 0.883, 1, 1, 0.49, 0.7535, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ocbfw"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v33y5"]
 gradient = SubResource("Gradient_4mudf")
 fill_from = Vector2(1, 1)
 fill_to = Vector2(1, 0.141026)
@@ -100,7 +101,7 @@ fill_to = Vector2(1, 0.141026)
 render_priority = 0
 shader = ExtResource("3_5ugdy")
 shader_parameter/Speed = Vector2(0, 0.2)
-shader_parameter/BaseColor = SubResource("GradientTexture2D_ocbfw")
+shader_parameter/BaseColor = SubResource("GradientTexture2D_v33y5")
 shader_parameter/Texture = ExtResource("4_vn2jo")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yu813"]

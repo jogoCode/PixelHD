@@ -114,6 +114,9 @@ func CheckAlly():
 func GetTargetDirection()->Vector3:
 	return _visionRay.target_position.normalized();
 
+func StopMovement():
+	velocity = Vector3.ZERO;
+	await  get_tree().create_timer(1).timeout;
 
 func _on_detection_zone_area_entered(area):
 	if(area.get_parent() is PlayerCharacter):

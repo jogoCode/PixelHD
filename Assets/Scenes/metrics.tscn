@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b6tlups1ekayh"]
+[gd_scene load_steps=35 format=3 uid="uid://b6tlups1ekayh"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Tools/Room.gd" id="1_kkfiq"]
 [ext_resource type="PackedScene" uid="uid://bbv8cw44ayyg0" path="res://Assets/Content/UI/HUD/main_hud.tscn" id="2_6edob"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://8ssjpejw70op" path="res://Assets/Sprites/Textures/skybox.jpeg" id="9_3xlwt"]
 [ext_resource type="PackedScene" uid="uid://d0u2g2ybwrr02" path="res://Assets/Content/Actors/PlayerController/playerV2.tscn" id="10_65fp0"]
 [ext_resource type="Resource" uid="uid://ehsif27px68g" path="res://Assets/Ressources/Weapons/W_FireGreatSword.tres" id="11_cnbnc"]
+[ext_resource type="Resource" uid="uid://hes7gby3uxcw" path="res://Assets/Ressources/Weapons/W_FireSword.tres" id="11_e3hum"]
 [ext_resource type="PackedScene" uid="uid://by1lih7605fk" path="res://Assets/Models/ModelsPrefs/rounded_platform.tscn" id="11_r1m7u"]
 [ext_resource type="Texture2D" uid="uid://dr377r4jo52s8" path="res://Assets/Sprites/Textures/platform_text.png" id="12_urrr0"]
 [ext_resource type="Texture2D" uid="uid://3rjr00wn07pv" path="res://Assets/Sprites/Textures/NormalMap/platform_text_n.png" id="13_ayx58"]
@@ -14,14 +15,15 @@
 [ext_resource type="Resource" uid="uid://c62xqan7atuvr" path="res://Assets/Ressources/Weapons/W_IronKatana.tres" id="14_ne0e3"]
 [ext_resource type="PackedScene" uid="uid://cydxbf4kd30w5" path="res://Assets/Models/ModelsPrefs/wall.tscn" id="15_bqxkq"]
 [ext_resource type="Resource" uid="uid://tpdt0wkjtcqj" path="res://Assets/Ressources/Weapons/W_MoonLight.tres" id="15_ybevo"]
-[ext_resource type="PackedScene" uid="uid://x0fdkqldi0h4" path="res://Assets/Content/Actors/Enemy/Enemies/enmy_zombie.tscn" id="20_5rdyb"]
 [ext_resource type="PackedScene" uid="uid://4jf2ookbpt8v" path="res://Assets/Content/Actors/Enemy/Obsolete/EnemyDistance.tscn" id="20_6ahek"]
 [ext_resource type="PackedScene" uid="uid://d2hnc60rhkegt" path="res://Assets/Content/Actors/Enemy/Puppet.tscn" id="21_7qj4a"]
 [ext_resource type="PackedScene" uid="uid://c23hj1btfr1mc" path="res://Assets/Content/Actors/Enemy/Obsolete/enm_BZombie.tscn" id="21_mmqg4"]
 [ext_resource type="PackedScene" uid="uid://clai0yotmk27a" path="res://Assets/Content/Actors/Enemy/Enemies/enemy_g_zombie.tscn" id="22_5034t"]
 [ext_resource type="PackedScene" uid="uid://33d0d6gtxfhd" path="res://Assets/Content/soul.tscn" id="22_n5u72"]
 [ext_resource type="PackedScene" uid="uid://b2bkiebp1rsa7" path="res://Assets/Content/Spawner/spawner.tscn" id="23_17bnt"]
+[ext_resource type="PackedScene" uid="uid://ctpr5qgg5tgtk" path="res://Assets/Content/Actors/Enemy/Enemies/enemy_slime.tscn" id="24_b8ybi"]
 [ext_resource type="PackedScene" uid="uid://ctoxthrmgum7c" path="res://Assets/Prefabs/objPickup.tscn" id="25_h3fqb"]
+[ext_resource type="PackedScene" uid="uid://c5t5pyfu1ma0c" path="res://Assets/Content/Actors/Enemy/Enemies/enmy_frogie.tscn" id="25_tlvra"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1ouuw"]
 panorama = ExtResource("9_3xlwt")
@@ -62,7 +64,7 @@ size = Vector3(1.61133, 1, 1.60693)
 albedo_color = Color(0.58, 0.58, 0.58, 1)
 albedo_texture = ExtResource("12_urrr0")
 normal_enabled = true
-normal_scale = 0.36
+normal_scale = 0.22
 normal_texture = ExtResource("13_ayx58")
 uv1_scale = Vector3(12, 8, 12)
 texture_filter = 0
@@ -90,6 +92,9 @@ _owner = NodePath("../../Player")
 [node name="Camera" parent="." instance=ExtResource("8_hogue")]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -1.00707, 3.21244, 1.63763)
 _moveSpeed = 2.0
+
+[node name="Camera3D" parent="Camera" index="0"]
+size = 5.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_v875b")
@@ -119,6 +124,11 @@ _sharpness = 1500.0
 [node name="ObjPickup3" parent="." instance=ExtResource("25_h3fqb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0362253, 0.46342, 0.985681)
 _weapon = ExtResource("15_ybevo")
+_sharpness = 1500.0
+
+[node name="ObjPickup5" parent="." instance=ExtResource("25_h3fqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32913, 0.46342, 0.985681)
+_weapon = ExtResource("11_e3hum")
 _sharpness = 1500.0
 
 [node name="ObjPickup4" parent="." instance=ExtResource("25_h3fqb")]
@@ -279,8 +289,8 @@ skeleton = NodePath("../../..")
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("_messageLabel", "_waveNumLabel") instance=ExtResource("23_17bnt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.61664, 0.205183, 1.75698)
-_enemiesLib = Array[PackedScene]([ExtResource("20_5rdyb"), ExtResource("20_6ahek"), ExtResource("21_mmqg4")])
-_enemyForWave = 20
+_enemiesLib = Array[PackedScene]([ExtResource("25_tlvra"), ExtResource("20_6ahek"), ExtResource("21_mmqg4")])
+_enemyForWave = 5
 _spawnParticle = true
 _messageLabel = NodePath("../Hud/Message")
 _waveNumLabel = NodePath("../Hud/Wave")
@@ -301,10 +311,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73784, 0.064782, 2.78878)
 transform = Transform3D(0.999536, 0, -0.0304513, 0, 1, 0, 0.0304513, 0, 0.999536, 4.61777, 1.66311, 2.21732)
 
 [node name="EnemyCharacter" parent="." instance=ExtResource("21_7qj4a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34842, 0.609459, 0.733099)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.981902, 0.609459, 1.49036)
 
 [node name="BeehaveTree" parent="EnemyCharacter" index="8" node_paths=PackedStringArray("blackboard")]
-blackboard = NodePath("@Node@70359")
+blackboard = NodePath("@Node@17318")
 
 [node name="HealthSystem" parent="EnemyCharacter" index="12"]
 _baseHp = 50000.0
@@ -312,6 +322,16 @@ _armor = 50.0
 
 [node name="EnemyCharacter2" parent="." instance=ExtResource("22_5034t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02432, 0.800606, 0.809952)
+
+[node name="EnemyCharacter3" parent="." instance=ExtResource("24_b8ybi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 1)
+
+[node name="EnemyZombie" parent="." instance=ExtResource("25_tlvra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.83691, 1.06371, 1.97902)
+
+[node name="ShaderPixel" type="CanvasLayer" parent="."]
+scale = Vector2(17.0078, 9.76563)
+transform = Transform2D(17.0078, 0, 0, 9.76563, 0, 0)
 
 [editable path="Hud"]
 [editable path="Hud/Weapon/StatsDisplay"]

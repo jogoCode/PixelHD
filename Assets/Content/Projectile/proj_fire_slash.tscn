@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://buknc2opxri67"]
+
+[ext_resource type="PackedScene" uid="uid://xho18k66qno3" path="res://Assets/Content/Projectile/projectile.tscn" id="1_6jicg"]
+[ext_resource type="PackedScene" uid="uid://i0v2eppvanb4" path="res://Assets/Content/FX/fire_slash_fx.tscn" id="2_c5q5m"]
+
+[node name="Projectile" node_paths=PackedStringArray("_visual") instance=ExtResource("1_6jicg")]
+_SPEED = 1.0
+_accel = 2.5
+_canAccelerate = true
+_damage = 10.0
+_delayToDestroy = 2.0
+_destroyAtTouch = false
+_hideAtTouch = false
+_lookAtDir = true
+_fakeBillBoard = true
+_visual = NodePath("MoonLightSlashFx")
+_audio = "Flame"
+
+[node name="MoonLightSlashFx" parent="." index="1" instance=ExtResource("2_c5q5m")]
+transform = Transform3D(-0.707107, -0.707107, -8.74228e-08, -0.707107, 0.707107, 0, 6.18172e-08, 6.18172e-08, -1, 0, 0, 0)

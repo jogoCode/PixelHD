@@ -61,5 +61,4 @@ func MoveBackward():
 	pass
 
 func _on_change_state(newState:String):
-	print("AKA")
 	SetState(newState);

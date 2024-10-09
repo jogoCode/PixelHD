@@ -2,10 +2,13 @@ extends Control
 
 @export var _offset:Vector2;
 var _choice:int = 3;
-var _storeChoice = load("res://Assets/Content/UI/Store/StoreChoice.tscn")
+var _storeChoice = load("res://Assets/Content/UI/Store/StoreChoice.tscn");
+@onready var _arrayObjects = LibObject.OBJECT.values();
+@onready var _arrayWeapons = LibWeapon.WEAPON.values();
 signal weaponChoosed()
 
 func _ready() -> void:
+	print(pick_random_in_items_lib(1)._name);
 	Level.OpenStore.connect(update_items);
 	weaponChoosed.connect(_weapon_choosed);
 	$ButtonQuit.pressed.connect(_hide)
@@ -26,49 +29,44 @@ func init():
 		add_child(choiseInst);
 
 func update_items():
-	var previouses:Array;
+	_arrayObjects = LibObject.OBJECT.values();
+	_arrayWeapons = LibWeapon.WEAPON.values();
 	for node in get_children():
 		var rand 
 		rand = randi_range(0,2);
-		print("WAVE",Level._wave)
-		if Level._wave < 6:
-			rand = 0;
 		if(Level._PLAYER.GetHp() < 25):
 			rand = randi_range(0,3);
 		if node is StoreChoice:
 			 #WEAPON
 			if rand < 1:
-				var weaponData:R_Weapon = LibWeapon.pick_random();
-				for item in previouses:
-					while item == weaponData or item == Level._PLAYER._weapon._weaponActualStats:
-						weaponData= LibWeapon.pick_random();
-						if item != weaponData:
-							return
-
+				var weaponData:R_Weapon = pick_random_in_items_lib(0);
 				node._weapon = weaponData;
-				print(node._weapon,"WEAPON");
 				node.update_price(node._weapon._price);
 				node.update_statsDisplay(0);
 				
-				previouses.insert(0,weaponData)
-				
 			#OBJECT
 			else: 
-				var objectData:R_Object = LibObject.pick_random();
-				for item in previouses:
-					while item == objectData:
-						objectData = LibObject.pick_random();
-						if item != objectData:
-							update_items();
-							return;
+				var objectData:R_Object = pick_random_in_items_lib(1);
 				node._object = objectData;
 				node._action = objectData._bonus;
 				node._statsDisplay._actualType = 1;
 				node.update_price(node._object._price);	
 				node.update_statsDisplay(1);
-		print(previouses)
 	_show();	
-	#previouses.clear();
+
+func pick_random_in_items_lib(ItemType:int):
+	var _selectedItem
+	match ItemType:
+		0:
+			var randNum = randi() % _arrayWeapons.size();
+			_selectedItem = _arrayWeapons[randNum];
+			_arrayWeapons.remove_at(randNum);
+		1:
+			var randNum = randi() % _arrayObjects.size();
+			_selectedItem = _arrayObjects[randNum];
+			_arrayObjects.remove_at(randNum);
+	print("JOjo",_selectedItem);
+	return _selectedItem;
 
 func _show():
 	$AnimationPlayer.play("show");

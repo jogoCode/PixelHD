@@ -1041,7 +1041,7 @@ animation = &"Die"
 [node name="BeehaveTree" type="Node" parent="." index="12" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_s5pm8")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@94772")
+blackboard = NodePath("@Node@25948")
 actor = NodePath("..")
 
 [node name="BaseSequence" type="Node" parent="BeehaveTree" index="0"]

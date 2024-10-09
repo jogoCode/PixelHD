@@ -26,9 +26,10 @@ func create_projectile():
 		SoundFx.play("StartFlameBigBlade");
 		_owner._weapon.get_node("origin").add_child(projoInst);
 		#Level._CAMERA.ZoomCamera(15,1);
+		Level.FreezeFrame(0.1,0.25);
 		await get_tree().create_timer(0.1).timeout;
 		SoundFx.play(weapon.GetWeaponData()._audio,weapon.GetWeaponData()._atkSpeed*0.1);
-		Level.FreezeFrame(0.1,0.25);
+		Level.FreezeFrame(0.2,0.25);
 		Level._CAMERA.ShakeCamera(1,4);
 		await get_tree().create_timer(1).timeout;
 		_owner.get_node("HealthSystem")._armor = 0;

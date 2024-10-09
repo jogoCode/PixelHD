@@ -11,6 +11,7 @@ var _owner:Character;
 @export var _destroyAtTouch:bool = true;
 @export var _hideAtTouch:bool = true;
 @export var _lookAtDir:bool = false;
+@export var _fakeBillBoard:bool = false;
 
 @export var _visual:Node3D;
 @export var _audio:String;
@@ -48,6 +49,11 @@ func _physics_process(delta: float):
 	if _lookAtDir:
 		if _visual:
 			_visual.look_at(global_position+-_dir);
+	if _fakeBillBoard:
+		if _dir.x < 0:
+			_visual.rotation.z = 45;
+		else:
+			_visual.rotation.z = -45;
 	
 func stop_projo():
 	_collision.disabled = true;
@@ -71,7 +77,6 @@ func _on_area_entered(area):
 		return;
 	if area is Projectile and area._owner != _owner:
 		stop_projo();
-		print(_owner.name,":",area._collision.disabled);
 		return;
 		
 	if _ownerType == Ownertypes.ENEMY:

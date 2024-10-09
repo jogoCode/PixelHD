@@ -20,7 +20,8 @@ var sounds = {
 	"MoonLightProj" : load("res://Assets/Sounds/audio_moonlightSlash.wav"),
 	"Soul" : load("res://Assets/Sounds/audio_soul.wav"),
 	"StartFlameBigBlade" : load("res://Assets/Sounds/audio_StartFlameBigBlade.wav"),
-	"FlameBigBlade" : load("res://Assets/Sounds/audio_FlameBigBlade.wav")
+	"FlameBigBlade" : load("res://Assets/Sounds/audio_FlameBigBlade.wav"),
+	"Flame" : [load("res://Assets/Sounds/audio_flame-001.wav"),load("res://Assets/Sounds/audio_flame-002.wav")]
 }
 
 @onready var sound_players:Array = get_children();

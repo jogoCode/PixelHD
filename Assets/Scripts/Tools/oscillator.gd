@@ -80,5 +80,7 @@ func _add_velocity(mode:Modes,amplitude:float):
 	if Engine.get_frames_per_second() > 5:
 		_mode = mode;
 		_velocity = amplitude;
+		await get_tree().create_timer(2).timeout;
+		_target.scale = _baseScale;
 	else:
 		return;

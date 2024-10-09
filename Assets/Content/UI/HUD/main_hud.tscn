@@ -338,17 +338,16 @@ visible = false
 
 [node name="DmgTxt" parent="Weapon/StatsDisplay" index="4"]
 offset_left = -37.0
-offset_top = 112.0
+offset_top = 138.0
 offset_right = 32.0
-offset_bottom = 167.0
-text = "
-21"
+offset_bottom = 161.0
+text = "21"
 
 [node name="AtkImg" parent="Weapon/StatsDisplay/DmgTxt" index="0"]
 offset_left = 58.3333
-offset_top = 5.33333
+offset_top = -20.6667
 offset_right = 98.3333
-offset_bottom = 45.3333
+offset_bottom = 19.3333
 
 [node name="AtkSpeedTxt" parent="Weapon/StatsDisplay" index="5"]
 texture_filter = 1

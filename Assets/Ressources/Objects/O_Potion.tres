@@ -16,10 +16,11 @@ func action(value):
 script = ExtResource("1_fo6ft")
 _name = "Potion"
 _type = 0
+_bonusType = 0
 _img = ExtResource("1_ie61n")
 _value = 25.0
 _bonus = SubResource("GDScript_a2gwf")
-_desc = "Give +25 HP"
+_desc = "Give"
 _fxColor = Color(0, 0, 0, 1)
 _sufix = "HP"
 _price = 25

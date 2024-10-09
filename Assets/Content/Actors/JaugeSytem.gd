@@ -6,6 +6,7 @@ var _actualValue:float;
 var _maxValue:float;
 
 signal actualValueChanged();
+signal maxValueChange();
 
 func _ready() -> void:
 	pass;

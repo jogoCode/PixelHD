@@ -31,13 +31,16 @@ func create_projectile():
 		canRemoveStamina();
 		set_atkSpe_time.emit(1);
 		_owner._stateMachine._stateAnimation.travel("Atk");
-		_owner._stateMachine.combo += 1;
+		if _owner._stateMachine.combo >= 2:
+			_owner._stateMachine.combo = 1;
+		else:
+			_owner._stateMachine.combo += 1;
 		_owner._stateMachine.combo = clamp(_owner._stateMachine.combo,0,3)
 		_owner.applyImpulse(_owner.getPlayerLastDir()*3,15)
 		var weapon = _owner._weapon;
 		SoundFx.play(weapon.GetWeaponData()._audio,weapon.GetWeaponData()._atkSpeed*0.1);
 		_owner._stateMachine.IsAtk();
-		_owner._stateMachine.combo = 2;
+		_owner._stateMachine.combo = 3;
 		var projoInst:Projectile = _projo.instantiate();
 		projoInst._dir = _owner.getPlayerLastDir();
 		projoInst._owner = _owner; 

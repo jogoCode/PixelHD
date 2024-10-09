@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="R_Object" load_steps=4 format=3 uid="uid://dnb4imc037ykn"]
+
+[ext_resource type="Texture2D" uid="uid://e6t7w30ethiw" path="res://Assets/Sprites/Object/steak.png" id="1_txk7x"]
+[ext_resource type="Script" path="res://Assets/Scripts/Ressources/R_Objects.gd" id="2_asblx"]
+
+[sub_resource type="GDScript" id="GDScript_i57wm"]
+script/source = "extends Node;
+
+func action(value):
+	for node in Level._PLAYER.get_children():
+		if node.has_signal(\"add_max_stamina\"):
+			node.add_max_stamina.emit(value);
+"
+
+[resource]
+script = ExtResource("2_asblx")
+_name = "Steak"
+_type = 0
+_bonusType = 0
+_img = ExtResource("1_txk7x")
+_value = 50.0
+_bonus = SubResource("GDScript_i57wm")
+_desc = "Increase stamina"
+_fxColor = Color(0, 0, 0, 1)
+_sufix = "STMN"
+_price = 30
+_audio = ""

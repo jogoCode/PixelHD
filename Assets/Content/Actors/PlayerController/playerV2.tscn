@@ -3365,10 +3365,10 @@ tracks/6/path = NodePath("../Weapon/origin:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.25, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector3(1.23335, -1.51315, -1.46458), Vector3(0.971803, -1.53696, -1.49103), Vector3(1.38316, 1.46836, 1.52196), Vector3(-1.01403, 1.5708, 1.48353), Vector3(-1.38523, -1.55883, -1.58539)]
+"values": [Vector3(1.38316, 1.46836, 1.52196), Vector3(1.38316, 1.46836, 1.52196), Vector3(-1.01403, 1.5708, 1.48353), Vector3(-1.38523, -1.55883, -1.58539)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -3516,10 +3516,10 @@ tracks/6/path = NodePath("../Weapon/origin:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.0001, 0.05, 0.1, 0.25, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.0001, 0.1, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector3(-1.38317, -1.46837, -1.61961), Vector3(-0.860315, -1.54155, -1.54115), Vector3(-1.38317, -1.46837, -1.61961), Vector3(0.818561, 1.5708, 1.48353), Vector3(1.36488, 1.59963, 1.61514)]
+"values": [Vector3(-1.38317, -1.46837, -1.61961), Vector3(-1.38317, -1.46837, -1.61961), Vector3(0.818561, 1.5708, 1.48353), Vector3(1.36488, 1.59963, 1.61514)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -5185,7 +5185,7 @@ shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_g7ngw")
-animation = &"Atk_01"
+animation = &"Atk_B_03"
 
 [node name="Weapon" parent="." node_paths=PackedStringArray("_owner", "_slashSfx") instance=ExtResource("7_avkv0")]
 transform = Transform3D(0.78366, 0.160862, 0, -0.160862, 0.78366, 0, 0, 0, 0.799999, 0, 0.091204, 0.0258697)
@@ -5197,7 +5197,7 @@ _slashSfx = NodePath("SlashFx")
 transform = Transform3D(-0.981627, -0.190809, -2.53518e-06, -0.190809, 0.981627, 0, 2.4886e-06, 4.83735e-07, -1, 0, 0, 0)
 
 [node name="origin" parent="Weapon" index="2"]
-transform = Transform3D(0.999431, -2.06364e-09, -0.0337601, -0.0337601, -1.22211e-07, -0.99943, -2.06365e-09, 0.999997, -1.22211e-07, -0.0804899, 0.0958851, -0.116435)
+transform = Transform3D(0.981126, -0.0544266, 0.185559, 0.186315, 0.00910614, -0.982448, 0.0517818, 0.998473, 0.0190748, 0.064, 0.181, 0)
 
 [node name="WeaponSprite" parent="Weapon/origin" index="0"]
 transform = Transform3D(1, -2.28209e-08, -7.45058e-09, 7.45058e-09, -4.40371e-08, 1, -3.60819e-09, -1, -4.10851e-08, 0.355, -0.032, 1.49012e-08)
@@ -5207,7 +5207,7 @@ shaded = true
 texture = ExtResource("10_dvkfe")
 
 [node name="SlashFx" type="AnimatedSprite3D" parent="Weapon"]
-transform = Transform3D(2.5, 5.96046e-08, 0, 0, 2.41482, 0.647049, 0, -0.647049, 2.41482, 0, 0, 0)
+transform = Transform3D(2.5, 5.96046e-08, 0, 0, 2.41482, 0.647049, 0, -0.647049, 2.41482, 0, -0.0581296, 0.138496)
 flip_h = true
 modulate = Color(0.956863, 0.486275, 0.109804, 1)
 billboard = 1
@@ -5352,9 +5352,6 @@ _target = NodePath("../Visual")
 [node name="AtkSpeLib" parent="." instance=ExtResource("22_pm5g7")]
 
 [node name="AtkSpeProjo" parent="AtkSpeLib" index="1" node_paths=PackedStringArray("_origin")]
-_origin = NodePath("../../cursor/lesh")
-
-[node name="AtkSpeFlamePillar" parent="AtkSpeLib" index="2" node_paths=PackedStringArray("_origin")]
 _origin = NodePath("../../cursor/lesh")
 
 [node name="cursor" type="Node3D" parent="."]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://idov3lqvxf3t"]
+
+[ext_resource type="PackedScene" uid="uid://b6tlups1ekayh" path="res://Assets/Scenes/metrics.tscn" id="1_h5hb1"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_l5lg5"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yr2ox"]
+viewport_path = NodePath("Gameplay")
+
+[node name="Node" type="Node"]
+
+[node name="UI" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_l5lg5")
+
+[node name="GameplayText" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_yr2ox")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
+
+[node name="Gameplay" type="SubViewport" parent="."]
+size = Vector2i(1920, 1080)
+size_2d_override_stretch = true
+
+[node name="Main" parent="Gameplay" instance=ExtResource("1_h5hb1")]
