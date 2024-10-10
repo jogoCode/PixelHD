@@ -10,6 +10,7 @@ var _maxHp:float;
 var _canTakeDamage:bool = true;
 
 @export var _destroyAtDeath:bool;
+@export var _isFixed:bool = false;
 @export var _canBeImpulse:bool = true;
 
 @onready var _owner = get_parent();
@@ -135,8 +136,9 @@ func EnemyCharacterFeedBack(damage,damager,impulseDir)->void:
 	
 		_owner.change_randnum()
 		if damage >1 and _canBeImpulse:
-			_owner.applyImpulse(impulseDir*4,5);
-			_canBeImpulse = false;
+			if !_isFixed:
+				_owner.applyImpulse(impulseDir*4,5);
+				_canBeImpulse = false;
 		if damager is Character:
 			if !damager._stateMachine.GetState() == "Spin":
 				Level.FreezeFrame(0.001,0.07);
